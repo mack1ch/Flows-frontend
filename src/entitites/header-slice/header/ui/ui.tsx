@@ -1,19 +1,19 @@
 'use client';
 
-import { NavLogo } from '@/shared/header/navLogo';
+import { NavLogo } from '@/shared/header-slice/navLogo';
 import styles from './ui.module.scss';
 import { useEffect, useState } from 'react';
 import type { DrawerProps, RadioChangeEvent } from 'antd';
 import { Button, Divider, Drawer, Radio, Space } from 'antd';
 import { SideBarProfileItem, SideNavBarItems } from '../../data/items';
 import { IHeaderItem } from '@/shared/interface/header';
-import { NavItem } from '@/shared/header/navItem';
+import { NavItem } from '@/shared/header-slice/navItem';
 import { IUser } from '@/shared/interface/user';
 import { GetAuthUserData } from '../../api';
+import { BurgerButton } from '@/shared/header-slice/burgerButton';
 
 export const Header = () => {
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);
-    const [open, setOpen] = useState(false);
     const [placement, setPlacement] = useState<DrawerProps['placement']>('right');
     const [profileData, setProfileData] = useState<IHeaderItem>(SideBarProfileItem);
     useEffect(() => {
@@ -34,6 +34,7 @@ export const Header = () => {
     const onDrawerCloseByBurgerClick = () => {
         setBurgerMenuOpen(false);
     };
+
     return (
         <>
             <header className={styles.header}>
@@ -42,39 +43,17 @@ export const Header = () => {
                 </section>
 
                 <section style={{ minWidth: '40px' }}>
-                    <button
-                        onClick={() => setBurgerMenuOpen(!isBurgerMenuOpen)}
-                        className={styles.burger__btn}>
-                        <span
-                            style={{ marginTop: '4px' }}
-                            className={`
-                               ${styles.burger__stick} ${
-                                isBurgerMenuOpen
-                                    ? styles.stick__active__first
-                                    : styles.stick__disable
-                            }
-                           `}
-                        />
-                        <span
-                            style={{ marginBottom: '4px' }}
-                            className={`
-                           ${styles.burger__stick} ${
-                                isBurgerMenuOpen
-                                    ? styles.stick__active__second
-                                    : styles.stick__disable
-                            }
-                       `}
-                        />
-                    </button>
+                    <BurgerButton isOpen={isBurgerMenuOpen} setOpen={setBurgerMenuOpen} />
                 </section>
             </header>
             <Drawer
+                title={<BurgerButton isOpen={isBurgerMenuOpen} setOpen={setBurgerMenuOpen} />}
                 placement={placement}
                 closable={false}
                 onClose={onDrawerCloseByBurgerClick}
                 open={isBurgerMenuOpen}
                 key={placement}>
-                <section style={{ marginTop: '80px' }} className={styles.header__items}>
+                <section className={styles.header__items}>
                     <div className={styles.items}>
                         {SideNavBarItems.map((item: IHeaderItem, idx: number) => {
                             return <NavItem key={idx} item={item} />;

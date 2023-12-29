@@ -2,12 +2,12 @@
 
 import styles from './ui.module.scss';
 import { SideNavBarItems, SideBarProfileItem } from '../../data/items';
-import { NavItem } from '@/shared/header/navItem';
+import { NavItem } from '@/shared/header-slice/navItem';
 import { CSSProperties, useEffect, useState } from 'react';
 import { IUser } from '@/shared/interface/user';
 import { GetAuthUserData } from '../../api';
 import { IHeaderItem } from '@/shared/interface/header';
-import { NavLogo } from '@/shared/header/navLogo';
+import { NavLogo } from '@/shared/header-slice/navLogo';
 
 export const SideHeader = ({ style }: { style?: CSSProperties }) => {
     const [profileData, setProfileData] = useState<IHeaderItem>(SideBarProfileItem);
