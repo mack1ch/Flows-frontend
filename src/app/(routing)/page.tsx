@@ -1,3 +1,7 @@
 export default function Home() {
-    return <>Привет</>;
+    return (
+        <>
+            <p style={{ color: '#222' }}>Hello</p>
+        </>
+    );
 }

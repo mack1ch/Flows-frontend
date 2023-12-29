@@ -1,1 +1,1 @@
-export { Header } from './ui/ui';
+export { SideHeader } from './ui/ui';

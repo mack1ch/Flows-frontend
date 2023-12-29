@@ -17,7 +17,7 @@ $elementTitle: #3d3d3d;
 
     .element__icon {
         display: flex;
-        height: 22px;
+        height: 20px;
     }
 
     .element__title {
@@ -53,7 +53,7 @@ $elementTitle: #3d3d3d;
 .element__item__list__active {
     opacity: 1;
     max-height: 100%;
-    transition: all 1.5s ease;
+    transition: all 1s ease;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -80,17 +80,17 @@ $elementTitle: #3d3d3d;
 }
 .element__item__list {
     opacity: 0;
-    max-height: 0;
+    height: 0;
+    position: relative;
     transition: all 0.2s ease;
+    z-index: -1;
     .item {
         display: flex;
         width: 200px;
         padding: 4px 8px 4px 40px;
         align-items: center;
         gap: 8px;
-
         border-radius: 8px;
-
         color: $elementTitle;
         font-size: 14px;
         font-style: normal;

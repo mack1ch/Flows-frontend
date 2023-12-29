@@ -9,7 +9,7 @@ import { GetAuthUserData } from '../api';
 import { IHeaderItem } from '@/shared/interface/header';
 import { NavLogo } from '@/shared/header/navLogo';
 
-export const Header = ({ style }: { style?: CSSProperties }) => {
+export const SideHeader = ({ style }: { style?: CSSProperties }) => {
     const [profileData, setProfileData] = useState<IHeaderItem>(SideBarProfileItem);
     useEffect(() => {
         const GetUser = async () => {
