@@ -1,11 +1,11 @@
 'use client';
 
 import styles from './ui.module.scss';
-import { SideNavBarItems, SideBarProfileItem } from '../data/items';
+import { SideNavBarItems, SideBarProfileItem } from '@/entitites/header-slice/data/items';
 import { NavItem } from '@/shared/header/navItem';
 import { CSSProperties, useEffect, useState } from 'react';
 import { IUser } from '@/shared/interface/user';
-import { GetAuthUserData } from '../api';
+import { GetAuthUserData } from '@/entitites/header-slice/api';
 import { IHeaderItem } from '@/shared/interface/header';
 import { NavLogo } from '@/shared/header/navLogo';
 
