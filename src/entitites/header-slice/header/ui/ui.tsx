@@ -3,8 +3,8 @@
 import { NavLogo } from '@/shared/header-slice/navLogo';
 import styles from './ui.module.scss';
 import { useEffect, useState } from 'react';
-import type { DrawerProps, RadioChangeEvent } from 'antd';
-import { Button, Divider, Drawer, Radio, Space } from 'antd';
+import type { DrawerProps } from 'antd';
+import { Divider, Drawer } from 'antd';
 import { SideBarProfileItem, SideNavBarItems } from '../../data/items';
 import { IHeaderItem } from '@/shared/interface/header';
 import { NavItem } from '@/shared/header-slice/navItem';
@@ -14,7 +14,6 @@ import { BurgerButton } from '@/shared/header-slice/burgerButton';
 
 export const Header = () => {
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);
-    const [placement, setPlacement] = useState<DrawerProps['placement']>('right');
     const [profileData, setProfileData] = useState<IHeaderItem>(SideBarProfileItem);
     useEffect(() => {
         const GetUser = async () => {
@@ -47,12 +46,12 @@ export const Header = () => {
                 </section>
             </header>
             <Drawer
-                title={<BurgerButton isOpen={isBurgerMenuOpen} setOpen={setBurgerMenuOpen} />}
-                placement={placement}
+                size="large"
+                placement="right"
                 closable={false}
                 onClose={onDrawerCloseByBurgerClick}
                 open={isBurgerMenuOpen}
-                key={placement}>
+                key="right">
                 <section className={styles.header__items}>
                     <div className={styles.items}>
                         {SideNavBarItems.map((item: IHeaderItem, idx: number) => {
