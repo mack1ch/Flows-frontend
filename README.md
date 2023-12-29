@@ -2,7 +2,7 @@
 
 ## Разработчики
 
-- [Дмитрий Степанов](https://t.me/mack1ch). Junior frontend developer
+-   [Дмитрий Степанов](https://t.me/mack1ch) Junior frontend developer
 
 ## Технологии
 
