@@ -13,3 +13,7 @@
 | `Module CSS`            | Изоляция стилей: стили одного компонента не влияют на другие компоненты                                                              | CSS модули           | [github.com/css-modules](https://github.com/css-modules/css-modules) |
 | `Redux`                 | Управление состоянием, повышение производительности, удобная отладка                                                                 | State manager        | [redux.js.org](https://redux.js.org/)                                |
 | `Feature-Sliced design` | Сохраняется баланс между DRY и локальной кастомизацией, каждый модуль можно независимо модифицировать / переписать без сайд-эффектов | Архитектура          | [feature-sliced.design](https://feature-sliced.design/ru/)           |
+
+# Для запуска интрефейса
+
+`docker run -p 3000:3000 flows`
