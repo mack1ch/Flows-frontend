@@ -1,0 +1,39 @@
+.layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+
+    .circle {
+        margin-top: 3px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+    }
+    .info {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+        .title {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #222;
+            letter-spacing: 0.32px;
+        }
+        .text {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.32px;
+            color: #74757a;
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}

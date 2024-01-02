@@ -4,7 +4,9 @@ import { Filter } from '@/shared/icons/filter';
 import { Plus } from '@/shared/icons/plusWhite';
 import styles from './ui.module.scss';
 import type { MenuProps, ThemeConfig } from 'antd';
-import { AutoComplete, Button, ConfigProvider, Dropdown, Input, Space } from 'antd';
+import { AutoComplete, Button, ConfigProvider, Dropdown, Space } from 'antd';
+import { useState } from 'react';
+import { getPanelValue } from '../model';
 
 export const FlowsListHeader = ({
     id,
@@ -12,16 +14,18 @@ export const FlowsListHeader = ({
 }: /**
  * 	Элементы, по которым необходимо сортировать
  */
-
+// items,
 {
     id?: number;
     title: string;
     // items?: MenuProps['items'];
 }) => {
+    const [inputValue, setInputValue] = useState('');
+    const [options, setOptions] = useState<{ value: string }[]>([]);
     return (
         <section className={styles.section} key={id}>
             <h1 className={styles.title}>{title}</h1>
-            <Space style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+            <Space size="middle" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                 <ConfigProvider theme={groupComponentTheme}>
                     <Space.Compact>
                         {items && (
@@ -35,9 +39,14 @@ export const FlowsListHeader = ({
                             </Dropdown>
                         )}
                         <AutoComplete
+                            value={inputValue}
+                            options={options}
+                            onChange={setInputValue}
                             placeholder="Найти по названию"
                             style={{ width: '242px' }}
-                            size="large"></AutoComplete>
+                            onSearch={(text) => setOptions(getPanelValue(text))}
+                            size="large"
+                        />
                     </Space.Compact>
                 </ConfigProvider>
                 <ConfigProvider theme={createFlowButtonTheme}>
