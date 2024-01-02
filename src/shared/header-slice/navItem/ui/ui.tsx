@@ -59,6 +59,14 @@ export const NavItem = ({ item }: { item: IHeaderItem }) => {
                                         subItem.path === pathname ? styles.item__active : ''
                                     }`}>
                                     <span>{subItem.title}</span>
+                                    {subItem.icon && (
+                                        <Image
+                                            src={subItem?.icon}
+                                            width={16}
+                                            height={16}
+                                            alt="Icon"
+                                        />
+                                    )}
                                 </Link>
                             );
                         })}

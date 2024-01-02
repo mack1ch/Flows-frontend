@@ -1,28 +1,18 @@
 import { IHeaderItem } from '@/shared/interface/header';
-import Document from '../../../../public/icons/doc-black.svg';
+import Flows from '../../../../public/icons/directbox-notif-black.svg';
 import Profile from '../../../../public/icons/avatar-black.svg';
+import Plus from '../../../../public/icons/plus-black.svg';
 export const SideNavBarItems: IHeaderItem[] = [
-    {
-        title: 'Секции',
-        path: '/section',
-        icon: Document,
-        submenu: true,
-        subMenuItems: [
-            { title: 'Новая секция', path: '/section/create' },
-            { title: 'Мои секции', path: '/section/my' },
-        ],
-    },
-    {
-        title: 'Новости',
-        path: '/news',
-        icon: Document,
-        submenu: false,
-    },
     {
         title: 'Заявки',
         path: '/flows',
-        icon: Document,
-        submenu: false,
+        icon: Flows,
+        submenu: true,
+        subMenuItems: [
+            { title: 'Новая заявка', path: '/flows/create', icon: Plus },
+            { title: 'Мои заявки', path: '/flows/my' },
+            { title: 'Архив', path: '/flows/archive' },
+        ],
     },
 ];
 

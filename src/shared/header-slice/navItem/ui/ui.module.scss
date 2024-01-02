@@ -1,4 +1,4 @@
-$elementBgActive: #c7d7fa;
+$elementBgActive: #d6ecdb;
 $elementTitle: #3d3d3d;
 .element {
     display: flex;
@@ -61,6 +61,7 @@ $elementTitle: #3d3d3d;
     margin-top: 8px;
     .item {
         display: flex;
+        justify-content: space-between;
         width: 200px;
         padding: 4px 8px 4px 40px;
         align-items: center;
@@ -72,6 +73,10 @@ $elementTitle: #3d3d3d;
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
+
+        &:hover {
+            background: $elementBgActive;
+        }
     }
 
     .item__active {
@@ -86,6 +91,7 @@ $elementTitle: #3d3d3d;
     z-index: -1;
     .item {
         display: flex;
+        justify-content: space-between;
         width: 200px;
         padding: 4px 8px 4px 40px;
         align-items: center;
@@ -95,6 +101,10 @@ $elementTitle: #3d3d3d;
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
+
+        &:hover {
+            background: $elementBgActive;
+        }
     }
 
     .item__active {

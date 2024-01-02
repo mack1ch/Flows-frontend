@@ -1,7 +1,7 @@
 export default function Home() {
     return (
         <>
-            <p style={{ color: '#222' }}>Hellolll</p>
+            <p style={{ color: '#222' }}>Profile</p>
         </>
     );
 }

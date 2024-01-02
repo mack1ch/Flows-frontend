@@ -34,13 +34,12 @@ export const LayoutDesktop = ({ children }: { children: React.ReactNode }) => {
                     <Layout style={{ marginLeft: 270, background: '#fff' }}>
                         <Content
                             style={{
-                                margin: '24px 16px 0',
+                                margin: '32px 40px 0 40px',
                                 overflow: 'initial',
                                 height: '100vh',
                             }}>
                             <Skeleton active={pageLoading} />
                         </Content>
-                       
                     </Layout>
                 </Layout>
             ) : (
@@ -60,7 +59,7 @@ export const LayoutDesktop = ({ children }: { children: React.ReactNode }) => {
                     <Layout style={{ marginLeft: 270, background: '#fff' }}>
                         <Content
                             style={{
-                                margin: '24px 16px 0',
+                                margin: '32px 40px 0 40px',
                                 overflow: 'initial',
                                 height: '100vh',
                             }}>
