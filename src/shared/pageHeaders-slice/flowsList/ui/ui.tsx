@@ -60,7 +60,7 @@ const groupComponentTheme: ThemeConfig = {
             colorText: '#fff',
             colorBorder: '#73AE62',
             colorPrimaryHover: '#ebebeb',
-            colorPrimaryActive: '#449429',
+            colorPrimaryActive: '#ebebeb',
         },
         Select: {
             colorPrimaryHover: '#73AE62',
@@ -75,7 +75,7 @@ const createFlowButtonTheme: ThemeConfig = {
             defaultBg: '#449429',
             colorText: '#fff',
             colorPrimaryHover: '#ebebeb',
-            colorPrimaryActive: '#73AE62',
+            colorPrimaryActive: '#ebebeb',
         },
     },
 };
