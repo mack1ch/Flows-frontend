@@ -1,0 +1,26 @@
+.layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    .date {
+        display: flex;
+        gap: 4px;
+        flex-direction: column;
+        .title {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            color: rgba(0, 0, 0, 0.88);
+        }
+
+        .text {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px;
+            color: rgba(0, 0, 0, 0.88);
+        }
+    }
+}
