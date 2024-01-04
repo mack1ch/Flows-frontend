@@ -1,4 +1,4 @@
-type StatusType = 'sent' | 'inProgress' | 'rejected' | 'done' | 'clarification';
+type StatusType = 'sent' | 'inProgress' | 'rejected' | 'done' | 'clarification' | 'comment';
 
 interface Status {
     color: string;

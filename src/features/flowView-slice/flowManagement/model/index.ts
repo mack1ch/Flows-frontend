@@ -4,7 +4,7 @@ import { DeleteButton } from '@/entities/flowView-slice/buttons/delete';
 import { DownloadButton } from '@/entities/flowView-slice/buttons/download';
 import { PrintButton } from '@/entities/flowView-slice/buttons/print';
 
-type StatusType = 'sent' | 'inProgress' | 'rejected' | 'done' | 'clarification';
+type StatusType = 'sent' | 'inProgress' | 'rejected' | 'done' | 'clarification' | 'comment';
 
 interface Status {
     buttonsArray?: (() => JSX.Element)[];
