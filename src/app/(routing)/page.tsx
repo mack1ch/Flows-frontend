@@ -1,13 +1,11 @@
 'use client';
-import { FlowsTable } from '@/features/flowsTable-slice/flowsTable';
-import { FlowsListHeader } from '@/shared/pageHeaders-slice/flowsList';
+
+import { FlowViewScreen } from '@/screens/flows/view';
 
 export default function Home() {
     return (
         <>
-            <FlowsListHeader title="Мои заявки" />
-
-            <FlowsTable />
+            <FlowViewScreen />
         </>
     );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { SideHeader } from '@/entitites/header-slice/sideHeader';
+import { SideHeader } from '@/entities/header-slice/sideHeader';
 import { Layout, Skeleton } from 'antd';
 import styles from './ui.module.scss';
 const { Content, Footer, Sider } = Layout;
@@ -61,7 +61,7 @@ export const LayoutDesktop = ({ children }: { children: React.ReactNode }) => {
                             style={{
                                 margin: '32px 40px 0 40px',
                                 overflow: 'initial',
-                                height: '100vh',
+                                height: '100%',
                             }}>
                             {children}
                         </Content>

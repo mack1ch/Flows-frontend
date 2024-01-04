@@ -7,46 +7,50 @@
         line-height: normal;
         color: #74757a;
     }
-    .link {
-        max-width: 280px;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        letter-spacing: 0.32px;
-        height: 100%;
-        color: #449429;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-decoration-line: underline;
-        &:hover {
-            cursor: pointer;
-        }
-    }
-    .flowTitle {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        letter-spacing: 0.32px;
-        transition: all 0.25s;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        &:hover {
-            cursor: pointer;
+    .flow {
+        .link {
+            max-width: 280px;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.32px;
+            height: 100%;
             color: #73ae62;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-decoration-line: underline;
+            transition: all 0.2s;
+            &:hover {
+                cursor: pointer;
+                color: #449429;
+            }
         }
-    }
+        .flowTitle {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.32px;
+            transition: all 0.25s;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            &:hover {
+                cursor: pointer;
+                color: #73ae62;
+            }
+        }
 
-    .flowDate {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        letter-spacing: 0.32px;
+        .flowDate {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.32px;
+        }
     }
 }

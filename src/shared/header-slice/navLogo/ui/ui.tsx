@@ -5,7 +5,7 @@ export const NavLogo = () => {
     return (
         <>
             <div className={styles.layout}>
-                <Image src={ProductLogo} width={200} height={30} alt="Inverse Заявки" />
+                <Image priority src={ProductLogo} width={200} height={30} alt="Inverse Заявки" />
             </div>
         </>
     );

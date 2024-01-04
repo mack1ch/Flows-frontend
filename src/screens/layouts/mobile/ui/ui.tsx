@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Header } from '@/entitites/header-slice/header';
+import { Header } from '@/entities/header-slice/header';
 import { Layout, Skeleton } from 'antd';
 import styles from './ui.module.scss';
 

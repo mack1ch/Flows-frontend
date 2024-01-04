@@ -1,0 +1,17 @@
+.layout {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: -28px; // gap(16px) + iconWidth(28px)
+    @media screen and (max-width: 768px) {
+        margin-left: 0;
+    }
+    .pageTitle {
+        color: #000;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.52px;
+    }
+}

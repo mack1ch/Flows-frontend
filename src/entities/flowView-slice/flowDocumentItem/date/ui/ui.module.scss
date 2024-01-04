@@ -1,0 +1,28 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 24px;
+
+    .link {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 22px;
+        color: #73ae62;
+        transition: all 0.2s;
+        &:hover {
+            text-decoration: underline;
+            color: #449429;
+            cursor: pointer;
+        }
+    }
+    .text {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 22px;
+        color: #222;
+    }
+}

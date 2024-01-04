@@ -1,11 +1,11 @@
 'use client';
 
-import { FlowsListHeader } from '@/shared/pageHeaders-slice/flowsList/';
+import { MyFlowScreen } from '@/screens/flows/my';
 
 export default function MyFlows() {
     return (
         <>
-            <FlowsListHeader title="Мои заявки" />
+            <MyFlowScreen />
         </>
     );
 }

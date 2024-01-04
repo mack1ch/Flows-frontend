@@ -1,0 +1,17 @@
+.graphTitle {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #222;
+    .responsibleName {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: #449429;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

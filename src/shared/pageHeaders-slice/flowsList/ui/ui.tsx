@@ -11,6 +11,7 @@ import { getPanelValue } from '../model';
 export const FlowsListHeader = ({
     id,
     title,
+    filterName,
 }: /**
  * 	Элементы, по которым необходимо сортировать
  */
@@ -18,6 +19,7 @@ export const FlowsListHeader = ({
 {
     id?: number;
     title: string;
+    filterName: string;
     // items?: MenuProps['items'];
 }) => {
     const [inputValue, setInputValue] = useState('');
@@ -33,7 +35,7 @@ export const FlowsListHeader = ({
                                 <Button size="large">
                                     <Space>
                                         <Filter />
-                                        Сортировка
+                                        {filterName}
                                     </Space>
                                 </Button>
                             </Dropdown>

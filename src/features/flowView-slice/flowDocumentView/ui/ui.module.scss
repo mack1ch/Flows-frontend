@@ -1,0 +1,36 @@
+.layout {
+    width: calc(100vw - 270px); // headerWith + margin
+    height: 100%;
+    margin-left: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(90, 156, 70, 0.2);
+
+    .document {
+        width: calc(100% - 120px);
+        height: auto;
+        margin: 2em 1em 2em 1em;
+        background: #fff;
+        border-radius: 8px;
+        padding: 24px 32px 24px 32px;
+        .heading {
+            color: #222;
+            font-size: 26px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: 0.52px;
+        }
+        .date {
+            display: flex;
+            gap: 24px;
+            .items {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+        }
+    }
+}
