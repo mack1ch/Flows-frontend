@@ -22,7 +22,7 @@ export const LayoutMobile = ({ children }: { children: React.ReactNode }) => {
                     </span>
                     <Content
                         style={{
-                            margin: '24px 16px 0',
+                            margin: '24px 8px 2em 8px',
                             overflow: 'initial',
                             height: '100vh',
                         }}>
@@ -34,7 +34,7 @@ export const LayoutMobile = ({ children }: { children: React.ReactNode }) => {
                     <Header />
                     <Content
                         style={{
-                            margin: '24px 16px 2em',
+                            margin: '24px 8px 2em 8px',
                             overflow: 'initial',
                             height: '100%',
                         }}>
