@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { OtherTypeOfRadio, requestTypeData } from '../data/requestType';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
 import { OtherDepartments, departmentsData } from '../data/departments';
+import { useWindowSize } from '@/shared/hooks/useWindowSize';
 const { TextArea } = Input;
 export const FlowCreateForm = () => {
     const [formData] = Form.useForm();
@@ -22,6 +23,7 @@ export const FlowCreateForm = () => {
     const [otherRequestTypeData, setOtherRequestTypeData] = useState<string>('');
     const [otherDepartmentsData, setOtherDepartmentsData] = useState<string>('');
     const [isButtonDisable, setButtonDisable] = useState(false);
+    const { width, height } = useWindowSize();
     const formValues = Form.useWatch([], formData);
     useEffect(() => {
         formData.validateFields({ validateOnly: true }).then(
@@ -94,19 +96,22 @@ export const FlowCreateForm = () => {
                                         size="large"
                                     />
                                 </Form.Item>
-
-                                <Space>
-                                    <Button
-                                        disabled={!isButtonDisable}
-                                        htmlType="submit"
-                                        style={{
-                                            background: !!isButtonDisable ? '#73AE62' : undefined,
-                                        }}
-                                        type="primary">
-                                        Отправить
-                                    </Button>
-                                    <Button>Отменить</Button>
-                                </Space>
+                                {width > 768 && (
+                                    <Space>
+                                        <Button
+                                            disabled={!isButtonDisable}
+                                            htmlType="submit"
+                                            style={{
+                                                background: !!isButtonDisable
+                                                    ? '#73AE62'
+                                                    : undefined,
+                                            }}
+                                            type="primary">
+                                            Отправить
+                                        </Button>
+                                        <Button>Отменить</Button>
+                                    </Space>
+                                )}
                             </div>
                             <div style={{ maxWidth: '100%' }} className={styles.inputLayout}>
                                 <Form.Item
@@ -149,6 +154,22 @@ export const FlowCreateForm = () => {
                                     label="Ссылка на техническое задание">
                                     <Input width={360} size="large" />
                                 </Form.Item>
+                                {width <= 768 && (
+                                    <Space>
+                                        <Button
+                                            disabled={!isButtonDisable}
+                                            htmlType="submit"
+                                            style={{
+                                                background: !!isButtonDisable
+                                                    ? '#73AE62'
+                                                    : undefined,
+                                            }}
+                                            type="primary">
+                                            Отправить
+                                        </Button>
+                                        <Button>Отменить</Button>
+                                    </Space>
+                                )}
                             </div>
                         </div>
                     </Form>

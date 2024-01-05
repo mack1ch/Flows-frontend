@@ -34,9 +34,9 @@ export const LayoutMobile = ({ children }: { children: React.ReactNode }) => {
                     <Header />
                     <Content
                         style={{
-                            margin: '24px 16px 0',
+                            margin: '24px 16px 2em',
                             overflow: 'initial',
-                            height: '100vh',
+                            height: '100%',
                         }}>
                         {children}
                     </Content>
