@@ -1,16 +1,16 @@
 'use client';
 
-import { NavLogo } from '@/shared/header-slice/navLogo';
+import { NavLogo } from '@/shared/ui/header-slice/navLogo';
 import styles from './ui.module.scss';
 import { useEffect, useState } from 'react';
 import type { DrawerProps } from 'antd';
 import { Divider, Drawer } from 'antd';
 import { SideBarProfileItem, SideNavBarItems } from '../../data/items';
 import { IHeaderItem } from '@/shared/interface/header';
-import { NavItem } from '@/shared/header-slice/navItem';
+import { NavItem } from '@/shared/ui/header-slice/navItem';
 import { IUser } from '@/shared/interface/user';
 import { GetAuthUserData } from '../../api';
-import { BurgerButton } from '@/shared/header-slice/burgerButton';
+import { BurgerButton } from '@/shared/ui/header-slice/burgerButton';
 
 export const Header = () => {
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);

@@ -1,6 +1,6 @@
 'use client';
 
-import { Download } from '@/shared/icons/download';
+import { Download } from '@/shared/ui/icons/download';
 import { Button, ConfigProvider, Space, ThemeConfig } from 'antd';
 
 export const DownloadButton = () => {

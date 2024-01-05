@@ -1,6 +1,6 @@
 'use client';
 
-import { Change } from '@/shared/icons/change';
+import { Change } from '@/shared/ui/icons/change';
 import { Button, ConfigProvider, Space, ThemeConfig } from 'antd';
 
 export const ChangeButton = () => {

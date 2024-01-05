@@ -1,6 +1,6 @@
 'use client';
 
-import { Print } from '@/shared/icons/print';
+import { Print } from '@/shared/ui/icons/print';
 import { Button, ConfigProvider, Space, ThemeConfig } from 'antd';
 
 export const PrintButton = () => {

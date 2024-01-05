@@ -1,5 +1,5 @@
 import { FlowsTable } from '@/features/flowsTable-slice/flowsTable';
-import { FlowsListHeader } from '@/shared/pageHeaders-slice/flowsList';
+import { FlowsListHeader } from '@/shared/ui/pageHeaders-slice/flowsList';
 
 export const ArchiveFlowScreen = () => {
     return (

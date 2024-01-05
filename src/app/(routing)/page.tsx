@@ -1,11 +1,11 @@
 'use client';
 
-import { FlowViewScreen } from '@/screens/flows/view';
+import { CreateFlowScreen } from '@/screens/flows/create';
 
 export default function Home() {
     return (
         <>
-            <FlowViewScreen />
+            <CreateFlowScreen />
         </>
     );
 }

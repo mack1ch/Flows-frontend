@@ -1,6 +1,6 @@
 import { FlowGraphDate } from '@/entities/flowView-slice/flowGraphDate';
 import { FlowGraphTitle } from '@/entities/flowView-slice/flowGraphTitle';
-import { FlowGraphIcon } from '@/shared/flowView-slice/flowGraphIcon';
+import { FlowGraphIcon } from '@/shared/ui/flowView-slice/flowGraphIcon';
 import { IFlowGraphTitle } from '@/shared/interface/flowHistoryGraph';
 import { StepProps } from 'antd';
 

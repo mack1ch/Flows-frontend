@@ -1,13 +1,18 @@
 'use client';
 
-import { Comment } from '@/shared/icons/comment';
+import { Comment } from '@/shared/ui/icons/comment';
 import { Button, ConfigProvider, Space, ThemeConfig } from 'antd';
+import { useRouter } from 'next/navigation';
 
 export const CommentButton = () => {
+    const router = useRouter();
     return (
         <>
             <ConfigProvider theme={commentButtonTheme}>
-                <Button size="large" type="text">
+                <Button
+                    onClick={() => router.push('/flows/my/comment/id/')}
+                    size="large"
+                    type="text">
                     <Space>
                         <Comment />
                         Прокомментировать

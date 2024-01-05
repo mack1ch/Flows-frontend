@@ -1,4 +1,4 @@
-import { FlowStatus } from '@/shared/flowsTable-slice/flowStatus';
+import { FlowStatus } from '@/shared/ui/flowsTable-slice/flowStatus';
 import styles from './ui.module.scss';
 import { IFlowStatus } from '@/shared/interface/flowStatus';
 import Link from 'next/link';

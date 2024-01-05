@@ -2,7 +2,7 @@
 
 import { Button, ConfigProvider, StepProps, Steps, ThemeConfig } from 'antd';
 import styles from './ui.module.scss';
-import { ShowHistory } from '@/shared/icons/showHistory';
+import { ShowHistory } from '@/shared/ui/icons/showHistory';
 import { stepItemsData } from '../date';
 import { useEffect, useState } from 'react';
 import { getLastTwoElementsArray } from '../model';

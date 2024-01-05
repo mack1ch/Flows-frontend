@@ -1,6 +1,6 @@
 'use client';
 
-import { Delete } from '@/shared/icons/delete';
+import { Delete } from '@/shared/ui/icons/delete';
 import { Button, ConfigProvider, Space, ThemeConfig } from 'antd';
 import { useState } from 'react';
 import { DeleteButtonModal } from '../modal';
