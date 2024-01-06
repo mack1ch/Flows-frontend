@@ -1,4 +1,4 @@
-import { FlowViewHeader } from '@/shared/ui/pageHeaders-slice/flowView';
+import { PageHeaderWithBackArray } from '@/shared/ui/pageHeaders-slice/flowView';
 import styles from './ui.module.scss';
 import { FlowHistoryGraph } from '@/features/flowView-slice/flowHistoryGraph';
 import { FlowManagement } from '@/features/flowView-slice/flowManagement';
@@ -13,7 +13,7 @@ export const FlowViewHead = () => {
         <>
             <div className={styles.layout}>
                 <div className={styles.section}>
-                    <FlowViewHeader flowName="Сокращение рутинной ручной работы" />
+                    <PageHeaderWithBackArray pageName="Сокращение рутинной ручной работы" />
                     <FlowHistoryGraph />
                 </div>
                 <FlowManagement props={props} />

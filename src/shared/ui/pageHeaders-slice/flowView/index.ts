@@ -1,1 +1,1 @@
-export { FlowViewHeader } from './ui/ui';
+export { PageHeaderWithBackArray } from './ui/ui';

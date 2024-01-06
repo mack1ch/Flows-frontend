@@ -3,11 +3,18 @@ import { useRouter } from 'next/navigation';
 import styles from './ui.module.scss';
 import Image from 'next/image';
 import ArrowLeft from '../../../../../../public/icons/arrow-left-darkBlue.svg';
-export const FlowViewHeader = ({ flowName }: { flowName: string }) => {
+import { CSSProperties } from 'react';
+export const PageHeaderWithBackArray = ({
+    pageName,
+    style,
+}: {
+    pageName: string;
+    style?: CSSProperties;
+}) => {
     const router = useRouter();
     return (
         <>
-            <section className={styles.layout}>
+            <section style={{ ...style }} className={styles.layout}>
                 <Image
                     style={{ cursor: 'pointer' }}
                     onClick={() => router.back()}
@@ -16,7 +23,7 @@ export const FlowViewHeader = ({ flowName }: { flowName: string }) => {
                     height={28}
                     alt="Вернуться назад"
                 />
-                <h1 className={styles.pageTitle}>{flowName}</h1>
+                <h1 className={styles.pageTitle}>{pageName}</h1>
             </section>
         </>
     );
