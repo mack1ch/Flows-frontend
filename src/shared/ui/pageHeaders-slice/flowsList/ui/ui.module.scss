@@ -1,8 +1,9 @@
 .section {
     width: 100%;
     display: flex;
-
+    align-items: center;
     .title {
+        position: absolute;
         font-size: 28px;
         font-style: normal;
         font-weight: 500;

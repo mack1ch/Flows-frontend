@@ -8,6 +8,7 @@ import { AutoComplete, Button, ConfigProvider, Dropdown, Space } from 'antd';
 import { useEffect, useState } from 'react';
 import { IFlowTableItems } from '@/shared/interface/flow';
 import { mapFlowTableItemsToMenuArray, sortFlowTableItems } from '../model';
+import Link from 'next/link';
 
 export const FlowsListHeader = ({
     id,
@@ -43,7 +44,13 @@ export const FlowsListHeader = ({
                 <ConfigProvider theme={groupComponentTheme}>
                     <Space.Compact>
                         {items && (
-                            <Dropdown menu={{ items }} placement="bottomLeft">
+                            <Dropdown
+                                menu={{
+                                    items,
+                                    selectable: true,
+                                    defaultSelectedKeys: undefined,
+                                }}
+                                placement="bottomLeft">
                                 <Button size="large">
                                     <Space>
                                         <Filter />
@@ -64,12 +71,14 @@ export const FlowsListHeader = ({
                     </Space.Compact>
                 </ConfigProvider>
                 <ConfigProvider theme={createFlowButtonTheme}>
-                    <Button size="large">
-                        <Space>
-                            <Plus />
-                            Создать заявку
-                        </Space>
-                    </Button>
+                    <Link href="/flows/create">
+                        <Button size="large">
+                            <Space>
+                                <Plus />
+                                Создать заявку
+                            </Space>
+                        </Button>
+                    </Link>
                 </ConfigProvider>
             </Space>
         </section>
@@ -89,6 +98,11 @@ const groupComponentTheme: ThemeConfig = {
             colorPrimaryHover: '#73AE62',
             colorPrimary: '#73AE62',
         },
+        Dropdown: {
+            colorPrimary: '#449429',
+            controlItemBgActive: '#D6ECDB',
+            controlItemBgActiveHover: '#D6ECDB ',
+        },
     },
 };
 
@@ -102,30 +116,3 @@ const createFlowButtonTheme: ThemeConfig = {
         },
     },
 };
-
-const items: MenuProps['items'] = [
-    {
-        key: '1',
-        label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-                1st menu item
-            </a>
-        ),
-    },
-    {
-        key: '2',
-        label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-                2nd menu item
-            </a>
-        ),
-    },
-    {
-        key: '3',
-        label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-                3rd menu item
-            </a>
-        ),
-    },
-];
