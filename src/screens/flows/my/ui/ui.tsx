@@ -8,7 +8,7 @@ import { IFlowTableItems } from '@/shared/interface/flow';
 
 export const MyFlowScreen = () => {
     const [sortArray, setSortArray] = useState<IFlowTableItems[]>(FlowTableData);
-  
+
     return (
         <>
             <FlowsListHeader
