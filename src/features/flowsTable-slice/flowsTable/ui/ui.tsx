@@ -9,7 +9,11 @@ export const FlowsTable = ({ sortArray }: { sortArray: IFlowTableItems[] }) => {
     return (
         <>
             <section className={styles.section}>
-                <table cellSpacing="5" style={{ borderSpacing: '16px 32px' }} width="100%">
+                <table
+                    className={styles.table}
+                    cellSpacing="5"
+                    style={{ borderSpacing: '16px 32px' }}
+                    width="100%">
                     <tbody>
                         <tr>
                             <td align="left" className={styles.tableHeader}>
