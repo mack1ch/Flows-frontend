@@ -5,25 +5,37 @@ import { Plus } from '@/shared/ui/icons/plusWhite';
 import styles from './ui.module.scss';
 import type { MenuProps, ThemeConfig } from 'antd';
 import { AutoComplete, Button, ConfigProvider, Dropdown, Space } from 'antd';
-import { useState } from 'react';
-import { getPanelValue } from '../model';
+import { useEffect, useState } from 'react';
+import { IFlowTableItems } from '@/shared/interface/flow';
+import { mapFlowTableItemsToMenuArray, sortFlowTableItems } from '../model';
 
 export const FlowsListHeader = ({
     id,
     title,
     filterName,
-}: /**
- * 	Элементы, по которым необходимо сортировать
- */
-// items,
-{
+    searchItemsArray,
+    onSort,
+    onSearch,
+}: {
     id?: number;
     title: string;
     filterName: string;
-    // items?: MenuProps['items'];
+    searchItemsArray: IFlowTableItems[];
+    onSort: (sortedArray: IFlowTableItems[]) => void;
+    onSearch: (searchText: string) => void;
 }) => {
     const [inputValue, setInputValue] = useState('');
     const [options, setOptions] = useState<{ value: string }[]>([]);
+    const [items, setItems] = useState<MenuProps['items']>(
+        mapFlowTableItemsToMenuArray(searchItemsArray),
+    );
+    useEffect(() => {
+        onSearch(inputValue);
+    }, [inputValue, onSearch]);
+    useEffect(() => {
+        const sortedArray = sortFlowTableItems(searchItemsArray, 'id');
+        onSort(sortedArray);
+    }, [searchItemsArray, onSort]);
     return (
         <section className={styles.section} key={id}>
             <h1 className={styles.title}>{title}</h1>
@@ -46,7 +58,7 @@ export const FlowsListHeader = ({
                             onChange={setInputValue}
                             placeholder="Найти по названию"
                             style={{ width: '242px' }}
-                            onSearch={(text) => setOptions(getPanelValue(text))}
+                            onSearch={(text) => setInputValue(text)}
                             size="large"
                         />
                     </Space.Compact>

@@ -1,6 +1,26 @@
-const mockVal = (str: string, repeat = 1) => ({
-    value: str.repeat(repeat),
-});
+import { IFlowTableItems } from '@/shared/interface/flow';
+import { MenuProps } from 'antd';
 
-export const getPanelValue = (searchText: string) =>
-    !searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)];
+export const mapFlowTableItemsToMenuArray = (
+    flowTableItems: IFlowTableItems[],
+): MenuProps['items'] => {
+    return flowTableItems.map((item) => ({
+        label: item.flowName,
+        key: item.id.toString(),
+    }));
+};
+
+export const sortFlowTableItems = (
+    flowTableItems: IFlowTableItems[],
+    sortBy: keyof IFlowTableItems,
+) => {
+    return flowTableItems.sort((a, b) => {
+        if (a[sortBy] < b[sortBy]) {
+            return -1;
+        } else if (a[sortBy] > b[sortBy]) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+};
