@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { getAccessToken } from '../lib/auth/auth-token';
+import { getAccessToken } from '../../lib/auth/auth-token';
 
 const BASE_URL = 'https://inverse-tracker.ru/api';
 

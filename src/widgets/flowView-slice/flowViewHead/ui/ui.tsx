@@ -1,4 +1,4 @@
-import { PageHeaderWithBackArray } from '@/shared/ui/pageHeaders-slice/flowView';
+import { PageHeaderWithBackArray } from '@/shared/ui/pageHeaders-slice/backArray';
 import styles from './ui.module.scss';
 import { FlowHistoryGraph } from '@/features/flowView-slice/flowHistoryGraph';
 import { FlowManagement } from '@/features/flowView-slice/flowManagement';

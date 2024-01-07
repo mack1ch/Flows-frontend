@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-left: -28px; // gap(16px) + iconWidth(28px)
+
     @media screen and (max-width: 768px) {
         margin-left: 0;
     }

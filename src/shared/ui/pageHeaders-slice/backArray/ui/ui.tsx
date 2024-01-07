@@ -19,8 +19,8 @@ export const PageHeaderWithBackArray = ({
                     style={{ cursor: 'pointer' }}
                     onClick={() => router.back()}
                     src={ArrowLeft}
-                    width={28}
-                    height={28}
+                    width={26}
+                    height={26}
                     alt="Вернуться назад"
                 />
                 <h1 className={styles.pageTitle}>{pageName}</h1>

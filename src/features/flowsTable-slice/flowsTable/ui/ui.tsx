@@ -36,7 +36,7 @@ export const FlowsTable = ({ sortArray }: { sortArray: IFlowTableItems[] }) => {
                                         <Link
                                             title={capitalizeFirstLetter(item.flowName)}
                                             className={styles.flowTitle}
-                                            href={'/' + item.flowName}>
+                                            href="/flows/view/1">
                                             {capitalizeFirstLetter(item.flowName)}
                                         </Link>
                                     </td>
