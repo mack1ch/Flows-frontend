@@ -1,0 +1,30 @@
+.layout {
+    width: 100vw;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F6FAF7;
+
+    .form {
+        width: 100%;
+        height: auto;
+        max-width: 512px;
+        max-height: 100%;
+        padding: 32px 40px 8px 40px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        flex-direction: column;
+        gap: 16px;
+
+        .inputLayout{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: flex-start;
+        }
+    }
+}
