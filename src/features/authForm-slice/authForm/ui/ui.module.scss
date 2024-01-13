@@ -20,11 +20,18 @@
         flex-direction: column;
         gap: 16px;
 
+        @media screen and (max-width: 512px) {
+            background: transparent;
+        }
+
         .inputLayout{
             display: flex;
             flex-direction: column;
             width: 100%;
             align-items: flex-start;
+            @media screen and (max-width: 512px) {
+                align-items: center;
+            }
         }
     }
 }

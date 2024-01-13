@@ -23,7 +23,7 @@ export const AuthForm = () => {
         },
 
     ];
-    console.log(isButtonDisable);
+    
     return (
         <>
             <ConfigProvider theme={authFormTheme}>
