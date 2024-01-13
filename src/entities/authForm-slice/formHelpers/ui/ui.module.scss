@@ -10,5 +10,11 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        transition: all 0.2s;
+
+        &:hover {
+            color: #449429;
+            cursor: pointer;
+        }
     }
 }
