@@ -4,12 +4,9 @@ import { ConfigProvider, Form, ThemeConfig } from 'antd'
 import styles from './ui.module.scss'
 import Input from 'antd/es/input/Input'
 import { useEffect, useState } from 'react';
+import { IFormData } from '@/shared/interface/auth';
 
-interface IFormData {
-    email: string;
-    phone: string;
-    password: string;
-}
+
 
 interface IChangeEvent extends React.ChangeEvent {
     target: HTMLInputElement & {
@@ -17,12 +14,11 @@ interface IChangeEvent extends React.ChangeEvent {
         value: string;
     };
 }
-export const FormInputs = ({ label, placeholder, isSubmited, setSubmited }: { label: string; placeholder: string; isSubmited: boolean; setSubmited: (arg: boolean) => void }) => {
-    const [formData, setFormData] = useState<IFormData>({ email: '', phone: '', password: '' })
-
+export const FormInputs = ({ label, placeholder, setSubmited, formData, setFormData }: { label: string; placeholder: string; setSubmited: (arg: boolean) => void; formData: IFormData, setFormData: any; }) => {
+    
     const handleInputChange = (event: IChangeEvent) => {
         const { name, value } = event.target;
-        setFormData((prevData) => ({
+        setFormData((prevData: IFormData) => ({
             ...prevData,
             [name]: value
         }));
@@ -32,8 +28,9 @@ export const FormInputs = ({ label, placeholder, isSubmited, setSubmited }: { la
             setSubmited(true);
         }
     };
-   
-    return (<>
+
+    return (
+    <>
         <ConfigProvider theme={inputTheme}>
             <div className={styles.layout}>
                 <Form.Item style={{ width: '100%', textAlign: 'start', alignItems: 'flex-start' }} label={label}>

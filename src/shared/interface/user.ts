@@ -1,36 +1,26 @@
 export interface IUser {
     id: number;
     email: string;
+    telegram: string;
+    vk: string;
+    phone: string;
     firstname: string;
     lastname: string;
     surname: string;
-    class: IClass;
-    school: ISchool;
-    achievements: IAchievements;
-    snils: string;
+    birthday: string;
+    job: IJob;
     role: IRole;
-    password?: string | undefined;
+    password: string;
 }
 
 export interface IRole {
     id: number;
-    role_name: string;
     role_type: string;
 }
 
-export interface IAchievements {
+export interface IJob {
     id: number;
     name: string;
+    description: string;
 }
 
-export interface IClass {
-    id: number;
-    number: number;
-    litera: string;
-}
-
-export interface ISchool {
-    id: number;
-    name: string;
-    classes: IClass[];
-}

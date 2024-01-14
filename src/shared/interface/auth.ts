@@ -1,10 +1,12 @@
 export interface IAuth {
-    email: string;
+    email?: string;
     password: string;
+    phone?: string;
 }
 
 export interface IToken {
-    auth_token: string;
+    refresh: string;
+    access: string;
 }
 
 export interface IError {
@@ -16,4 +18,10 @@ export interface IError {
 
 export interface IResponseAuth {
     data: IToken;
+}
+
+export interface IFormData {
+    email: string;
+    phone: string;
+    password: string;
 }
