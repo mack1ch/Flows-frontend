@@ -1,0 +1,43 @@
+.article {
+    border-radius: 16px;
+    border: 0.5px solid #EBEBEB;
+    background: #fff;
+
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.08), 0px 0px 2px 0px rgba(0, 0, 0, 0.04);
+
+    max-width: 30%;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    .main {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+
+        .article__title {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: 0.32px;
+            flex-wrap: wrap;
+            color: #449429;
+        }
+
+        .article__tags {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+}

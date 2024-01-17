@@ -1,0 +1,1 @@
+export {NewsTag} from './ui/ui'

@@ -11,6 +11,7 @@ import { NavItem } from '@/shared/ui/header-slice/navItem';
 import { IUser } from '@/shared/interface/user';
 import { GetAuthUserData } from '../../api';
 import { BurgerButton } from '@/shared/ui/header-slice/burgerButton';
+import { getAccessToken } from '@/shared/lib/auth/auth-token';
 
 export const Header = () => {
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);
@@ -18,7 +19,7 @@ export const Header = () => {
     useEffect(() => {
         const GetUser = async () => {
             const fetchUser: IUser | Error = await GetAuthUserData();
-            if (fetchUser instanceof Error) return;
+            if (fetchUser instanceof Error) GetUser();
             else {
                 const userName: string = fetchUser.firstname + ' ' + fetchUser.lastname;
                 setProfileData((prevProfileData: IHeaderItem) => ({

@@ -1,0 +1,44 @@
+.layout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .text {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.16px;
+            color: #adadad;
+        }
+    }
+
+    .like {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        .text {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.16px;
+            color: #adadad;
+
+
+            &:hover {
+                color: #757575;
+            }
+        }
+    }
+}
