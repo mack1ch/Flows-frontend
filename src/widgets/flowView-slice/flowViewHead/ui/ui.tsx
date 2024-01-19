@@ -2,12 +2,14 @@ import { PageHeaderWithBackArray } from '@/shared/ui/pageHeaders-slice/backArray
 import styles from './ui.module.scss';
 import { FlowHistoryGraph } from '@/features/flowView-slice/flowHistoryGraph';
 import { FlowManagement } from '@/features/flowView-slice/flowManagement';
-import { IFlowStatus } from '@/shared/interface/flowStatus';
+import { IFlowStatus } from '@/shared/interface/flow';
+
 
 export const FlowViewHead = () => {
     const props: IFlowStatus = {
-        statusCode: 'clarification',
-        responsible: 'Степанов Дмитрий Андреевич',
+        status_type: 'proposal_in_approve',
+        name: 'На согласовании',
+        id: 1,
     };
     return (
         <>

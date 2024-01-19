@@ -3,30 +3,29 @@ import { CommentButton } from '@/entities/flowView-slice/buttons/coment';
 import { DeleteButton } from '@/entities/flowView-slice/buttons/delete';
 import { DownloadButton } from '@/entities/flowView-slice/buttons/download';
 import { PrintButton } from '@/entities/flowView-slice/buttons/print';
-
-type StatusType = 'sent' | 'inProgress' | 'rejected' | 'done' | 'clarification' | 'comment';
+import { IFlowStatus, TFlowStatusType } from '@/shared/interface/flow';
 
 interface Status {
     buttonsArray?: (() => JSX.Element)[];
 }
 
-export function getButtonsArrayByType(status: StatusType): Status {
+export function getButtonsArrayByType(status: TFlowStatusType): Status {
     let buttonsArray: (() => JSX.Element)[] | undefined;
 
     switch (status) {
-        case 'sent':
+        case 'proposal_created':
             buttonsArray = [ChangeButton, DeleteButton, DownloadButton, PrintButton];
             break;
-        case 'inProgress':
+        case 'proposal_in_work':
             buttonsArray = [DownloadButton, PrintButton];
             break;
-        case 'rejected':
+        case 'proposal_rejected':
             buttonsArray = [DownloadButton, PrintButton];
             break;
-        case 'done':
+        case 'proposal_done':
             buttonsArray = [DownloadButton, PrintButton];
             break;
-        case 'clarification':
+        case 'proposal_in_approve':
             buttonsArray = [CommentButton, ChangeButton, DeleteButton, DownloadButton, PrintButton];
             break;
         default:
