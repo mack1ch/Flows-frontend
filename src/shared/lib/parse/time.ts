@@ -1,4 +1,4 @@
-export function parseTimeToRuFormat(input: string): string {
+export function parseTimeToRuFormat(input: Date): string {
     const date = new Date(input);
     return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
 }
