@@ -1,11 +1,15 @@
-export function parseDateToDotFormate(inputDateString: string): string {
+export function parseDateToDotFormat(inputDateString: Date): string {
     const date = new Date(inputDateString);
-    const outputDateString = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    const outputDateString = `${day}.${month}.${year}`;
     return outputDateString;
 }
+
 //  parseDateToDotFormate(inputDateString); === 14.11.2011
 
-export function parseDateToTextFormate(dateString: string): string {
+export function parseDateToTextFormate(dateString: Date): string {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
     return date.toLocaleDateString('ru-RU', options);

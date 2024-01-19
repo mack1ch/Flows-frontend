@@ -1,0 +1,1 @@
+export { NewsViewScreen } from './ui/ui'

@@ -6,6 +6,7 @@ import { FormHelpers } from '@/entities/authForm-slice/formHelpers';
 import { useState } from 'react';
 import { postUser } from '../api';
 import { useRouter } from 'next/navigation';
+import { getAccessToken } from '@/shared/lib/auth/auth-token';
 
 interface IFormData {
     email: string;
@@ -43,11 +44,11 @@ export const AuthForm = () => {
         try {
             setButtonLoading(true);
             const response = await postUser(formData);
-            if (!(response instanceof Error)) {
+            if (!!getAccessToken() && response) {
                 router.push('/flows/my/');
+                window.location.reload()
             }
             loadingFinish();
-            
         } catch (error) {
             messageApi.open({
                 type: 'error',

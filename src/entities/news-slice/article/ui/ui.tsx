@@ -7,31 +7,22 @@ import { useEffect, useState } from 'react'
 import { IUser } from '@/shared/interface/user'
 import { GetAuthUserData } from '../api'
 import { LikesAndViews } from '@/shared/ui/news-slice/likesAndViews'
+import { IFlow } from '@/shared/interface/flow'
 
-export const NewsArticle = () => {
-    const [user, setUser] = useState<IUser>();
-    useEffect(() => {
-        const GetUser = async () => {
-            const fetchUser: IUser | Error = await GetAuthUserData();
-            if (fetchUser instanceof Error) GetUser();
-            else {
-                setUser(fetchUser)
-            }
-        };
-        GetUser();
-    }, []);
+export const NewsArticle = ({ flowItem }: { flowItem: IFlow }) => {
+
     return (<>
         <article className={styles.article}>
             <div className={styles.main}>
-                <h3 className={styles.article__title}>Сокращение рутинной ручной работы</h3>
+                <h3 className={styles.article__title}>{flowItem.name}</h3>
                 <div className={styles.article__tags}>
                     <NewsTag text='Интересное' />
                     <NewsTag text='Работа' />
                 </div>
-                <CreaterUser User={user} />
+                <CreaterUser user={flowItem?.author} />
             </div>
             <div className={styles.footer}>
-                <LikesAndViews/>
+                <LikesAndViews />
             </div>
         </article>
     </>)

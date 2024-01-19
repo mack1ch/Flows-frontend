@@ -1,10 +1,10 @@
-import { NewsArticle } from "@/entities/news-slice/article";
-import { Articles } from "@/features/news-slice/articles";
+'use client'
+import { NewsViewScreen } from "@/screens/news/view";
 
 export default function News() {
     return (
         <>
-            <Articles />
+            <NewsViewScreen />
         </>
     );
-}
+} 

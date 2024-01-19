@@ -6,32 +6,35 @@ import styles from './ui.module.scss';
 import type { MenuProps, ThemeConfig } from 'antd';
 import { AutoComplete, Button, ConfigProvider, Dropdown, Flex, Space } from 'antd';
 import { useEffect, useState } from 'react';
-import { IFlowTableItems } from '@/shared/interface/flow';
 import { mapFlowTableItemsToMenuArray, sortFlowTableItems } from '../model';
 import Link from 'next/link';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
+import { IFlow, IFlowStatus } from '@/shared/interface/flow';
 
 export const FlowsListHeader = ({
     id,
     title,
     filterName,
     searchItemsArray,
+    filterItemsArray,
     onSort,
     onSearch,
+    setFlowStatusChoise
 }: {
     id?: number;
     title: string;
     filterName: string;
-    searchItemsArray: IFlowTableItems[];
-    onSort: (sortedArray: IFlowTableItems[]) => void;
+    searchItemsArray: IFlow[];
+    filterItemsArray: IFlowStatus[],
+    setFlowStatusChoise: (flowStatusChoiseID: string) => void;
+    onSort: (sortedArray: IFlow[]) => void;
     onSearch: (searchText: string) => void;
 }) => {
     const [inputValue, setInputValue] = useState('');
     const [options, setOptions] = useState<{ value: string }[]>([]);
     const { width, height } = useWindowSize();
-    const [items, setItems] = useState<MenuProps['items']>(
-        mapFlowTableItemsToMenuArray(searchItemsArray),
-    );
+    const [items, setItems] = useState<MenuProps['items']>([]);
+
     useEffect(() => {
         onSearch(inputValue);
     }, [inputValue, onSearch]);
@@ -39,6 +42,14 @@ export const FlowsListHeader = ({
         const sortedArray = sortFlowTableItems(searchItemsArray, 'id');
         onSort(sortedArray);
     }, [searchItemsArray, onSort]);
+    useEffect(() => {
+        setItems(mapFlowTableItemsToMenuArray(filterItemsArray),)
+    }, [filterItemsArray])
+    const handleMenuClick: MenuProps['onClick'] = (e) => {
+        console.log(e.key)
+        setFlowStatusChoise(e.key)
+
+    };
     return (
         <section className={styles.section} key={id}>
             {width < 768 ? (
@@ -74,6 +85,7 @@ export const FlowsListHeader = ({
                                         items,
                                         selectable: true,
                                         defaultSelectedKeys: undefined,
+                                        onClick: handleMenuClick,
                                     }}
                                     placement="bottomLeft">
                                     <Button size="large">
