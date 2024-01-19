@@ -46,7 +46,6 @@ export const AuthForm = () => {
             const response = await postUser(formData);
             if (!!getAccessToken() && response) {
                 router.push('/flows/my/');
-                window.location.reload()
             }
             loadingFinish();
         } catch (error) {
