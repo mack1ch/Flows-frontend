@@ -2,10 +2,10 @@
 
 import { FlowViewScreen } from '@/screens/flows/view';
 
-export default function FlowView() {
+export default function FlowView({ params }: { params: { id: number } }) {
     return (
         <>
-            <FlowViewScreen />
+            <FlowViewScreen id={params.id}/>
         </>
     );
 }

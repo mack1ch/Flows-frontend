@@ -4,8 +4,9 @@
 import { IFlowStatus } from '@/shared/interface/flow';
 import { getButtonsArrayByType } from '../model';
 import styles from './ui.module.scss';
-export const FlowManagement = ({ props }: { props: IFlowStatus }) => {
-    const itemsArray = getButtonsArrayByType(props.status_type).buttonsArray;
+export const FlowManagement = ({ flowStatus }: { flowStatus?: IFlowStatus }) => {
+
+    const itemsArray = getButtonsArrayByType(flowStatus ? flowStatus.status_type : 'proposal_created').buttonsArray;
     return (
         <>
             <section className={styles.layout}>

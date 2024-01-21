@@ -4,9 +4,11 @@ import HeartGrey from '../../../../../../public/icons/heart-grey.svg';
 import HeartRed from '../../../../../../public/icons/heart-red.svg';
 import Image from 'next/image';
 import { useState } from 'react';
-export const LikesAndViews = () => {
+import { IPost } from '@/shared/interface/post';
+export const LikesAndViews = ({ post }: { post: IPost }) => {
     const [isLike, setLike] = useState(false);
-    const [likeCount, setLikeCount] = useState<number>(256);
+    const [viewsCount, setViewsCount] = useState<number>(post.views || 0);
+    const [likeCount, setLikeCount] = useState<number>(post.likes || 0);
     const handleLike = () => {
         setLike(!isLike);
         if (!isLike) {
@@ -18,7 +20,7 @@ export const LikesAndViews = () => {
             <div className={styles.layout}>
                 <span className={styles.item}>
                     <Image src={Eye} width={14} height={14} alt='Количество просмотров' />
-                    <p className={styles.text}>134</p>
+                    <p className={styles.text}>{viewsCount}</p>
                 </span>
                 <button onClick={handleLike} className={styles.like}>
                     {

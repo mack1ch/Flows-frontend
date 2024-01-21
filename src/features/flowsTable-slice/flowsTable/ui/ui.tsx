@@ -4,7 +4,7 @@ import styles from './ui.module.scss';
 import Link from 'next/link';
 import { capitalizeFirstLetter } from '@/shared/lib/parse/firstLetter';
 import { IFlow } from '@/shared/interface/flow';
-import { parseDateToDotFormat } from '@/shared/lib/parse/data';
+import { parseDateToDotFormat } from '@/shared/lib/parse/date';
 
 export const FlowsTable = ({ flows }: { flows: IFlow[] }) => {
 

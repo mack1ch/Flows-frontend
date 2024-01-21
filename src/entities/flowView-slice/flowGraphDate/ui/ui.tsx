@@ -1,4 +1,4 @@
-import { parseDateToTextFormate } from '@/shared/lib/parse/data';
+import { parseDateToTextFormate } from '@/shared/lib/parse/date';
 import { parseTimeToRuFormat } from '@/shared/lib/parse/time';
 import styles from './ui.module.scss';
 export const FlowGraphDate = ({ date }: { date: Date }) => {

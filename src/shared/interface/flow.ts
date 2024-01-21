@@ -7,10 +7,9 @@ export interface IFlow {
     category: IFlowCategory;
     level: number;
     histories: IFlowHistory[];
-    content: JSON;
+    content: string;
     document: string;
     created_date: Date;
-    
     comment: string[] | null;
 }
 

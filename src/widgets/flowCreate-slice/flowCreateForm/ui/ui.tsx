@@ -8,84 +8,213 @@ import {
     RadioChangeEvent,
     Space,
     ThemeConfig,
+    message,
 } from 'antd';
 import styles from './ui.module.scss';
 import { useEffect, useState } from 'react';
-import { OtherTypeOfRadio, requestTypeData } from '../data/requestType';
+import { OtherTypeOfRadio, requestTypeData, } from '../data/requestType';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
-import { OtherDepartments, departmentsData } from '../data/departments';
+import { OtherDepartments, departmentsData, } from '../data/departments';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
+import { createFlow } from '../api/postFlows';
+import { ConfirmModal } from '../modal';
+import { ICreateFlow } from '@/shared/interface/flowsCreateForm';
+import { isNonEmptyArray } from '../model';
+import { IFlowCategory } from '@/shared/interface/flow';
+import { getFlowCategories, } from '../api/getFlowCategories';
+import { IDivision } from '@/shared/interface/company';
+import { getAllDivisions } from '../api/getDivisions';
+import { IUser } from '@/shared/interface/user';
+import { getAuthUser } from '../api/getUser';
+
 const { TextArea } = Input;
+
 export const FlowCreateForm = () => {
     const [formData] = Form.useForm();
-    const [requestType, setRequestType] = useState<string | number | null>(null);
-    const [departments, setDepartments] = useState<CheckboxValueType[] | undefined>(undefined);
-    const [otherRequestTypeData, setOtherRequestTypeData] = useState<string>('');
-    const [otherDepartmentsData, setOtherDepartmentsData] = useState<string>('');
+    const [authUser, setAuthUser] = useState<IUser>({} as IUser)
     const [isButtonDisable, setButtonDisable] = useState(false);
     const { width, height } = useWindowSize();
-    const formValues = Form.useWatch([], formData);
-    useEffect(() => {
-        formData.validateFields({ validateOnly: true }).then(
-            () => {
-                setButtonDisable(true);
-            },
-            () => {
-                setButtonDisable(false);
-            },
-        );
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [formValues]);
+    const [choiceUserID, setChoiceUserID] = useState<number>(0);
+    const [usersArray, setUserArray] = useState<IUser[]>([] as IUser[]);
+    const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
+    const [messageApi, contextHolder] = message.useMessage()
+    const [flowCategories, setFlowCategories] = useState<IFlowCategory[]>([] as IFlowCategory[]);
+    const [allDivisions, setDivisions] = useState<IDivision[]>([] as IDivision[]);
+    const [inputValues, setInputValues] = useState<ICreateFlow>({
+        title: '',
+        requestType: null,
+        projectGoal: '',
+        financialBenefit: '',
+        relatedDepartments: [] as CheckboxValueType[],
+        limitingFactors: '',
+        projectImpact: '',
+        technicalSpecificationLink: '',
+        user_to: null,
+    });
+
     const onRequestTypeChange = (e: RadioChangeEvent) => {
-        setRequestType(e.target.value);
+        handleInputChange('requestType', e.target.value);
     };
+    const isFormValid = () => {
+        const requiredFields: (keyof ICreateFlow)[] = [
+            'title',
+            'requestType',
+            'projectGoal',
+            'financialBenefit',
+            'relatedDepartments',
+            'limitingFactors',
+            'projectImpact',
+            'technicalSpecificationLink',
+        ];
+        for (const fieldName of requiredFields) {
+            const fieldValue = inputValues[fieldName];
+            if (!fieldValue || (Array.isArray(fieldValue) && !isNonEmptyArray(fieldValue))) {
+                return false;
+            }
+        }
+        return true;
+    };
+    useEffect(() => {
+        const GetFlowCategories = async () => {
+            const fetchCategories: IFlowCategory[] | Error = await getFlowCategories();
+            if (fetchCategories instanceof Error) return
+            else {
+                setFlowCategories(fetchCategories)
+            }
+        };
+        const GetAllDivisions = async () => {
+            const fetchDivisions: IDivision[] | Error = await getAllDivisions();
+            if (fetchDivisions instanceof Error) return
+            else {
+                setDivisions(fetchDivisions);
+            }
+        };
+        const GetUser = async () => {
+            const fetchUser: IUser | Error = await getAuthUser();
+            if (fetchUser instanceof Error) return
+            else {
+                setAuthUser(fetchUser);
+                setInputValues((prevValues) => ({
+                    ...prevValues,
+                    fullName: authUser.lastname + ' ' + authUser.firstname + ' ' + authUser.surname,
+                    telegramId: authUser.telegram,
+                }))
+            }
+        };
+        GetUser();
+        GetAllDivisions();
+        GetFlowCategories();
+    }, [])
+    const handleInputChange = (name: string, value: string | number | CheckboxValueType[] | null) => {
+        setInputValues((prevValues) => ({
+            ...prevValues,
+            [name]: value,
+        }));
+        isFormValid() ? setButtonDisable(true) : setButtonDisable(false);
+    };
+    const handleSubmit = async () => {
+        try {
+            await createFlow(inputValues, choiceUserID);
+        } catch (error) {
+            messageApi.open({
+                type: 'error',
+                content: 'Ошибка на сервере, мы уже работаем над устранением',
+            });
+        }
+    }
 
     return (
         <>
+            {contextHolder}
+            <ConfirmModal setChoiceUserID={setChoiceUserID} userArray={usersArray} setUsersArray={setUserArray} handleSubmit={handleSubmit} modalOpen={isConfirmModalOpen} setModalOpen={setConfirmModalOpen} />
             <section className={styles.layout}>
                 <ConfigProvider theme={flowFormTheme}>
                     <Form style={{ width: '100%' }} layout="vertical" form={formData}>
                         <div className={styles.formLayout}>
                             <div className={styles.inputLayout}>
+                                {/* Title */}
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
                                     label="Название заявки">
-                                    <Input width={360} size="large" />
+                                    <Input
+                                        width={360}
+                                        size="large"
+                                        name="title"
+                                        value={inputValues.title}
+                                        onChange={(e) => handleInputChange('title', e.target.value)}
+                                    />
                                 </Form.Item>
+
+                                {/* Full Name */}
                                 <Form.Item style={{ width: '100%' }} required label="ФИО">
-                                    <Input width={360} size="large" />
+                                    <Input
+                                        width={360}
+                                        size="large"
+                                        disabled
+                                        name="fullName"
+                                        defaultValue={authUser.lastname + ' ' + authUser.firstname + ' ' + authUser.surname}
+                                        value={(authUser.lastname + ' ' + authUser.firstname + ' ' + authUser.surname) || 'Загрузка...'}
+                                    />
                                 </Form.Item>
+
+                                {/* Telegram ID */}
                                 <Form.Item style={{ width: '100%' }} required label="ID в Telegram">
-                                    <Input width={360} size="large" />
+                                    <Input
+                                        width={360}
+                                        size="large"
+                                        disabled
+                                        name="telegramId"
+                                        defaultValue={authUser.telegram}
+                                        value={(authUser.telegram) || 'Загрузка...'}
+
+                                    />
                                 </Form.Item>
+
+                                {/* Department */}
                                 <Form.Item style={{ width: '100%' }} required label="Ваш отдел">
-                                    <Input width={360} size="large" />
+                                    <Input
+                                        width={360}
+                                        size="large"
+                                        name="department"
+                                        disabled
+                                        defaultValue={authUser?.division}
+                                        value={(authUser?.division) || 'Загрузка...'}
+                                    />
                                 </Form.Item>
-                                <Form.Item style={{ width: '100%' }} required label="Тип запроса:">
-                                    <Radio.Group onChange={onRequestTypeChange} value={requestType}>
+
+                                {/* Request Type */}
+                                <Form.Item
+                                    style={{ width: '100%' }}
+                                    required
+                                    label="Тип запроса:">
+                                    <Radio.Group onChange={onRequestTypeChange} value={inputValues.requestType}>
                                         <Space direction="vertical">
-                                            {requestTypeData.map((item, index) => (
-                                                <Radio key={index} value={item.value}>
-                                                    {item.label}
+                                            {flowCategories.map((item, index) => (
+                                                <Radio key={item.id} value={item.id}>
+                                                    {item.name}
                                                 </Radio>
                                             ))}
-                                            <Radio value={otherRequestTypeData}>
-                                                <OtherTypeOfRadio
-                                                    value={otherRequestTypeData}
-                                                    onChange={setOtherRequestTypeData}
-                                                />
-                                            </Radio>
                                         </Space>
                                     </Radio.Group>
                                 </Form.Item>
-                                <Form.Item style={{ width: '100%' }} required label="Цель проекта">
+
+                                {/* Project Goal */}
+                                <Form.Item
+                                    style={{ width: '100%' }}
+                                    required
+                                    label="Цель проекта">
                                     <TextArea
                                         autoSize
                                         placeholder="Какую проблему решаем запуском этого проекта?"
                                         size="large"
+                                        name="projectGoal"
+                                        value={inputValues.projectGoal}
+                                        onChange={(e) => handleInputChange('projectGoal', e.target.value)}
                                     />
                                 </Form.Item>
+
+                                {/* Financial Benefit */}
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
@@ -94,11 +223,17 @@ export const FlowCreateForm = () => {
                                         autoSize
                                         placeholder="Напишите здесь всё про деньги, ваши расчеты и итоги"
                                         size="large"
+                                        name="financialBenefit"
+                                        value={inputValues.financialBenefit}
+                                        onChange={(e) => handleInputChange('financialBenefit', e.target.value)}
                                     />
                                 </Form.Item>
+
                                 {width > 768 && (
                                     <Space>
+                                        {/* Submit Button */}
                                         <Button
+                                            onClick={() => setConfirmModalOpen(true)}
                                             disabled={!isButtonDisable}
                                             htmlType="submit"
                                             style={{
@@ -109,29 +244,34 @@ export const FlowCreateForm = () => {
                                             type="primary">
                                             Отправить
                                         </Button>
+
+                                        {/* Cancel Button */}
                                         <Button>Отменить</Button>
                                     </Space>
                                 )}
                             </div>
+
                             <div style={{ maxWidth: '100%' }} className={styles.inputLayout}>
+                                {/* Related Departments */}
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
                                     label="Какие смежные отделы затрагивает ваш проект/запрос?">
-                                    <Checkbox.Group value={departments} onChange={setDepartments}>
+                                    <Checkbox.Group
+                                        value={inputValues.relatedDepartments}
+                                        onChange={(values) => handleInputChange('relatedDepartments', values)}
+                                    >
                                         <Space direction="vertical">
-                                            {departmentsData.map((item, index) => (
-                                                <Checkbox key={index} value={item.value}>
-                                                    {item.label}
+                                            {allDivisions.map((item, index) => (
+                                                <Checkbox key={item.id} value={item.id}>
+                                                    {item.name}
                                                 </Checkbox>
                                             ))}
-                                            <OtherDepartments
-                                                value={otherDepartmentsData}
-                                                onChange={setOtherDepartmentsData}
-                                            />
                                         </Space>
                                     </Checkbox.Group>
                                 </Form.Item>
+
+                                {/* Limiting Factors */}
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
@@ -140,23 +280,45 @@ export const FlowCreateForm = () => {
                                         autoSize
                                         placeholder="Например, если вышло новое законодательство и по нему есть строгие временные рамки"
                                         size="large"
+                                        name="limitingFactors"
+                                        value={inputValues.limitingFactors}
+                                        onChange={(e) => handleInputChange('limitingFactors', e.target.value)}
                                     />
                                 </Form.Item>
+
+                                {/* Project Impact */}
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
                                     label="Как ваш проект/запрос поможет достичь развитие формата и покрытие регионов магазинами?">
-                                    <TextArea autoSize size="large" />
+                                    <TextArea
+                                        autoSize
+                                        size="large"
+                                        name="projectImpact"
+                                        value={inputValues.projectImpact}
+                                        onChange={(e) => handleInputChange('projectImpact', e.target.value)}
+                                    />
                                 </Form.Item>
+
+                                {/* Technical Specification Link */}
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
                                     label="Ссылка на техническое задание">
-                                    <Input width={360} size="large" />
+                                    <Input
+                                        width={360}
+                                        size="large"
+                                        name="technicalSpecificationLink"
+                                        value={inputValues.technicalSpecificationLink}
+                                        onChange={(e) => handleInputChange('technicalSpecificationLink', e.target.value)}
+                                    />
                                 </Form.Item>
+
                                 {width <= 768 && (
                                     <Space>
+                                        {/* Submit Button */}
                                         <Button
+                                            onClick={() => setConfirmModalOpen(true)}
                                             disabled={!isButtonDisable}
                                             htmlType="submit"
                                             style={{
@@ -167,6 +329,8 @@ export const FlowCreateForm = () => {
                                             type="primary">
                                             Отправить
                                         </Button>
+
+                                        {/* Cancel Button */}
                                         <Button>Отменить</Button>
                                     </Space>
                                 )}

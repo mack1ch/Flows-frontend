@@ -1,4 +1,4 @@
-type TFlowStatus = 'sent' | 'inProgress' | 'rejected' | 'done' | 'clarification' | 'comment';
+import { TFlowStatusType } from "./flow";
 
 export interface IFlowHistoryGraph {
     className?: string;
@@ -14,5 +14,5 @@ export interface IFlowHistoryGraph {
 
 export interface IFlowGraphTitle {
     responsibleName: string;
-    flowStatus: TFlowStatus;
+    flowStatus: TFlowStatusType;
 }

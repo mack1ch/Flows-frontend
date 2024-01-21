@@ -3,27 +3,30 @@
 import { Button, ConfigProvider, StepProps, Steps, ThemeConfig } from 'antd';
 import styles from './ui.module.scss';
 import { ShowHistory } from '@/shared/ui/icons/showHistory';
-import { stepItemsData } from '../date';
+
 import { useEffect, useState } from 'react';
 import { getLastTwoElementsArray } from '../model';
+import { IFlow, IFlowHistory } from '@/shared/interface/flow';
+import { convertHistoryToStepProps } from '@/shared/lib/parse/flowGraph';
 
-export const FlowHistoryGraph = () => {
+export const FlowHistoryGraph = ({ flowData }: { flowData: IFlow }) => {
     const [isShowFullGraph, setShowFullGraph] = useState<boolean>(false);
-    const [graphItems, setGraphItems] = useState<StepProps[]>(stepItemsData);
+    const [graphItems, setGraphItems] = useState<StepProps[]>([] as StepProps[]);
     const [missedGraphItemsArray, setMissedGraphItemsArray] = useState<number>(0);
+    const historyItems: IFlowHistory[] = flowData.histories || [];
+    const stepPropsArray: StepProps[] = convertHistoryToStepProps(historyItems);
+
     useEffect(() => {
         if (isShowFullGraph) {
-            const newArray = getLastTwoElementsArray(stepItemsData, isShowFullGraph).newArray;
-            const missedItems = getLastTwoElementsArray(stepItemsData, isShowFullGraph).missed;
+            const { newArray, missed } = getLastTwoElementsArray(stepPropsArray, isShowFullGraph);
             setGraphItems(newArray);
-            setMissedGraphItemsArray(missedItems);
+            setMissedGraphItemsArray(missed);
         } else {
-            const newArray = getLastTwoElementsArray(stepItemsData, isShowFullGraph);
-            const missedItems = getLastTwoElementsArray(stepItemsData, isShowFullGraph).missed;
-            setGraphItems(newArray.newArray);
-            setMissedGraphItemsArray(missedItems);
+            const { newArray, missed } = getLastTwoElementsArray(stepPropsArray, isShowFullGraph);
+            setGraphItems(newArray);
+            setMissedGraphItemsArray(missed);
         }
-    }, [isShowFullGraph]);
+    }, [isShowFullGraph, flowData]);
     return (
         <>
             <ConfigProvider theme={flowGraphTheme}>
@@ -44,8 +47,10 @@ export const FlowHistoryGraph = () => {
                 </section>
             </ConfigProvider>
         </>
-    );
-};
+    )
+}
+
+
 const flowGraphTheme: ThemeConfig = {
     components: {
         Button: {

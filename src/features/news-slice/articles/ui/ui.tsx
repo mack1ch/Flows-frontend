@@ -3,17 +3,19 @@
 import { NewsArticle } from '@/entities/news-slice/article'
 import styles from './ui.module.scss'
 import { useEffect, useState } from 'react';
-import { IFlow } from '@/shared/interface/flow';
 import { getFlows } from '../api';
+import { IPost } from '@/shared/interface/post';
+
 
 export const Articles = () => {
-    const [flows, setFlows] = useState<IFlow[]>([] as IFlow[]);
+    const [flows, setFlows] = useState<IPost[]>([] as IPost[]);
     useEffect(() => {
         const GetFlows = async () => {
-            const fetchFlows: IFlow[] | Error = await getFlows();
-            if (fetchFlows instanceof Error) return
+            const fetchPosts: IPost[] | Error = await getFlows();
+            if (fetchPosts instanceof Error) return
             else {
-                setFlows(fetchFlows)
+                fetchPosts
+                setFlows(fetchPosts)
             }
         };
         GetFlows();

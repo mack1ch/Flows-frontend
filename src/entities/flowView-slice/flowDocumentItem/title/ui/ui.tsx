@@ -1,16 +1,13 @@
-import { titleArray } from '../date';
+
 import styles from './ui.module.scss';
 
-export const FlowDocumentItemTitle = () => {
+export const FlowDocumentItemTitle = ({ dataKey }: { dataKey: string }) => {
+
     return (
         <>
-            <div className={styles.layout}>
-                {titleArray.map((item, index) => (
-                    <h6 key={index} className={styles.title}>
-                        {item}
-                    </h6>
-                ))}
-            </div>
+            <h6 key={dataKey} className={styles.title}>
+                {dataKey}:
+            </h6>
         </>
     );
 };

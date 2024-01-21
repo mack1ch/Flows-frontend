@@ -14,7 +14,7 @@ export const MyFlowScreen = () => {
     useEffect(() => {
         const GetFlowStatuses = async () => {
             const fetchStatuses: IFlowStatus[] | Error = await getFlowsStatuses();
-            if (fetchStatuses instanceof Error) return
+            if (fetchStatuses instanceof Error) window.location.reload();
             else {
                 setFlowStatuses(fetchStatuses)
             }

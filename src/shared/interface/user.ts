@@ -1,3 +1,4 @@
+
 export interface IUser {
     id: number;
     email: string;
@@ -10,6 +11,7 @@ export interface IUser {
     birthday: string;
     job: IJob;
     role: IRole;
+    division: string;
     password: string;
 }
 
