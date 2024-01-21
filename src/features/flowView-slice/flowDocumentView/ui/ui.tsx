@@ -6,6 +6,7 @@ import { FlowDocumentItemTitle } from '@/entities/flowView-slice/flowDocumentIte
 import { useEffect, useState } from 'react';
 import { IFlow } from '@/shared/interface/flow';
 import { getFlowByID } from '../api';
+import { dateItems } from '../date';
 
 export const FlowDocumentView = ({ flowID }: { flowID: number; }) => {
     const [viewFlowData, setFlowData] = useState<IFlow>({} as IFlow)
@@ -23,7 +24,7 @@ export const FlowDocumentView = ({ flowID }: { flowID: number; }) => {
 
     return (
         <>
-            <section className={styles.layout}>
+            {/* <section className={styles.layout}>
                 <div className={styles.document}>
                     <h2 className={styles.heading}>{viewFlowData.name}</h2>
                     <Divider />
@@ -38,6 +39,25 @@ export const FlowDocumentView = ({ flowID }: { flowID: number; }) => {
                                 <div key={key} className={styles.contentItem}>
                                     {viewFlowData.content[Number(key)]}
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section> */}
+            <section className={styles.layout}>
+                <div className={styles.document}>
+                    <h2 className={styles.heading}>Добавление QR-CODE на экран загрузки</h2>
+                    <Divider />
+                    <div className={styles.date}>
+                        <FlowDocumentItemTitle dataKey='' />
+                        <div className={styles.items}>
+                            {dateItems.map((item, index) => (
+                                <FlowDocumentItemDate
+                                    key={index}
+                                    date={item.date}
+                                    href={item.href}
+                                    isLink={item.isLink}
+                                />
                             ))}
                         </div>
                     </div>
