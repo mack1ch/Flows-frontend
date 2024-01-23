@@ -27,7 +27,7 @@ export const FlowViewHead = ({ flowID }: { flowID: number }) => {
                     <PageHeaderWithBackArray pageName={viewFlowData.name} />
                     <FlowHistoryGraph flowData={viewFlowData} />
                 </div>
-                <FlowManagement flowStatus={viewFlowData.histories?.at(-1)?.status} />
+                <FlowManagement flowID={flowID} flowStatus={viewFlowData.histories?.at(-1)?.status} />
             </div>
         </>
     );

@@ -7,7 +7,7 @@ export interface IFlow {
     category: IFlowCategory;
     level: number;
     histories: IFlowHistory[];
-    content: string;
+    content: { [key: string]: any };
     document: string;
     created_date: Date;
     comment: string[] | null;

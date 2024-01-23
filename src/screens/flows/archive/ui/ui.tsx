@@ -45,7 +45,7 @@ export const ArchiveFlowScreen = () => {
                 onSort={setFilteredFlows}
                 searchItemsArray={filteredFlows}
                 filterName="Статус заявки"
-                title="Архив"
+                title="Одобренные заявки"
                 onSearch={(searchText) => {
                     if (searchText) {
                         const filteredArray = flows.filter((item) =>
@@ -57,7 +57,7 @@ export const ArchiveFlowScreen = () => {
                     }
                 }}
             />
-            <FlowsTable flows={filteredFlows} />
+            <FlowsTable isApproved flows={filteredFlows} />
         </>
     );
 };

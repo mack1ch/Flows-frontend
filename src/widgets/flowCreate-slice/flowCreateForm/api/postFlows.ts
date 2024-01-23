@@ -1,10 +1,8 @@
 import { instanceLogged } from "@/shared/api/axios-config";
 import { IFlow } from "@/shared/interface/flow";
 import { ICreateFlow } from "@/shared/interface/flowsCreateForm";
-import { IUser } from "@/shared/interface/user";
 
-
-export const createFlow = async (flowProps: ICreateFlow, user_to: number): Promise<IFlow | Error> => {
+export const createFlow = async (flowProps: ICreateFlow, user_to: number, categoryValue: string | undefined): Promise<IFlow | Error> => {
     try {
         const { data }: { data: IFlow } = await instanceLogged.post(
             '/proposals/create/',
@@ -13,7 +11,7 @@ export const createFlow = async (flowProps: ICreateFlow, user_to: number): Promi
                 category: flowProps.requestType,
                 user_to: user_to,
                 content: {
-                    'Тип запроса': flowProps.requestType,
+                    'Тип запроса': categoryValue,
                     'Цель проекта': flowProps.projectGoal,
                     'Какую выгоду несет реализация проекта в деньгах': flowProps.financialBenefit,
                     'Какие смежные отделы затрагивает ваш проект/запрос?': flowProps.relatedDepartments,
@@ -23,10 +21,8 @@ export const createFlow = async (flowProps: ICreateFlow, user_to: number): Promi
                 }
             }
         );
-        console.log(data);
         return data;
     } catch (error) {
-        console.log(error)
         return error as Error;
     }
 };

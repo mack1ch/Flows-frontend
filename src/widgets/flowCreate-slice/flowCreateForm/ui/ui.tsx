@@ -12,14 +12,12 @@ import {
 } from 'antd';
 import styles from './ui.module.scss';
 import { useEffect, useState } from 'react';
-import { OtherTypeOfRadio, requestTypeData, } from '../data/requestType';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
-import { OtherDepartments, departmentsData, } from '../data/departments';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
 import { createFlow } from '../api/postFlows';
 import { ConfirmModal } from '../modal';
 import { ICreateFlow } from '@/shared/interface/flowsCreateForm';
-import { isNonEmptyArray } from '../model';
+import { getCategoryNameById, isNonEmptyArray } from '../model';
 import { IFlowCategory } from '@/shared/interface/flow';
 import { getFlowCategories, } from '../api/getFlowCategories';
 import { IDivision } from '@/shared/interface/company';
@@ -114,7 +112,7 @@ export const FlowCreateForm = () => {
     };
     const handleSubmit = async () => {
         try {
-            await createFlow(inputValues, choiceUserID);
+            await createFlow(inputValues, choiceUserID, getCategoryNameById(inputValues.requestType, flowCategories));
         } catch (error) {
             messageApi.open({
                 type: 'error',
@@ -190,7 +188,7 @@ export const FlowCreateForm = () => {
                                     label="Тип запроса:">
                                     <Radio.Group onChange={onRequestTypeChange} value={inputValues.requestType}>
                                         <Space direction="vertical">
-                                            {flowCategories.map((item, index) => (
+                                            {flowCategories.map((item) => (
                                                 <Radio key={item.id} value={item.id}>
                                                     {item.name}
                                                 </Radio>

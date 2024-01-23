@@ -17,8 +17,11 @@ export interface IUser {
 
 export interface IRole {
     id: number;
-    role_type: string;
+    name: string;
+    role_type: TRoleType;
 }
+
+export type TRoleType = 'admin' | 'head' | 'employee'
 
 export interface IJob {
     id: number;

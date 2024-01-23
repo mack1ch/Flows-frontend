@@ -2,8 +2,7 @@ import { CheckboxValueType } from "antd/es/checkbox/Group";
 
 export interface ICreateFlow {
     title: string;
-
-    requestType: string | null;
+    requestType: number | null;
     projectGoal: string;
     financialBenefit: string;
     relatedDepartments: CheckboxValueType[];

@@ -10,7 +10,7 @@ export const SideNavBarItems: IHeaderItem[] = [
         icon: Flows,
         submenu: true,
         subMenuItems: [
-            { title: 'Новая заявка', path: '/flows/create', icon: Plus },
+            { title: 'Новая заявка', path: '/flows/choice', icon: Plus },
             { title: 'Мои заявки', path: '/flows/my' },
             { title: 'Архив', path: '/flows/archive' },
         ],

@@ -17,7 +17,6 @@ export const postUser = async (authProps: IFormData): Promise<IToken | Error> =>
        
         return data;
     } catch (error) {
-        throw error;
         return error as Error;
     }
 };

@@ -5,7 +5,7 @@ import { Button, ConfigProvider, Space, ThemeConfig } from 'antd';
 import { useState } from 'react';
 import { DeleteButtonModal } from '../modal';
 
-export const DeleteButton = () => {
+export const DeleteButton = ({flowID}: {flowID:number}) => {
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <>
