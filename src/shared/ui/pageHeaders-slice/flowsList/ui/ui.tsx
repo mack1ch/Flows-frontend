@@ -26,7 +26,7 @@ export const FlowsListHeader = ({
     filterName: string;
     searchItemsArray: IFlow[];
     filterItemsArray: IFlowStatus[],
-    setFlowStatusChoise: (flowStatusChoiseID: string) => void;
+    setFlowStatusChoise?: (flowStatusChoiseID: string) => void | undefined;
     onSort: (sortedArray: IFlow[]) => void;
     onSearch: (searchText: string) => void;
 }) => {
@@ -46,8 +46,7 @@ export const FlowsListHeader = ({
         setItems(mapFlowTableItemsToMenuArray(filterItemsArray),)
     }, [filterItemsArray])
     const handleMenuClick: MenuProps['onClick'] = (e) => {
-        console.log(e.key)
-        setFlowStatusChoise(e.key)
+        setFlowStatusChoise && setFlowStatusChoise(e.key)
 
     };
     return (
@@ -79,7 +78,7 @@ export const FlowsListHeader = ({
                 <ConfigProvider theme={groupComponentTheme}>
                     {width > 420 ? (
                         <Space.Compact>
-                            {items && (
+                            {items && setFlowStatusChoise && (
                                 <Dropdown
                                     menu={{
                                         items,

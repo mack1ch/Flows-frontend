@@ -27,7 +27,7 @@ import { getAuthUser } from '../api/getUser';
 
 const { TextArea } = Input;
 
-export const FlowCreateForm = () => {
+export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolean }) => {
     const [formData] = Form.useForm();
     const [authUser, setAuthUser] = useState<IUser>({} as IUser)
     const [isButtonDisable, setButtonDisable] = useState(false);
@@ -45,9 +45,10 @@ export const FlowCreateForm = () => {
         financialBenefit: '',
         relatedDepartments: [] as CheckboxValueType[],
         limitingFactors: '',
-        projectImpact: '',
         technicalSpecificationLink: '',
+        description: '',
         user_to: null,
+        effects: '',
     });
 
     const onRequestTypeChange = (e: RadioChangeEvent) => {
@@ -61,8 +62,9 @@ export const FlowCreateForm = () => {
             'financialBenefit',
             'relatedDepartments',
             'limitingFactors',
-            'projectImpact',
             'technicalSpecificationLink',
+            'description',
+            'effects'
         ];
         for (const fieldName of requiredFields) {
             const fieldValue = inputValues[fieldName];
@@ -198,32 +200,48 @@ export const FlowCreateForm = () => {
                                 </Form.Item>
 
                                 {/* Project Goal */}
+                                {isFullFormat &&
+                                    <Form.Item
+                                        style={{ width: '100%' }}
+                                        required
+                                        label="Цель проекта">
+                                        <TextArea
+                                            autoSize
+                                            placeholder="Какую проблему решаем запуском этого проекта?"
+                                            size="large"
+                                            name="projectGoal"
+                                            value={inputValues.projectGoal}
+                                            onChange={(e) => handleInputChange('projectGoal', e.target.value)}
+                                        />
+                                    </Form.Item>
+                                }
+                                {/* Project discription */}
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
-                                    label="Цель проекта">
+                                    label="Описание проекта">
                                     <TextArea
                                         autoSize
-                                        placeholder="Какую проблему решаем запуском этого проекта?"
+                                        placeholder="Напишите краткое описание вашего проекта"
                                         size="large"
-                                        name="projectGoal"
-                                        value={inputValues.projectGoal}
-                                        onChange={(e) => handleInputChange('projectGoal', e.target.value)}
+                                        name="description"
+                                        value={inputValues.description}
+                                        onChange={(e) => handleInputChange('description', e.target.value)}
                                     />
                                 </Form.Item>
 
-                                {/* Financial Benefit */}
+                                {/* Project effects */}
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
-                                    label="Какую выгоду несет реализация проекта в деньгах?">
+                                    label="Как ваш проект позволит достичь цели компании?">
                                     <TextArea
                                         autoSize
-                                        placeholder="Напишите здесь всё про деньги, ваши расчеты и итоги"
+                                        placeholder="Напишите здесь какие эффекты будут от вашего проекта"
                                         size="large"
-                                        name="financialBenefit"
+                                        name="effects"
                                         value={inputValues.financialBenefit}
-                                        onChange={(e) => handleInputChange('financialBenefit', e.target.value)}
+                                        onChange={(e) => handleInputChange('effects', e.target.value)}
                                     />
                                 </Form.Item>
 
@@ -268,36 +286,36 @@ export const FlowCreateForm = () => {
                                         </Space>
                                     </Checkbox.Group>
                                 </Form.Item>
-
+                                {/* Financial benefit */}
+                                <Form.Item
+                                    style={{ width: '100%' }}
+                                    required
+                                    label="Какую выгоду несет реализация проекта?">
+                                    <TextArea
+                                        autoSize
+                                        placeholder="Напишите здесь всё про деньги, ваши расчеты и итоги"
+                                        size="large"
+                                        name="financialBenefit"
+                                        value={inputValues.financialBenefit}
+                                        onChange={(e) => handleInputChange('financialBenefit', e.target.value)}
+                                    />
+                                </Form.Item>
                                 {/* Limiting Factors */}
-                                <Form.Item
-                                    style={{ width: '100%' }}
-                                    required
-                                    label="Есть ли какие-либо ограничивающие факторы?">
-                                    <TextArea
-                                        autoSize
-                                        placeholder="Например, если вышло новое законодательство и по нему есть строгие временные рамки"
-                                        size="large"
-                                        name="limitingFactors"
-                                        value={inputValues.limitingFactors}
-                                        onChange={(e) => handleInputChange('limitingFactors', e.target.value)}
-                                    />
-                                </Form.Item>
-
-                                {/* Project Impact */}
-                                <Form.Item
-                                    style={{ width: '100%' }}
-                                    required
-                                    label="Как ваш проект/запрос поможет достичь развитие формата и покрытие регионов магазинами?">
-                                    <TextArea
-                                        autoSize
-                                        size="large"
-                                        name="projectImpact"
-                                        value={inputValues.projectImpact}
-                                        onChange={(e) => handleInputChange('projectImpact', e.target.value)}
-                                    />
-                                </Form.Item>
-
+                                {isFullFormat &&
+                                    <Form.Item
+                                        style={{ width: '100%' }}
+                                        required
+                                        label="Есть ли какие-либо ограничивающие факторы?">
+                                        <TextArea
+                                            autoSize
+                                            placeholder="Например, если вышло новое законодательство и по нему есть строгие временные рамки"
+                                            size="large"
+                                            name="limitingFactors"
+                                            value={inputValues.limitingFactors}
+                                            onChange={(e) => handleInputChange('limitingFactors', e.target.value)}
+                                        />
+                                    </Form.Item>
+                                }
                                 {/* Technical Specification Link */}
                                 <Form.Item
                                     style={{ width: '100%' }}

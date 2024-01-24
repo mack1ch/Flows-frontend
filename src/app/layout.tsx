@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.scss';
-import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 export const metadata: Metadata = {
     title: 'Inverse Заявки',

@@ -25,7 +25,7 @@ export const Articles = () => {
             <section className={styles.wrap}>
                 {
                     flows?.map((item) => (
-                        <NewsArticle flowItem={item} key={item.id} />
+                        <NewsArticle flowItem={item} key={item?.proposal?.id} />
                     ))
                 }
             </section>
