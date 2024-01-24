@@ -2,7 +2,27 @@ import { instanceLogged } from "@/shared/api/axios-config";
 import { IFlow } from "@/shared/interface/flow";
 import { ICreateFlow } from "@/shared/interface/flowsCreateForm";
 
-export const createFlow = async (flowProps: ICreateFlow, user_to: number, categoryValue: string | undefined): Promise<IFlow | Error> => {
+export const createFlow = async (flowProps: ICreateFlow, user_to: number, categoryValue: string | undefined, isFullFormat: boolean): Promise<IFlow | Error> => {
+    const content = isFullFormat ? {
+        'Название': flowProps.title,
+        'Описание': flowProps.description,
+        'Тип запроса': categoryValue,
+        'Цель проекта': flowProps.projectGoal,
+        'Как ваш проект позволит достичь цели компании?': flowProps.effects,
+        'Какие смежные отделы затрагивает ваш проект/запрос?': flowProps.relatedDepartments,
+        'Какую выгоду несет реализация проекта?': flowProps.financialBenefit,
+        'Есть ли какие-либо ограничивающие факторы?': flowProps.limitingFactors,
+        'Ссылка на техническое задание': flowProps.technicalSpecificationLink,
+    } : {
+        'Название': flowProps.title,
+        'Описание': flowProps.description,
+        'Тип запроса': categoryValue,
+        'Как ваш проект позволит достичь цели компании?': flowProps.effects,
+        'Какие смежные отделы затрагивает ваш проект/запрос?': flowProps.relatedDepartments,
+        'Какую выгоду несет реализация проекта?': flowProps.financialBenefit,
+        'Ссылка на техническое задание': flowProps.technicalSpecificationLink,
+
+    };
     try {
         const { data }: { data: IFlow } = await instanceLogged.post(
             '/proposals/create/',
@@ -10,14 +30,7 @@ export const createFlow = async (flowProps: ICreateFlow, user_to: number, catego
                 name: flowProps.title,
                 category: flowProps.requestType,
                 user_to: user_to,
-                content: {
-                    'Тип запроса': categoryValue,
-                    'Цель проекта': flowProps.projectGoal,
-                    'Какую выгоду несет реализация проекта в деньгах': flowProps.financialBenefit,
-                    'Какие смежные отделы затрагивает ваш проект/запрос?': flowProps.relatedDepartments,
-                    'Есть ли какие-либо ограничивающие факторы?': flowProps.limitingFactors,
-                    'Ссылка на техническое задание': flowProps.technicalSpecificationLink
-                }
+                content: content
             }
         );
         return data;

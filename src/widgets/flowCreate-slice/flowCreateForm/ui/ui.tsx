@@ -24,10 +24,12 @@ import { IDivision } from '@/shared/interface/company';
 import { getAllDivisions } from '../api/getDivisions';
 import { IUser } from '@/shared/interface/user';
 import { getAuthUser } from '../api/getUser';
+import { useRouter } from 'next/navigation';
 
 const { TextArea } = Input;
 
 export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolean }) => {
+    const router = useRouter();
     const [formData] = Form.useForm();
     const [authUser, setAuthUser] = useState<IUser>({} as IUser)
     const [isButtonDisable, setButtonDisable] = useState(false);
@@ -55,17 +57,10 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
         handleInputChange('requestType', e.target.value);
     };
     const isFormValid = () => {
-        const requiredFields: (keyof ICreateFlow)[] = [
-            'title',
-            'requestType',
-            'projectGoal',
-            'financialBenefit',
-            'relatedDepartments',
-            'limitingFactors',
-            'technicalSpecificationLink',
-            'description',
-            'effects'
-        ];
+        const requiredFields: (keyof ICreateFlow)[] = isFullFormat
+            ? ['title', 'requestType', 'projectGoal', 'financialBenefit', 'relatedDepartments', 'limitingFactors', 'technicalSpecificationLink', 'description', 'effects']
+            : ['title', 'requestType', 'description', 'effects', 'relatedDepartments', 'financialBenefit', 'technicalSpecificationLink'];
+
         for (const fieldName of requiredFields) {
             const fieldValue = inputValues[fieldName];
             if (!fieldValue || (Array.isArray(fieldValue) && !isNonEmptyArray(fieldValue))) {
@@ -114,7 +109,9 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     };
     const handleSubmit = async () => {
         try {
-            await createFlow(inputValues, choiceUserID, getCategoryNameById(inputValues.requestType, flowCategories));
+            const res = await createFlow(inputValues, choiceUserID, getCategoryNameById(inputValues.requestType, flowCategories), isFullFormat);
+            if (!(res instanceof Error)) router.push('/flows/my')
+            else throw new Error;
         } catch (error) {
             messageApi.open({
                 type: 'error',
@@ -122,7 +119,6 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
             });
         }
     }
-
     return (
         <>
             {contextHolder}
@@ -240,7 +236,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         placeholder="Напишите здесь какие эффекты будут от вашего проекта"
                                         size="large"
                                         name="effects"
-                                        value={inputValues.financialBenefit}
+                                        value={inputValues.effects}
                                         onChange={(e) => handleInputChange('effects', e.target.value)}
                                     />
                                 </Form.Item>
