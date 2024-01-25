@@ -1,14 +1,14 @@
-import { PageTitle } from '@/shared/ui/pageHeaders-slice/title';
+
 import styles from './ui.module.scss';
 import { FlowCreateForm } from '@/widgets/flowCreate-slice/flowCreateForm';
 import { PageHeaderWithBackArray } from '@/shared/ui/pageHeaders-slice/backArray';
 
-export const CreateFlowScreen = () => {
+export const CreateFlowSmallScreen = () => {
     return (
         <>
             <div className={styles.layout}>
                 <PageHeaderWithBackArray pageName="Новая заявка" />
-                <FlowCreateForm />
+                <FlowCreateForm  />
             </div>
         </>
     );

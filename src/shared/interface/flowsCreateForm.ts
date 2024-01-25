@@ -7,7 +7,8 @@ export interface ICreateFlow {
     financialBenefit: string;
     relatedDepartments: CheckboxValueType[];
     limitingFactors: string;
-    projectImpact: string;
     technicalSpecificationLink: string;
     user_to: number | null;
+    description: string;
+    effects: string;
 }

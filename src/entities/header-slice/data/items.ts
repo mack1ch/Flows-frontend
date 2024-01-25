@@ -3,6 +3,7 @@ import Flows from '../../../../public/icons/directbox-notif-black.svg';
 import Profile from '../../../../public/icons/avatar-black.svg';
 import Plus from '../../../../public/icons/plus-black.svg';
 import Company from '../../../../public/icons/company-black.svg';
+import Rating from '../../../../public/icons/rating-black.svg';
 export const SideNavBarItems: IHeaderItem[] = [
     {
         title: 'Заявки',
@@ -20,9 +21,19 @@ export const SideNavBarItems: IHeaderItem[] = [
         path: '/mycompany',
         icon: Company,
         submenu: true,
+<<<<<<< HEAD
         subMenuItems: [
             { title: 'Лента', path: '/mycompany/news' }
         ]
+=======
+        subMenuItems: [{ title: 'Лента', path: '/mycompany/news' }]
+    },
+    {
+        title: 'Рейтинг',
+        path: '/mycompany/rating',
+        icon: Rating,
+        submenu: false,
+>>>>>>> 399bb64d4c50978060841566e9906f0b50d183fe
     }
 ];
 

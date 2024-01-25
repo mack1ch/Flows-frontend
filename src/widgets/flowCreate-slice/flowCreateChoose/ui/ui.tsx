@@ -5,7 +5,7 @@ import styles from './ui.module.scss'
 export const FlowCreateChoose = () => {
     return (<>
         <div className={styles.layout}>
-            <Link className={styles.section} href='/flows/create'>
+            <Link className={styles.section} href='/flows/create/small'>
                 <h2 className={styles.section__title}>Упрощенный формат</h2>
                 <h3 className={styles.section__discription}>Если у вас не достаточно времени для подачи заявки или вы не знаете как расписать ее</h3>
                 <p className={styles.section_list_title}>Данные для заполнения заявки:</p>
@@ -18,7 +18,7 @@ export const FlowCreateChoose = () => {
                     Не забывайте, чем лучше вы распишете свою идею, тем больше вероятность ее реализации
                 </h4>
             </Link>
-            <Link className={styles.section} href='/flows/create'>
+            <Link className={styles.section} href='/flows/create/full'>
                 <h2 className={styles.section__title}>Полный формат</h2>
                 <h3 className={styles.section__discription}>Если вы хотите расписать свою идею самым наилучшим образом и продумали все до мелочей</h3>
                 <p className={styles.section_list_title}>Данные для заполнения заявки:</p>

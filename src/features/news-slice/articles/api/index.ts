@@ -5,7 +5,7 @@ import { IPost } from "@/shared/interface/post";
 export const getFlows = async (): Promise<IPost[] | Error> => {
     try {
         const { data }: { data: IPost[] } = await instanceLogged.get(
-            '/proposals/me/',
+            '/proposals/posts/',
         );
         return data;
     } catch (error) {

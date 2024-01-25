@@ -1,7 +1,9 @@
 import { IFlow } from "./flow";
 
-export interface IPost extends IFlow {
+export interface IPost {
     likes: number;
     comments: number;
+    proposal: IFlow;
+    id: number;
     views: number;
 }
