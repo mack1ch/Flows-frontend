@@ -12,7 +12,7 @@ export const SideNavBarItems: IHeaderItem[] = [
         subMenuItems: [
             { title: 'Новая заявка', path: '/flows/choice', icon: Plus },
             { title: 'Мои заявки', path: '/flows/my' },
-            { title: 'Архив', path: '/flows/archive' },
+            { title: 'Одобренные заявки', path: '/flows/archive' },
         ],
     },
     {
@@ -21,7 +21,7 @@ export const SideNavBarItems: IHeaderItem[] = [
         icon: Company,
         submenu: true,
         subMenuItems: [
-            {    title: 'Лента', path: '/mycompany/news' }
+            { title: 'Лента', path: '/mycompany/news' }
         ]
     }
 ];

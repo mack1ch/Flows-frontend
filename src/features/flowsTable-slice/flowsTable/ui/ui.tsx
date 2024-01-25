@@ -6,9 +6,17 @@ import { capitalizeFirstLetter } from '@/shared/lib/parse/firstLetter';
 import { IFlow } from '@/shared/interface/flow';
 import { parseDateToDotFormat } from '@/shared/lib/parse/date';
 import { Button, ConfigProvider, ThemeConfig } from 'antd';
+import { useEffect, useState } from 'react';
 
 export const FlowsTable = ({ flows, isApproved = false }: { flows: IFlow[]; isApproved?: boolean }) => {
-
+    const filteredFlows: IFlow[] | null = isApproved ? flows && flows.filter(flow => {
+        const hasStatus = flow.histories.some(history => history.status.status_type === 'proposal_done' || history.status.status_type === 'proposal_in_work');
+        return hasStatus;
+    }) : null;
+    const [renderFlows, setRenderFlows] = useState<IFlow[] | null>(isApproved ? filteredFlows : flows);
+    useEffect(() => {
+        setRenderFlows(isApproved ? filteredFlows : flows);
+    }, [flows])
     return (
         <>
             <ConfigProvider theme={flowTableTheme}>
@@ -33,7 +41,7 @@ export const FlowsTable = ({ flows, isApproved = false }: { flows: IFlow[]; isAp
                                     {isApproved ? undefined : 'Дата'}
                                 </td>
                             </tr>
-                            {flows?.map((item) => (
+                            {renderFlows?.map((item) => (
                                 <>
                                     <tr key={item.id} className={styles.flow}>
                                         <td>
@@ -52,7 +60,7 @@ export const FlowsTable = ({ flows, isApproved = false }: { flows: IFlow[]; isAp
                                         <td>
                                             <FlowStatus responsible={item?.histories?.at(-1)?.by_user} status={item?.histories?.at(-1)?.status || undefined} />
                                         </td>
-                                        {isApproved ? <Button type='default' >Опубликовать</Button> : <td className={styles.flowDate}>{parseDateToDotFormat(item.created_date)}</td>}
+                                        {isApproved ? <td className={styles.flowDate}><Button type='default' >Опубликовать</Button></td> : <td className={styles.flowDate}>{parseDateToDotFormat(item.created_date)}</td>}
                                     </tr>
                                     <td colSpan={4} style={{ borderBottom: '1px solid #ebebeb' }} />
                                 </>
