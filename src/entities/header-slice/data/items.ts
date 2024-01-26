@@ -21,14 +21,9 @@ export const SideNavBarItems: IHeaderItem[] = [
         path: '/mycompany',
         icon: Company,
         submenu: true,
-        subMenuItems: [{ title: 'Лента', path: '/mycompany/news' }]
+        subMenuItems: [{ title: 'Лента', path: '/mycompany/news', }, { title: 'Рейтинг', path: '/mycompany/rating' }]
     },
-    {
-        title: 'Рейтинг',
-        path: '/mycompany/rating',
-        icon: Rating,
-        submenu: false,
-    }
+
 ];
 
 export const SideBarProfileItem: IHeaderItem = {

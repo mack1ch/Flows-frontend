@@ -17,11 +17,13 @@ export const LikesAndViews = ({ post }: { post: IPost }) => {
         setLikeCount(post.likes)
     }, [post])
     const handleLike = async () => {
-        setLike(!isLike);
         if (!isLike) {
             try {
-                const response = await postLike(post.id, likeCount);
-                if (!(response instanceof Error)) setLikeCount((prev) => prev + 1);
+                const response = await postLike(post.id);
+                if (!(response instanceof Error)) {
+                    setLikeCount((prev) => prev + 1)
+                    setLike(!isLike);
+                }
                 else throw new Error;
             } catch (error) {
                 messageApi.open({
@@ -29,7 +31,21 @@ export const LikesAndViews = ({ post }: { post: IPost }) => {
                     content: 'Произошла ошибка на сервере, мы уже работаем над решением проблемы',
                 });
             }
-        } else setLikeCount((prev) => prev - 1);
+        } else {
+            try {
+                const response = await postLike(post.id);
+                if (!(response instanceof Error)) {
+                    setLikeCount((prev) => prev - 1)
+                    setLike(!isLike);
+                }
+                else throw new Error;
+            } catch (error) {
+                messageApi.open({
+                    type: 'error',
+                    content: 'Произошла ошибка на сервере, мы уже работаем над решением проблемы',
+                });
+            }
+        };
     }
     return (
         <>
@@ -41,7 +57,7 @@ export const LikesAndViews = ({ post }: { post: IPost }) => {
                 </span>
                 <button onClick={handleLike} className={styles.like}>
                     {
-                        isLike ? <Image src={HeartRed} width={14} height={14} alt='Лайки' /> : <Image src={HeartGrey} width={14} height={14} alt='Лайки' />
+                        isLike ? <Image src={HeartRed} width={15} height={15} alt='Лайки' /> : <Image src={HeartGrey} width={14} height={14} alt='Лайки' />
                     }
                     <p style={{ color: isLike ? '#FF5A49' : undefined }} className={styles.text}>{likeCount}</p>
                 </button>

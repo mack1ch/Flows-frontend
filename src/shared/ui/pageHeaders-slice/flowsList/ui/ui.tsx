@@ -61,7 +61,7 @@ export const FlowsListHeader = ({
                             justifyContent: 'space-between',
                         }}>
                         <h1 className={styles.title}>{title}</h1>
-                        <Link href="/flows/create">
+                        <Link href="/flows/choice">
                             <Button size="large">
                                 <Space>
                                     <Plus />
@@ -119,7 +119,7 @@ export const FlowsListHeader = ({
                 </ConfigProvider>
                 <ConfigProvider theme={createFlowButtonTheme}>
                     {width > 768 && (
-                        <Link href="/flows/create">
+                        <Link href="/flows/choice">
                             <Button size="large">
                                 <Space>
                                     <Plus />

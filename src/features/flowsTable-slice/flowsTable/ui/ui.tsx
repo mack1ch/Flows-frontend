@@ -7,8 +7,11 @@ import { IFlow } from '@/shared/interface/flow';
 import { parseDateToDotFormat } from '@/shared/lib/parse/date';
 import { Button, ConfigProvider, ThemeConfig } from 'antd';
 import { useEffect, useState } from 'react';
+import { ApproveModal } from '../approveModal';
+import React from 'react';
 
 export const FlowsTable = ({ flows, isApproved = false }: { flows: IFlow[]; isApproved?: boolean }) => {
+    const [modalStates, setModalStates] = useState<{ [key: string]: boolean }>({});
     const filteredFlows: IFlow[] | null = isApproved ? flows && flows.filter(flow => {
         const hasStatus = flow.histories.some(history => history.status.status_type === 'proposal_done' || history.status.status_type === 'proposal_in_work');
         return hasStatus;
@@ -17,8 +20,16 @@ export const FlowsTable = ({ flows, isApproved = false }: { flows: IFlow[]; isAp
     useEffect(() => {
         setRenderFlows(isApproved ? filteredFlows : flows);
     }, [flows])
+
+    const toggleModal = (itemId: string | number) => {
+        setModalStates(prevStates => ({
+            ...prevStates,
+            [String(itemId)]: !prevStates[String(itemId)],
+        }));
+    };
     return (
         <>
+
             <ConfigProvider theme={flowTableTheme}>
                 <section className={styles.section}>
                     <table
@@ -42,8 +53,9 @@ export const FlowsTable = ({ flows, isApproved = false }: { flows: IFlow[]; isAp
                                 </td>
                             </tr>
                             {renderFlows?.map((item) => (
-                                <>
-                                    <tr key={item.id} className={styles.flow}>
+                                <React.Fragment key={item.id}>
+                                    <ApproveModal key={`modal-${item.id}`} postData={item} modalOpen={modalStates[item.id]} setModalOpen={() => toggleModal(item.id)} />
+                                    <tr key={`row-${item.id}`} className={styles.flow}>
                                         <td>
                                             <Link
                                                 title={capitalizeFirstLetter(item.name)}
@@ -60,10 +72,16 @@ export const FlowsTable = ({ flows, isApproved = false }: { flows: IFlow[]; isAp
                                         <td>
                                             <FlowStatus responsible={item?.histories?.at(-1)?.by_user} status={item?.histories?.at(-1)?.status || undefined} />
                                         </td>
-                                        {isApproved ? <td className={styles.flowDate}><Button type='default' >Опубликовать</Button></td> : <td className={styles.flowDate}>{parseDateToDotFormat(item.created_date)}</td>}
+                                        {isApproved ? (
+                                            <td className={styles.flowDate}>
+                                                <Button onClick={() => toggleModal(item.id)} type='default'>Опубликовать</Button>
+                                            </td>
+                                        ) : (
+                                            <td className={styles.flowDate}>{parseDateToDotFormat(item.created_date)}</td>
+                                        )}
                                     </tr>
-                                    <td colSpan={4} style={{ borderBottom: '1px solid #ebebeb' }} />
-                                </>
+                                    <tr key={`separator-${item.id}`} style={{ borderBottom: '1px solid #ebebeb' }} />
+                                </React.Fragment>
                             ))}
                         </tbody>
                     </table>
@@ -80,7 +98,7 @@ const flowTableTheme: ThemeConfig = {
             colorText: '#fff',
             colorBorder: '#449429F',
             colorPrimaryHover: '#ebebeb',
-            colorPrimaryActive: '#449429',
+            colorPrimaryActive: '#ebebeb',
         }
     }
 }

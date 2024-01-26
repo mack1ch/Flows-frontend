@@ -119,6 +119,9 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
             });
         }
     }
+
+
+
     return (
         <>
             {contextHolder}
@@ -258,7 +261,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         </Button>
 
                                         {/* Cancel Button */}
-                                        <Button>Отменить</Button>
+                                        <Button onClick={() => router.back()}>Отменить</Button>
                                     </Space>
                                 )}
                             </div>
@@ -326,6 +329,9 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                     />
                                 </Form.Item>
 
+                                {/* Technical Specification Link */}
+                                <Button size='middle'>Сгенерировать с помощью ИИ</Button>
+
                                 {width <= 768 && (
                                     <Space>
                                         {/* Submit Button */}
@@ -343,7 +349,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         </Button>
 
                                         {/* Cancel Button */}
-                                        <Button>Отменить</Button>
+                                        <Button onClick={() => router.back()}>Отменить</Button>
                                     </Space>
                                 )}
                             </div>
