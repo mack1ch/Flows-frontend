@@ -1,0 +1,1 @@
+export { UserInfoProfileBlock } from './ui/ui'

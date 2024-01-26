@@ -1,13 +1,13 @@
 .layout {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 
     @media screen and (max-width: 768px) {
         margin-left: 0;
     }
     .pageTitle {
-        color: #000;
+        color: #222;
         font-size: 26px;
         font-style: normal;
         font-weight: 500;

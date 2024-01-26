@@ -39,7 +39,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
     const [messageApi, contextHolder] = message.useMessage()
     const [flowCategories, setFlowCategories] = useState<IFlowCategory[]>([] as IFlowCategory[]);
-    const [allDivisions, setDivisions] = useState<IDivision[]>([] as IDivision[]);
+
     const [inputValues, setInputValues] = useState<ICreateFlow>({
         title: '',
         requestType: null,
@@ -58,8 +58,8 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     };
     const isFormValid = () => {
         const requiredFields: (keyof ICreateFlow)[] = isFullFormat
-            ? ['title', 'requestType', 'projectGoal', 'financialBenefit', 'relatedDepartments', 'limitingFactors', 'technicalSpecificationLink', 'description', 'effects']
-            : ['title', 'requestType', 'description', 'effects', 'relatedDepartments', 'financialBenefit', 'technicalSpecificationLink'];
+            ? ['title', 'requestType', 'projectGoal', 'financialBenefit', 'limitingFactors', 'technicalSpecificationLink', 'description', 'effects']
+            : ['title', 'requestType', 'description', 'effects', 'financialBenefit', 'technicalSpecificationLink'];
 
         for (const fieldName of requiredFields) {
             const fieldValue = inputValues[fieldName];
@@ -77,13 +77,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                 setFlowCategories(fetchCategories)
             }
         };
-        const GetAllDivisions = async () => {
-            const fetchDivisions: IDivision[] | Error = await getAllDivisions();
-            if (fetchDivisions instanceof Error) return
-            else {
-                setDivisions(fetchDivisions);
-            }
-        };
+
         const GetUser = async () => {
             const fetchUser: IUser | Error = await getAuthUser();
             if (fetchUser instanceof Error) return
@@ -97,7 +91,6 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
             }
         };
         GetUser();
-        GetAllDivisions();
         GetFlowCategories();
     }, [])
     const handleInputChange = (name: string, value: string | number | CheckboxValueType[] | null) => {
@@ -233,7 +226,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
-                                    label="Как ваш проект позволит достичь цели компании?">
+                                    label="Напишите, какие эффекты будут от вашего проекта">
                                     <TextArea
                                         autoSize
                                         placeholder="Напишите здесь какие эффекты будут от вашего проекта"
@@ -267,29 +260,12 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                             </div>
 
                             <div style={{ maxWidth: '100%' }} className={styles.inputLayout}>
-                                {/* Related Departments */}
-                                <Form.Item
-                                    style={{ width: '100%' }}
-                                    required
-                                    label="Какие смежные отделы затрагивает ваш проект/запрос?">
-                                    <Checkbox.Group
-                                        value={inputValues.relatedDepartments}
-                                        onChange={(values) => handleInputChange('relatedDepartments', values)}
-                                    >
-                                        <Space direction="vertical">
-                                            {allDivisions.map((item, index) => (
-                                                <Checkbox key={item.id} value={item.id}>
-                                                    {item.name}
-                                                </Checkbox>
-                                            ))}
-                                        </Space>
-                                    </Checkbox.Group>
-                                </Form.Item>
+
                                 {/* Financial benefit */}
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
-                                    label="Какую выгоду несет реализация проекта?">
+                                    label="Приведите расчеты экономического или качественного эффекта от внедрения вашего проекта">
                                     <TextArea
                                         autoSize
                                         placeholder="Напишите здесь всё про деньги, ваши расчеты и итоги"
@@ -319,7 +295,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
-                                    label="Ссылка на техническое задание">
+                                    label="Ссылка на функциональные требования">
                                     <Input
                                         width={360}
                                         size="large"

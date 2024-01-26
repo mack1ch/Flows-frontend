@@ -1,7 +1,9 @@
-export default function Home() {
+import { ProfileScreen } from "@/screens/profile";
+
+export default function Profile() {
     return (
         <>
-            <p style={{ color: '#222' }}>Profile</p>
+            <ProfileScreen />
         </>
     );
 }

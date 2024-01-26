@@ -1,3 +1,4 @@
+import { IAchievement } from "./achievement";
 
 export interface IUser {
     id: number;
@@ -11,18 +12,24 @@ export interface IUser {
     birthday: string;
     job: IJob;
     role: IRole;
-    division: string;
     password: string;
+    division: string;
+    achievements: IAchievement[];
+    achievements_count: number;
+    achievements_points: number;
+    likes_sended: number;
+    avatar: string;
+    rating_position: number;
+    proposals: number;
+    department: string,
 }
 
 export interface IRole {
     id: number;
-    name: string;
-    role_type: TRoleType;
+    role_type: string;
 }
 
-export type TRoleType = 'admin' | 'head' | 'employee'
-
+// Должность
 export interface IJob {
     id: number;
     name: string;

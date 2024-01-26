@@ -16,11 +16,12 @@ export const PageHeaderWithBackArray = ({
         <>
             <section style={{ ...style }} className={styles.layout}>
                 <Image
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: 'pointer', marginTop: '4px' }}
                     onClick={() => router.back()}
                     src={ArrowLeft}
-                    width={26}
-                    height={26}
+                    width={24}
+                    height={24}
+                    
                     alt="Вернуться назад"
                 />
                 <h1 className={styles.pageTitle}>{pageName}</h1>
