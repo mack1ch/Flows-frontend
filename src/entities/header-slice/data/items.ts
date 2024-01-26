@@ -3,7 +3,7 @@ import Flows from '../../../../public/icons/directbox-notif-black.svg';
 import Profile from '../../../../public/icons/avatar-black.svg';
 import Plus from '../../../../public/icons/plus-black.svg';
 import Company from '../../../../public/icons/company-black.svg';
-import Rating from '../../../../public/icons/rating-black.svg';
+//import Rating from '../../../../public/icons/rating-black.svg';
 export const SideNavBarItems: IHeaderItem[] = [
     {
         title: 'Заявки',
@@ -13,7 +13,6 @@ export const SideNavBarItems: IHeaderItem[] = [
         subMenuItems: [
             { title: 'Новая заявка', path: '/flows/choice', icon: Plus },
             { title: 'Мои заявки', path: '/flows/my' },
-            { title: 'Одобренные заявки', path: '/flows/archive' },
         ],
     },
     {
