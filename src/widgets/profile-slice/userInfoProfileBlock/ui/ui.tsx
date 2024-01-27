@@ -29,6 +29,7 @@ export const UserInfoProfileBlock = ({ user }: { user: IUser }) => {
     useEffect(() => {
         setAvatarUrl(`https://postideas.store${user.avatar}`)
     }, [user])
+    if(!user) return
     const avatar = <Tooltip title="Выберите новый аватар" color='#538E42'>
         <div
             onMouseEnter={() => (setMouseOnAvatar(true))}

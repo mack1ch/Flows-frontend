@@ -10,5 +10,5 @@ export function pluralizeWord(value: number, words: string[]) {
     if (newValue > 10 && newValue < 20) return value.toString() + " " + words[2];
     if (num > 1 && num < 5) return value.toString() + " " + words[1];
     if (num == 1) return value.toString() + " " + words[0];
-    return value.toString() + " " + words[2];
+    return value?.toString() + " " + words[2];
 }
