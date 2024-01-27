@@ -22,7 +22,6 @@ export interface IUser {
     rating_position: number;
     proposals: number;
     department: string;
-    user_likes: number[];
 }
 
 export interface IRole {

@@ -26,7 +26,6 @@ export const UserInfoProfileBlock = ({ user }: { user: IUser }) => {
         pluralizeWord(user.likes_sended, ["лайк", "лайка", "лайков"]),
         pluralizeWord(user.achievements_count, ["достижение", "достижения", "достижений"]),
     ]
-
     useEffect(() => {
         setAvatarUrl(`https://postideas.store${user.avatar}`)
     }, [user])
@@ -100,7 +99,7 @@ export const UserInfoProfileBlock = ({ user }: { user: IUser }) => {
                         width: "100%",
                         backgroundColor: "#73AE62",
                         height: isMobile ? "4rem" : "6rem",
-                        backgroundImage: `url("profileBg.png")`,
+                        backgroundImage: `url("assets/profileBg.png")`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
                         borderRadius: "1rem 1rem 0px 0px"
@@ -134,7 +133,6 @@ export const UserInfoProfileBlock = ({ user }: { user: IUser }) => {
                 title="Выберите новый аватар"
                 open={isModalOpen}
                 onOk={() => {
-                   
                     setFileUrl("")
                     setModalOpen(false)
                 }}
@@ -161,7 +159,6 @@ export const UserInfoProfileBlock = ({ user }: { user: IUser }) => {
                         beforeUpload={(info) => {
                             const isJPG = info.type === "image/jpeg"
 
-                            console.log(isJPG)
                             if (!isJPG) {
                                 messageApi.error(`${info.name} не является .jpg файлом`)
                                 return false

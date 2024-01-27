@@ -54,10 +54,10 @@ export const AuthForm = () => {
                 });
                 setButtonLoading(false)
                 return
-            }
-            if (!!getAccessToken()) {
+            } else if (!!getAccessToken()){
                 router.push('/flows/my/');
             }
+
             loadingFinish();
             return
         } catch (error) {

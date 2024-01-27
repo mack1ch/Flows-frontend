@@ -4,7 +4,7 @@ import { AchievementCard } from '@/features/profile-slice/achievementCard/ui/ui'
 import { IAchievement } from '@/shared/interface/achievement';
 import { IUser } from '@/shared/interface/user';
 import { Flex, Typography } from 'antd'
-
+import styles from './ui.module.scss'
 
 export const AchievementsProfileBlock = ({ user }: { user: IUser }) => {
     const achievements: IAchievement[] = user.achievements;
@@ -25,14 +25,11 @@ export const AchievementsProfileBlock = ({ user }: { user: IUser }) => {
             }}
         >
             <Typography.Text strong style={{ fontSize: "1.5rem" }}>Мои достижения</Typography.Text>
-            <Flex
-                wrap="wrap"
-                gap="1rem"
-            >
+            <div className={styles.cardLayout}>
                 {achievements?.map((item, index) => (
                     <AchievementCard key={index} achievement={item} />
                 ))}
-            </Flex>
-        </Flex>
+            </div>
+        </Flex >
     )
 }

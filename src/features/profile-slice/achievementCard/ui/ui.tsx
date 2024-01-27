@@ -6,6 +6,7 @@ import { Flex, Typography } from 'antd'
 import Image from 'next/image'
 import { AchievementProgressBar } from '@/entities/profile-slice/achievementProgressBar'
 
+
 export const AchievementCard = ({ achievement }: { achievement: IAchievement }) => {
     return (<>
         <Flex
@@ -13,7 +14,9 @@ export const AchievementCard = ({ achievement }: { achievement: IAchievement }) 
             align="center"
             gap="0.75rem"
             style={{
-                backgroundColor: "#F6FAF7",
+                minWidth: '220px',
+                height: '320px',
+                backgroundColor: achievement.current_progress !== achievement.achievement_type.total_progress ? '#fff' : "#F6FAF7",
                 borderRadius: "1rem",
                 padding: "1rem",
                 borderWidth: "0.5px",
@@ -39,7 +42,7 @@ export const AchievementCard = ({ achievement }: { achievement: IAchievement }) 
             >
                 <Typography.Text strong style={{ fontSize: "1.25rem" }}>{achievement.achievement_type.name}</Typography.Text>
                 <AchievementProgressBar currentValue={achievement.current_progress} maxValue={achievement.achievement_type.total_progress} />
-                <Typography.Text style={{ fontSize: "1rem", color: "#939393", marginRight: "1rem", marginLeft: "1rem", textAlign: "center" }}>{achievement.achievement_type.description}</Typography.Text>
+                <Typography.Text style={{ fontSize: "1rem", color: "#939393", marginRight: "1rem", marginLeft: "1rem", textAlign: "center", }}>{achievement.achievement_type.description}</Typography.Text>
                 <div style={{
                     paddingLeft: "0.5rem",
                     paddingRight: "0.5rem",

@@ -1,0 +1,14 @@
+.cardLayout {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+}
