@@ -44,10 +44,22 @@ export const AuthForm = () => {
         try {
             setButtonLoading(true);
             const response = await postUser(formData);
-            if (!!getAccessToken() && response) {
+            if (!!getAccessToken() && (response instanceof Error)) {
+                router.push('/flows/my/');
+            }
+            if (response instanceof Error) {
+                messageApi.open({
+                    type: 'error',
+                    content: 'Неверный логин или пароль',
+                });
+                setButtonLoading(false)
+                return
+            }
+            if (!!getAccessToken()) {
                 router.push('/flows/my/');
             }
             loadingFinish();
+            return
         } catch (error) {
             messageApi.open({
                 type: 'error',
