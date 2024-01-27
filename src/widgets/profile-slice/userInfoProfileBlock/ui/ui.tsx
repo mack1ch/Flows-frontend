@@ -30,7 +30,6 @@ export const UserInfoProfileBlock = ({ user }: { user: IUser }) => {
     useEffect(() => {
         setAvatarUrl(`https://postideas.store${user.avatar}`)
     }, [user])
-   
     const avatar = <Tooltip title="Выберите новый аватар" color='#538E42'>
         <div
             onMouseEnter={() => (setMouseOnAvatar(true))}
@@ -135,13 +134,7 @@ export const UserInfoProfileBlock = ({ user }: { user: IUser }) => {
                 title="Выберите новый аватар"
                 open={isModalOpen}
                 onOk={() => {
-                    // if (fileUrl) {
-                    //   setAvatar(token, {
-                    //     uri: fileUrl,
-                    //     type: 'image/jpeg',
-                    //     name: `avatar-${Date.now()}.jpg`
-                    //   })
-                    // }
+                   
                     setFileUrl("")
                     setModalOpen(false)
                 }}

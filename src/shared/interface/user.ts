@@ -21,7 +21,8 @@ export interface IUser {
     avatar: string;
     rating_position: number;
     proposals: number;
-    department: string,
+    department: string;
+    user_likes: number[];
 }
 
 export interface IRole {

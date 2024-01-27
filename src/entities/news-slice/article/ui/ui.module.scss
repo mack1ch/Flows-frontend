@@ -8,7 +8,7 @@
     max-width: 32%;
     width: 100%;
     height: 180px;
-    min-width: 295px;
+    min-width: 290px;
 
     display: flex;
     align-items: flex-start;
@@ -43,7 +43,7 @@
             overflow: hidden;
             max-width: 270px;
 
-            &:hover{
+            &:hover {
                 cursor: pointer;
                 text-decoration: underline;
             }

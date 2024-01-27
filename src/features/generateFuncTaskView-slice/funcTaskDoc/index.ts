@@ -1,0 +1,1 @@
+export {FuncTaskDoc} from './ui/ui'

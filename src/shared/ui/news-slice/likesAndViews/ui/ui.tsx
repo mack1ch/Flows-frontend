@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 import { IPost } from '@/shared/interface/post';
 import { postLike } from '../api';
 import { message } from 'antd';
-export const LikesAndViews = ({ post }: { post: IPost }) => {
-    const [isLike, setLike] = useState(false);
+export const LikesAndViews = ({ post, isLiked = false }: { post: IPost; isLiked: boolean }) => {
+    const [isLike, setLike] = useState(isLiked);
     const [messageApi, contextHolder] = message.useMessage();
     const [viewsCount, setViewsCount] = useState<number>(post.views || 0);
     const [likeCount, setLikeCount] = useState<number>(post.likes || 0);
@@ -16,6 +16,10 @@ export const LikesAndViews = ({ post }: { post: IPost }) => {
         setViewsCount(post.views)
         setLikeCount(post.likes)
     }, [post])
+    useEffect(() => {
+        setLike(isLiked)
+
+    }, [isLiked])
     const handleLike = async () => {
         if (!isLike) {
             try {

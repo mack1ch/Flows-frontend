@@ -33,8 +33,10 @@ export const FlowDocumentView = ({ flowID }: { flowID: number; }) => {
                         <div className={styles.items}>
                             {viewFlowData.content && Object.keys(viewFlowData.content).map((key: string) => (
                                 <div key={key} className={styles.contentItem}>
-                                    {viewFlowData.content[key]}
-                                    
+                                    {// @ts-ignore
+                                        viewFlowData.content[key]
+                                        
+                                        }
                                 </div>
                             ))}
 

@@ -6,4 +6,5 @@ export interface IPost {
     proposal: IFlow;
     id: number;
     views: number;
+    user_likes: number[];
 }

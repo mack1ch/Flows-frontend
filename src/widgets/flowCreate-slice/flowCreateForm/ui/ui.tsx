@@ -20,11 +20,14 @@ import { ICreateFlow } from '@/shared/interface/flowsCreateForm';
 import { getCategoryNameById, isNonEmptyArray } from '../model';
 import { IFlowCategory } from '@/shared/interface/flow';
 import { getFlowCategories, } from '../api/getFlowCategories';
-import { IDivision } from '@/shared/interface/company';
-import { getAllDivisions } from '../api/getDivisions';
+import Document from '../../../../../public/icons/document-green.svg';
 import { IUser } from '@/shared/interface/user';
 import { getAuthUser } from '../api/getUser';
 import { useRouter } from 'next/navigation';
+import { getGenerateFuncTask } from '../api/getGenerateFuncTask';
+import Cross from '../../../../../public/icons/x-black.svg';
+import Image from 'next/image';
+import { FuncTaskDoc } from '@/features/generateFuncTaskView-slice/funcTaskDoc';
 
 const { TextArea } = Input;
 
@@ -37,9 +40,11 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     const [choiceUserID, setChoiceUserID] = useState<number>(0);
     const [usersArray, setUserArray] = useState<IUser[]>([] as IUser[]);
     const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
+    const [isGenerateModalLoading, setModalGenerateLoading] = useState<boolean>(false);
     const [messageApi, contextHolder] = message.useMessage()
     const [flowCategories, setFlowCategories] = useState<IFlowCategory[]>([] as IFlowCategory[]);
-
+    const [generateDocumentData, setGenerateDocumentData] = useState<string>('');
+    const [isGenerateTextModalOpen, setGenerateModalTextOpen] = useState<boolean>(false);
     const [inputValues, setInputValues] = useState<ICreateFlow>({
         title: '',
         requestType: null,
@@ -102,7 +107,8 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     };
     const handleSubmit = async () => {
         try {
-            const res = await createFlow(inputValues, choiceUserID, getCategoryNameById(inputValues.requestType, flowCategories), isFullFormat);
+
+            const res = await createFlow(inputValues, choiceUserID, getCategoryNameById(inputValues.requestType, flowCategories), isFullFormat, generateDocumentData);
             if (!(res instanceof Error)) router.push('/flows/my')
             else throw new Error;
         } catch (error) {
@@ -112,12 +118,28 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
             });
         }
     }
-
-
+    const handleGetTechTask = async () => {
+        try {
+            setModalGenerateLoading(true);
+            const res = await getGenerateFuncTask(inputValues, getCategoryNameById(inputValues.requestType, flowCategories), isFullFormat);
+            console.log(res);
+            if (!(res instanceof Error)) {
+                setGenerateDocumentData(res)
+                setModalGenerateLoading(false);
+            };
+        } catch (error) {
+            messageApi.open({
+                type: 'error',
+                content: 'Ошибка на сервере, мы уже работаем над устранением',
+            });
+            setModalGenerateLoading(false)
+        }
+    }
 
     return (
         <>
             {contextHolder}
+            <FuncTaskDoc document={generateDocumentData || ''} isModalOpen={isGenerateTextModalOpen} setModalOpen={setGenerateModalTextOpen} />
             <ConfirmModal setChoiceUserID={setChoiceUserID} userArray={usersArray} setUsersArray={setUserArray} handleSubmit={handleSubmit} modalOpen={isConfirmModalOpen} setModalOpen={setConfirmModalOpen} />
             <section className={styles.layout}>
                 <ConfigProvider theme={flowFormTheme}>
@@ -306,8 +328,11 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 </Form.Item>
 
                                 {/* Technical Specification Link */}
-                                <Button size='middle'>Сгенерировать с помощью ИИ</Button>
-
+                                <div className={styles.generateButton}>
+                                    <Button onClick={handleGetTechTask} loading={isGenerateModalLoading} size='middle'>Сгенерировать с помощью ИИ</Button>
+                                    {isGenerateModalLoading && <span className={styles.cross} onClick={() => setModalGenerateLoading(!isGenerateModalLoading)}><Image src={Cross} width={16} height={16} alt='Омтена' /></span>}
+                                </div>
+                                {generateDocumentData.length > 0 && <span onClick={() => setGenerateModalTextOpen(!isGenerateTextModalOpen)} className={styles.generateDoc}><Image src={Document} width={20} height={20} alt='Document' />Смотреть сгенерированный докумнент</span>}
                                 {width <= 768 && (
                                     <Space>
                                         {/* Submit Button */}
