@@ -110,7 +110,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
 
             const res = await createFlow(inputValues, choiceUserID, getCategoryNameById(inputValues.requestType, flowCategories), isFullFormat, generateDocumentData);
             if (!(res instanceof Error)) router.push('/flows/my')
-            else throw new Error;
+          
         } catch (error) {
             messageApi.open({
                 type: 'error',
