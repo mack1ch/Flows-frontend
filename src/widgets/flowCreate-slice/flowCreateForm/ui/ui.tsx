@@ -63,8 +63,8 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     };
     const isFormValid = () => {
         const requiredFields: (keyof ICreateFlow)[] = isFullFormat
-            ? ['title', 'requestType', 'projectGoal', 'financialBenefit', 'limitingFactors', 'technicalSpecificationLink', 'description', 'effects']
-            : ['title', 'requestType', 'description', 'effects', 'financialBenefit', 'technicalSpecificationLink'];
+            ? ['title', 'requestType', 'projectGoal', 'financialBenefit', 'limitingFactors', 'description', 'effects']
+            : ['title', 'requestType', 'description', 'effects', 'financialBenefit', ];
 
         for (const fieldName of requiredFields) {
             const fieldValue = inputValues[fieldName];
@@ -122,10 +122,14 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
         try {
             setModalGenerateLoading(true);
             const res = await getGenerateFuncTask(inputValues, getCategoryNameById(inputValues.requestType, flowCategories), isFullFormat);
-            console.log(res);
             if (!(res instanceof Error)) {
                 setGenerateDocumentData(res)
                 setModalGenerateLoading(false);
+                setInputValues((prevValues) => ({
+                    ...prevValues,
+                    'technicalSpecificationLink': res,
+                }));
+                isFormValid() ? setButtonDisable(true) : setButtonDisable(false);
             };
         } catch (error) {
             messageApi.open({
@@ -317,7 +321,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
-                                    label="Ссылка на функциональные требования">
+                                    label="Ссылка на функциональные требования / текст">
                                     <Input
                                         width={360}
                                         size="large"

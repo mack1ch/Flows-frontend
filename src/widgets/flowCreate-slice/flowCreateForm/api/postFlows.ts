@@ -21,7 +21,6 @@ export const createFlow = async (flowProps: ICreateFlow, user_to: number, catego
         'Какие смежные отделы затрагивает ваш проект/запрос?': flowProps.relatedDepartments,
         'Какую выгоду несет реализация проекта?': flowProps.financialBenefit,
         'Ссылка на техническое задание': techTask,
-
     };
     try {
         const { data }: { data: IFlow } = await instanceLogged.post(
@@ -30,7 +29,8 @@ export const createFlow = async (flowProps: ICreateFlow, user_to: number, catego
                 name: flowProps.title,
                 category: flowProps.requestType,
                 user_to: user_to,
-                content: content
+                content: content,
+                funcional_requirements: techTask,
             }
         );
         return data;
