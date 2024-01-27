@@ -252,10 +252,10 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
-                                    label="Напишите, какие эффекты будут от вашего проекта">
+                                    label="Как ваш проект позволит достичь цели компании?">
                                     <TextArea
                                         autoSize
-                                        placeholder="Напишите здесь какие эффекты будут от вашего проекта"
+                                        placeholder="Напиши, какие эффекты будут от вашего проекта"
                                         size="large"
                                         name="effects"
                                         value={inputValues.effects}
@@ -291,10 +291,10 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
-                                    label="Приведите расчеты экономического или качественного эффекта от внедрения вашего проекта">
+                                    label="Какую выгоду несет реализация проекта?">
                                     <TextArea
                                         autoSize
-                                        placeholder="Напишите здесь всё про деньги, ваши расчеты и итоги"
+                                        placeholder="Приведите расчеты эконмического или качественного эффекта от внедрения вашего проекта"
                                         size="large"
                                         name="financialBenefit"
                                         value={inputValues.financialBenefit}
