@@ -7,14 +7,14 @@ import { useEffect, useState } from "react";
 export const CreaterUser = ({ user, href = '/' }: { user?: IUser, href?: string }) => {
     const [userFullName, setUserFullName] = useState<string | null>(null);
     useEffect(() => {
-        const userFullNameFunc: string | null = user ? user.lastname + ' ' + user.firstname + ' / ' + 'название отдела' : 'Загрузка...';
+        const userFullNameFunc: string | null = user ? user.lastname + ' ' + user.firstname + ' / ' + user.division : 'Загрузка...';
         setUserFullName(userFullNameFunc);
     }, [user])
     return (<>
-        <Link className={styles.user} href={href}>
+        <div className={styles.user} >
             <p className={styles.text}>
                 {userFullName}
             </p>
-        </Link>
+        </div>
     </>)
 }

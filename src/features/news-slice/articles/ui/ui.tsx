@@ -3,7 +3,7 @@
 import { NewsArticle } from '@/entities/news-slice/article'
 import styles from './ui.module.scss'
 import { useEffect, useState } from 'react';
-import { getAuthUserData, getFlows } from '../api';
+import { getAuthUserData, getPosts } from '../api';
 import { IPost } from '@/shared/interface/post';
 import { IUser } from '@/shared/interface/user';
 import { checkIfUserLiked } from '@/shared/lib/parse/post';
@@ -14,8 +14,8 @@ export const Articles = () => {
     const [flows, setFlows] = useState<IPost[]>([] as IPost[]);
     const [authUser, setAuthUser] = useState<IUser>({} as IUser);
     useEffect(() => {
-        const GetFlows = async () => {
-            const fetchPosts: IPost[] | Error = await getFlows();
+        const GetPosts = async () => {
+            const fetchPosts: IPost[] | Error = await getPosts();
             if (fetchPosts instanceof Error) return
             else {
                 fetchPosts
@@ -29,7 +29,7 @@ export const Articles = () => {
 
         };
         GetAuthUser()
-        GetFlows();
+        GetPosts();
     }, []);
     return (
         <>

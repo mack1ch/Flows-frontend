@@ -12,7 +12,7 @@ import { CommentButton } from '@/entities/flowView-slice/buttons/coment';
 import { IUser } from '@/shared/interface/user';
 import { getAuthUserData } from '../api';
 import { ApproveButton } from '@/entities/flowView-slice/buttons/approve';
-export const FlowManagement = ({ flowStatus, flowID }: { flowStatus?: IFlowStatus; flowID: number }) => {
+export const FlowManagement = ({ flowStatus, flowID = 0}: { flowStatus?: IFlowStatus; flowID?: number }) => {
     const statusType = flowStatus?.status_type;
     const [authUser, setAuthUser] = useState<IUser | null>({} as IUser);
     useEffect(() => {

@@ -4,11 +4,13 @@ import { FlowHistoryGraph } from '@/features/flowView-slice/flowHistoryGraph';
 import { FlowManagement } from '@/features/flowView-slice/flowManagement';
 import { IFlow, IFlowStatus } from '@/shared/interface/flow';
 import { useEffect, useState } from 'react';
-import { getFlowByID } from '../api';
+import { getFlowByID, getPostByID } from '../api';
+import { IPost } from '@/shared/interface/post';
 
 
-export const FlowViewHead = ({ flowID }: { flowID: number }) => {
+export const FlowViewHead = ({ flowID, postID }: { flowID?: number; postID?: number }) => {
     const [viewFlowData, setFlowData] = useState<IFlow>({} as IFlow)
+    const [viewPostData, setPostData] = useState<IPost>({} as IPost);
     useEffect(() => {
         const GetFlowByID = async () => {
             const fetchFlowByID: IFlow | Error = await getFlowByID(flowID);
@@ -17,9 +19,20 @@ export const FlowViewHead = ({ flowID }: { flowID: number }) => {
                 setFlowData(fetchFlowByID)
             }
         };
-
-        GetFlowByID();
+        const GetPostByID = async () => {
+            const fetchPost: IPost | Error = await getPostByID(flowID);
+            if (fetchPost instanceof Error) return;
+            else {
+                setPostData(fetchPost)
+            }
+        };
+        if (postID) {
+            GetPostByID()
+        } else if (flowID) {
+            GetFlowByID();
+        }
     }, [])
+
     return (
         <>
             <div className={styles.layout}>
@@ -27,7 +40,7 @@ export const FlowViewHead = ({ flowID }: { flowID: number }) => {
                     <PageHeaderWithBackArray pageName={viewFlowData.name} />
                     <FlowHistoryGraph flowData={viewFlowData} />
                 </div>
-                <FlowManagement flowID={flowID} flowStatus={viewFlowData.histories?.at(-1)?.status} />
+                <FlowManagement flowID={flowID ? flowID : postID ? postID : 0} flowStatus={viewFlowData.histories?.at(-1)?.status} />
             </div>
         </>
     );
