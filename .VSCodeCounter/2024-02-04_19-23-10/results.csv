@@ -1,0 +1,259 @@
+"filename", "language", "TypeScript", "TypeScript JSX", "SCSS", "CSS", "XML", "comment", "blank", "total"
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\flows\archive\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\flows\choice\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\flows\create\full\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\flows\create\small\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\flows\my\comment\id\page.tsx", "TypeScript JSX", 0, 4, 0, 0, 0, 0, 2, 6
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\flows\my\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\flows\view\[id]\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 3, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\layout.tsx", "TypeScript JSX", 0, 19, 0, 0, 0, 0, 3, 22
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\mycompany\news\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 2, 11
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\mycompany\rating\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 4, 13
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\post\[id]\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 4, 13
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\(routing)\profile\page.tsx", "TypeScript JSX", 0, 8, 0, 0, 0, 0, 2, 10
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\favicon.svg", "XML", 0, 0, 0, 0, 8, 0, 1, 9
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\globals.scss", "SCSS", 0, 0, 33, 0, 0, 0, 6, 39
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\layout.tsx", "TypeScript JSX", 0, 15, 0, 0, 0, 0, 3, 18
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\app\page.tsx", "TypeScript JSX", 0, 5, 0, 0, 0, 0, 3, 8
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\authForm-slice\formHelpers\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\authForm-slice\formHelpers\ui\ui.module.scss", "SCSS", 0, 0, 21, 0, 0, 0, 3, 24
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\authForm-slice\formHelpers\ui\ui.tsx", "TypeScript JSX", 0, 20, 0, 0, 0, 0, 1, 21
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\authForm-slice\formInputs\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\authForm-slice\formInputs\ui\ui.module.scss", "SCSS", 0, 0, 7, 0, 0, 0, 0, 7
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\authForm-slice\formInputs\ui\ui.tsx", "TypeScript JSX", 0, 47, 0, 0, 0, 0, 6, 53
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\approve\api\index.ts", "TypeScript", 10, 0, 0, 0, 0, 0, 1, 11
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\approve\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\approve\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\approve\ui\ui.tsx", "TypeScript JSX", 0, 45, 0, 0, 0, 0, 6, 51
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\change\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\change\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\change\ui\ui.tsx", "TypeScript JSX", 0, 24, 0, 0, 0, 0, 4, 28
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\coment\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\coment\ui\ui.tsx", "TypeScript JSX", 0, 29, 0, 0, 0, 0, 4, 33
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\delete\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\delete\modal\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\delete\modal\ui\ui.module.scss", "SCSS", 0, 0, 25, 0, 0, 0, 2, 27
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\delete\modal\ui\ui.tsx", "TypeScript JSX", 0, 65, 0, 0, 0, 0, 3, 68
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\delete\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\delete\ui\ui.tsx", "TypeScript JSX", 0, 28, 0, 0, 0, 0, 4, 32
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\download\api\index.ts", "TypeScript", 10, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\download\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\download\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\buttons\download\ui\ui.tsx", "TypeScript JSX", 0, 41, 0, 0, 0, 0, 6, 47
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowDocumentItem\date\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowDocumentItem\date\ui\ui.module.scss", "SCSS", 0, 0, 26, 0, 0, 0, 3, 29
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowDocumentItem\date\ui\ui.tsx", "TypeScript JSX", 0, 25, 0, 0, 0, 0, 2, 27
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowDocumentItem\title\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowDocumentItem\title\ui\ui.module.scss", "SCSS", 0, 0, 7, 0, 0, 0, 1, 8
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowDocumentItem\title\ui\ui.tsx", "TypeScript JSX", 0, 10, 0, 0, 0, 0, 6, 16
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowGraphDate\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowGraphDate\ui\ui.module.scss", "SCSS", 0, 0, 8, 0, 0, 0, 1, 9
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowGraphDate\ui\ui.tsx", "TypeScript JSX", 0, 14, 0, 0, 0, 0, 1, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowGraphTitle\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowGraphTitle\model\index.ts", "TypeScript", 41, 0, 0, 0, 0, 0, 5, 46
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowGraphTitle\ui\ui.module.scss", "SCSS", 0, 0, 17, 0, 0, 0, 1, 18
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\flowView-slice\flowGraphTitle\ui\ui.tsx", "TypeScript JSX", 0, 28, 0, 0, 0, 0, 4, 32
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\header-slice\api\index.ts", "TypeScript", 10, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\header-slice\data\items.ts", "TypeScript", 30, 0, 0, 0, 0, 1, 3, 34
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\header-slice\header\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\header-slice\header\ui\ui.module.scss", "SCSS", 0, 0, 24, 0, 0, 0, 3, 27
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\header-slice\header\ui\ui.tsx", "TypeScript JSX", 0, 66, 0, 0, 0, 0, 5, 71
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\header-slice\sideHeader\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\header-slice\sideHeader\ui\ui.module.scss", "SCSS", 0, 0, 28, 0, 0, 0, 7, 35
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\header-slice\sideHeader\ui\ui.tsx", "TypeScript JSX", 0, 44, 0, 0, 0, 0, 4, 48
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\news-slice\article\api\index.ts", "TypeScript", 10, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\news-slice\article\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\news-slice\article\ui\ui.module.scss", "SCSS", 0, 0, 49, 0, 0, 0, 10, 59
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\news-slice\article\ui\ui.tsx", "TypeScript JSX", 0, 33, 0, 0, 0, 0, 2, 35
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\profile-slice\achievementItem\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\profile-slice\achievementItem\ui\ui.module.scss", "SCSS", 0, 0, 16, 0, 0, 0, 0, 16
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\profile-slice\achievementItem\ui\ui.tsx", "TypeScript JSX", 0, 16, 0, 0, 0, 0, 1, 17
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\profile-slice\achievementProgressBar\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\profile-slice\achievementProgressBar\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\profile-slice\achievementProgressBar\ui\ui.tsx", "TypeScript JSX", 0, 30, 0, 0, 0, 0, 1, 31
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\profile-slice\userLogo\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\profile-slice\userLogo\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\entities\profile-slice\userLogo\ui\ui.tsx", "TypeScript JSX", 0, 5, 0, 0, 0, 0, 2, 7
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\authForm-slice\authForm\api\index.tsx", "TypeScript JSX", 0, 20, 0, 0, 0, 0, 2, 22
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\authForm-slice\authForm\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\authForm-slice\authForm\ui\ui.module.scss", "SCSS", 0, 0, 34, 0, 0, 0, 3, 37
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\authForm-slice\authForm\ui\ui.tsx", "TypeScript JSX", 0, 105, 0, 0, 0, 0, 7, 112
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowDocumentView\api\index.ts", "TypeScript", 19, 0, 0, 0, 0, 0, 3, 22
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowDocumentView\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowDocumentView\ui\ui.module.scss", "SCSS", 0, 0, 43, 0, 0, 0, 6, 49
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowDocumentView\ui\ui.tsx", "TypeScript JSX", 0, 64, 0, 0, 0, 0, 5, 69
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowHistoryGraph\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowHistoryGraph\model\index.ts", "TypeScript", 13, 0, 0, 0, 0, 0, 2, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowHistoryGraph\ui\ui.module.scss", "SCSS", 0, 0, 6, 0, 0, 0, 1, 7
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowHistoryGraph\ui\ui.tsx", "TypeScript JSX", 0, 60, 0, 0, 0, 0, 7, 67
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowManagement\api\index.ts", "TypeScript", 10, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowManagement\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowManagement\ui\ui.module.scss", "SCSS", 0, 0, 5, 0, 0, 0, 1, 6
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowView-slice\flowManagement\ui\ui.tsx", "TypeScript JSX", 0, 51, 0, 0, 0, 0, 5, 56
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowsTable-slice\flowsTable\approveModal\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowsTable-slice\flowsTable\approveModal\ui\ui.module.scss", "SCSS", 0, 0, 13, 0, 0, 0, 2, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowsTable-slice\flowsTable\approveModal\ui\ui.tsx", "TypeScript JSX", 0, 156, 0, 0, 0, 1, 12, 169
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowsTable-slice\flowsTable\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowsTable-slice\flowsTable\ui\ui.module.scss", "SCSS", 0, 0, 73, 0, 0, 0, 5, 78
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\flowsTable-slice\flowsTable\ui\ui.tsx", "TypeScript JSX", 0, 100, 0, 0, 0, 0, 4, 104
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\generateFuncTaskView-slice\funcTaskDoc\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\generateFuncTaskView-slice\funcTaskDoc\ui\ui.module.scss", "SCSS", 0, 0, 11, 0, 0, 0, 1, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\generateFuncTaskView-slice\funcTaskDoc\ui\ui.tsx", "TypeScript JSX", 0, 21, 0, 0, 0, 0, 2, 23
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\news-slice\articles\api\index.ts", "TypeScript", 21, 0, 0, 0, 0, 0, 4, 25
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\news-slice\articles\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\news-slice\articles\ui\ui.module.scss", "SCSS", 0, 0, 14, 0, 0, 0, 1, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\news-slice\articles\ui\ui.tsx", "TypeScript JSX", 0, 43, 0, 0, 0, 0, 6, 49
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\profile-slice\achievementCard\index.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\profile-slice\achievementCard\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\profile-slice\achievementCard\ui\ui.tsx", "TypeScript JSX", 0, 56, 0, 0, 0, 0, 3, 59
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\ratingTable-slice\rating\api\index.ts", "TypeScript", 21, 0, 0, 0, 0, 0, 2, 23
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\ratingTable-slice\rating\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\ratingTable-slice\rating\ratingIcons\index.tsx", "TypeScript JSX", 0, 63, 0, 0, 0, 0, 8, 71
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\ratingTable-slice\rating\ui\ui.module.scss", "SCSS", 0, 0, 82, 0, 0, 0, 16, 98
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\features\ratingTable-slice\rating\ui\ui.tsx", "TypeScript JSX", 0, 86, 0, 0, 0, 0, 4, 90
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\archive\api\index.ts", "TypeScript", 22, 0, 0, 0, 0, 0, 4, 26
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\archive\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\archive\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\archive\ui\ui.tsx", "TypeScript JSX", 0, 58, 0, 0, 0, 0, 6, 64
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\choice\index.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\choice\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\choice\ui\ui.tsx", "TypeScript JSX", 0, 8, 0, 0, 0, 0, 1, 9
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\create\full\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\create\full\ui\ui.module.scss", "SCSS", 0, 0, 6, 0, 0, 0, 1, 7
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\create\full\ui\ui.tsx", "TypeScript JSX", 0, 13, 0, 0, 0, 0, 3, 16
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\create\small\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\create\small\ui\ui.module.scss", "SCSS", 0, 0, 6, 0, 0, 0, 0, 6
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\create\small\ui\ui.tsx", "TypeScript JSX", 0, 13, 0, 0, 0, 0, 3, 16
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\my\api\index.ts", "TypeScript", 22, 0, 0, 0, 0, 0, 4, 26
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\my\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\my\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\my\ui\ui.tsx", "TypeScript JSX", 0, 58, 0, 0, 0, 0, 5, 63
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\view\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\view\ui\ui.module.scss", "SCSS", 0, 0, 5, 0, 0, 0, 1, 6
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\flows\view\ui\ui.tsx", "TypeScript JSX", 0, 13, 0, 0, 0, 0, 2, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\layouts\desktop\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\layouts\desktop\ui\ui.module.scss", "SCSS", 0, 0, 9, 0, 0, 0, 3, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\layouts\desktop\ui\ui.tsx", "TypeScript JSX", 0, 74, 0, 0, 0, 0, 3, 77
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\layouts\mobile\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\layouts\mobile\ui\ui.module.scss", "SCSS", 0, 0, 11, 0, 0, 0, 2, 13
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\layouts\mobile\ui\ui.tsx", "TypeScript JSX", 0, 44, 0, 0, 0, 0, 4, 48
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\news\view\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\news\view\ui\ui.module.scss", "SCSS", 0, 0, 7, 0, 0, 0, 0, 7
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\news\view\ui\ui.tsx", "TypeScript JSX", 0, 11, 0, 0, 0, 0, 3, 14
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\postView\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\postView\ui\ui.module.scss", "SCSS", 0, 0, 5, 0, 0, 0, 1, 6
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\postView\ui\ui.tsx", "TypeScript JSX", 0, 13, 0, 0, 0, 0, 2, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\profile\api\index.ts", "TypeScript", 10, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\profile\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\profile\ui\ui.tsx", "TypeScript JSX", 0, 36, 0, 0, 0, 0, 4, 40
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\rating\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\rating\ui\ui.module.scss", "SCSS", 0, 0, 6, 0, 0, 0, 0, 6
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\screens\rating\ui\ui.tsx", "TypeScript JSX", 0, 11, 0, 0, 0, 0, 3, 14
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\api\axios-config\index.ts", "TypeScript", 12, 0, 0, 0, 0, 0, 4, 16
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\hooks\useWindowSize\index.ts", "TypeScript", 24, 0, 0, 0, 0, 0, 4, 28
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\interface\achievement.ts", "TypeScript", 13, 0, 0, 0, 0, 0, 2, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\interface\auth.ts", "TypeScript", 23, 0, 0, 0, 0, 0, 4, 27
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\interface\company.ts", "TypeScript", 4, 0, 0, 0, 0, 0, 0, 4
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\interface\flow.ts", "TypeScript", 30, 0, 0, 0, 0, 0, 3, 33
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\interface\flowHistoryGraph.ts", "TypeScript", 16, 0, 0, 0, 0, 0, 3, 19
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\interface\flowsCreateForm.ts", "TypeScript", 13, 0, 0, 0, 0, 0, 1, 14
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\interface\header.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\interface\post.ts", "TypeScript", 9, 0, 0, 0, 0, 0, 1, 10
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\interface\user.ts", "TypeScript", 33, 0, 0, 0, 0, 1, 5, 39
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\lib\auth\auth-token.ts", "TypeScript", 14, 0, 0, 0, 0, 0, 4, 18
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\lib\auth\private-route.tsx", "TypeScript JSX", 0, 17, 0, 0, 0, 1, 7, 25
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\lib\auth\setCookie.ts", "TypeScript", 29, 0, 0, 0, 0, 0, 0, 29
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\lib\parse\date.ts", "TypeScript", 13, 0, 0, 0, 0, 2, 4, 19
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\lib\parse\firstLetter.ts", "TypeScript", 6, 0, 0, 0, 0, 0, 1, 7
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\lib\parse\flowGraph.tsx", "TypeScript JSX", 0, 35, 0, 0, 0, 0, 8, 43
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\lib\parse\post.ts", "TypeScript", 5, 0, 0, 0, 0, 0, 1, 6
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\lib\parse\time.ts", "TypeScript", 4, 0, 0, 0, 0, 1, 2, 7
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\lib\parse\user.ts", "TypeScript", 33, 0, 0, 0, 0, 0, 13, 46
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\flowView-slice\flowGraphIcon\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\flowView-slice\flowGraphIcon\ui\ui.module.scss", "SCSS", 0, 0, 22, 0, 0, 0, 4, 26
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\flowView-slice\flowGraphIcon\ui\ui.tsx", "TypeScript JSX", 0, 27, 0, 0, 0, 0, 1, 28
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\flowsTable-slice\flowStatus\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\flowsTable-slice\flowStatus\model\index.ts", "TypeScript", 50, 0, 0, 0, 0, 0, 5, 55
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\flowsTable-slice\flowStatus\ui\ui.module.scss", "SCSS", 0, 0, 38, 0, 0, 0, 2, 40
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\flowsTable-slice\flowStatus\ui\ui.tsx", "TypeScript JSX", 0, 30, 0, 0, 0, 0, 4, 34
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\header-slice\burgerButton\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\header-slice\burgerButton\ui\ui.module.scss", "SCSS", 0, 0, 33, 0, 0, 0, 2, 35
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\header-slice\burgerButton\ui\ui.tsx", "TypeScript JSX", 0, 32, 0, 0, 0, 0, 2, 34
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\header-slice\navItem\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\header-slice\navItem\ui\ui.module.scss", "SCSS", 0, 0, 139, 0, 0, 0, 15, 154
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\header-slice\navItem\ui\ui.tsx", "TypeScript JSX", 0, 87, 0, 0, 0, 0, 3, 90
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\header-slice\navLogo\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\header-slice\navLogo\ui\ui.module.scss", "SCSS", 0, 0, 3, 0, 0, 0, 1, 4
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\header-slice\navLogo\ui\ui.tsx", "TypeScript JSX", 0, 12, 0, 0, 0, 0, 1, 13
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\approve\index.css", "CSS", 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\approve\index.tsx", "TypeScript JSX", 0, 10, 0, 0, 0, 0, 1, 11
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\change\index.css", "CSS", 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\change\index.tsx", "TypeScript JSX", 0, 10, 0, 0, 0, 0, 1, 11
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\comment\index.css", "CSS", 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\comment\index.tsx", "TypeScript JSX", 0, 10, 0, 0, 0, 0, 1, 11
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\delete\index.css", "CSS", 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\delete\index.tsx", "TypeScript JSX", 0, 10, 0, 0, 0, 0, 1, 11
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\download\index.css", "CSS", 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\download\index.tsx", "TypeScript JSX", 0, 10, 0, 0, 0, 0, 1, 11
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\filter\index.css", "CSS", 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\filter\index.tsx", "TypeScript JSX", 0, 30, 0, 0, 0, 0, 1, 31
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\plusWhite\index.css", "CSS", 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\plusWhite\index.tsx", "TypeScript JSX", 0, 34, 0, 0, 0, 0, 2, 36
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\print\index.css", "CSS", 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\print\index.tsx", "TypeScript JSX", 0, 10, 0, 0, 0, 0, 1, 11
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\showHistory\index.css", "CSS", 0, 0, 0, 12, 0, 0, 0, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\icons\showHistory\index.tsx", "TypeScript JSX", 0, 16, 0, 0, 0, 0, 1, 17
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\createrUser\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\createrUser\ui\ui.module.scss", "SCSS", 0, 0, 17, 0, 0, 0, 5, 22
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\createrUser\ui\ui.tsx", "TypeScript JSX", 0, 19, 0, 0, 0, 0, 1, 20
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\likesAndViews\api\index.ts", "TypeScript", 22, 0, 0, 0, 0, 0, 2, 24
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\likesAndViews\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\likesAndViews\ui\ui.module.scss", "SCSS", 0, 0, 38, 0, 0, 0, 6, 44
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\likesAndViews\ui\ui.tsx", "TypeScript JSX", 0, 69, 0, 0, 0, 0, 1, 70
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\tag\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\tag\ui\ui.module.scss", "SCSS", 0, 0, 14, 0, 0, 0, 2, 16
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\news-slice\tag\ui\ui.tsx", "TypeScript JSX", 0, 7, 0, 0, 0, 0, 0, 7
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\backArray\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\backArray\ui\ui.module.scss", "SCSS", 0, 0, 16, 0, 0, 0, 2, 18
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\backArray\ui\ui.tsx", "TypeScript JSX", 0, 30, 0, 0, 0, 0, 2, 32
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\flowsList\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\flowsList\model\index.ts", "TypeScript", 34, 0, 0, 0, 0, 0, 5, 39
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\flowsList\ui\ui.module.scss", "SCSS", 0, 0, 33, 0, 0, 0, 3, 36
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\flowsList\ui\ui.tsx", "TypeScript JSX", 0, 161, 0, 0, 0, 0, 7, 168
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\title\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\title\ui\ui.module.scss", "SCSS", 0, 0, 8, 0, 0, 0, 1, 9
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\pageHeaders-slice\title\ui\ui.tsx", "TypeScript JSX", 0, 9, 0, 0, 0, 0, 1, 10
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\profile-slice\achievementProgressBarCircle\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\profile-slice\achievementProgressBarCircle\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\shared\ui\profile-slice\achievementProgressBarCircle\ui\ui.tsx", "TypeScript JSX", 0, 40, 0, 0, 0, 0, 1, 41
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateChoose\data\index.ts", "TypeScript", 6, 0, 0, 0, 0, 0, 1, 7
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateChoose\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateChoose\ui\ui.module.scss", "SCSS", 0, 0, 84, 0, 0, 0, 10, 94
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateChoose\ui\ui.tsx", "TypeScript JSX", 0, 32, 0, 0, 0, 0, 1, 33
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\api\getDivisions.ts", "TypeScript", 12, 0, 0, 0, 0, 0, 3, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\api\getFlowCategories.ts", "TypeScript", 12, 0, 0, 0, 0, 0, 3, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\api\getGenerateFuncTask.ts", "TypeScript", 28, 0, 0, 0, 0, 0, 1, 29
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\api\getUser.ts", "TypeScript", 10, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\api\postFlows.ts", "TypeScript", 39, 0, 0, 0, 0, 0, 1, 40
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\data\departments.tsx", "TypeScript JSX", 0, 32, 0, 0, 0, 0, 3, 35
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\data\requestType.tsx", "TypeScript JSX", 0, 32, 0, 0, 0, 0, 3, 35
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\modal\api\index.ts", "TypeScript", 10, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\modal\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\modal\ui\ui.module.scss", "SCSS", 0, 0, 22, 0, 0, 0, 4, 26
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\modal\ui\ui.tsx", "TypeScript JSX", 0, 120, 0, 0, 0, 1, 6, 127
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\model\index.ts", "TypeScript", 8, 0, 0, 0, 0, 0, 3, 11
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\ui\ui.module.scss", "SCSS", 0, 0, 52, 0, 0, 0, 10, 62
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowCreate-slice\flowCreateForm\ui\ui.tsx", "TypeScript JSX", 0, 349, 0, 0, 0, 16, 22, 387
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowView-slice\flowViewHead\api\index.ts", "TypeScript", 19, 0, 0, 0, 0, 0, 3, 22
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowView-slice\flowViewHead\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowView-slice\flowViewHead\ui\ui.module.scss", "SCSS", 0, 0, 12, 0, 0, 0, 2, 14
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\flowView-slice\flowViewHead\ui\ui.tsx", "TypeScript JSX", 0, 44, 0, 0, 0, 0, 4, 48
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\profile-slice\achievementProfileBlock\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\profile-slice\achievementProfileBlock\ui\ui.module.scss", "SCSS", 0, 0, 13, 0, 0, 0, 1, 14
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\profile-slice\achievementProfileBlock\ui\ui.tsx", "TypeScript JSX", 0, 32, 0, 0, 0, 0, 3, 35
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\profile-slice\userInfoProfileBlock\index.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\profile-slice\userInfoProfileBlock\model\index.ts", "TypeScript", 13, 0, 0, 0, 0, 0, 2, 15
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\profile-slice\userInfoProfileBlock\ui\ui.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\mack1\OneDrive\Рабочий стол\i.development\flows\src\widgets\profile-slice\userInfoProfileBlock\ui\ui.tsx", "TypeScript JSX", 0, 209, 0, 0, 0, 0, 6, 215
+"Total", "-", 856, 3444, 1141, 108, 8, 24, 627, 6208

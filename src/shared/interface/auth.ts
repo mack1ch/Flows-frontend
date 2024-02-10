@@ -5,8 +5,8 @@ export interface IAuth {
 }
 
 export interface IToken {
-    refresh: string;
-    access: string;
+    accessToken: string;
+    email: string;
 }
 
 export interface IError {
