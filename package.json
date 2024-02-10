@@ -19,8 +19,7 @@
         "react-dom": "^18",
         "react-markdown": "^9.0.1",
         "rehype-highlight": "^7.0.0",
-        "sass": "^1.69.6",
-        "sharp": "^0.33.2"
+        "sass": "^1.69.6"
     },
     "devDependencies": {
         "@types/node": "^20",
