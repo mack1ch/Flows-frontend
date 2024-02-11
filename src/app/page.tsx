@@ -30,7 +30,7 @@ export default function Home() {
                 className={LabGrotesque.className}
                 style={{
                     width: '100vw',
-                    height: '100svh',
+                    height: '100%',
                     backgroundColor: '#F8F8FA',
                     display: 'flex',
                     flexDirection: 'column',

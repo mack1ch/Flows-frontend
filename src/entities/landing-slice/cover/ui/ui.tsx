@@ -7,6 +7,7 @@ import CoverForward from '../../../../../public/assets/cover_flows_forward.png';
 import CoverMain from '../../../../../public/assets/cover_main_flow.png';
 import Image from 'next/image';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
+import { DCard } from '../data';
 export const Cover = () => {
     const { width, height } = useWindowSize();
 
@@ -17,6 +18,7 @@ export const Cover = () => {
                     <dt className={styles.info}>
                         <span className={styles.column}>
                             <Image
+                                priority={true}
                                 src={InverseWhite}
                                 width={width < 1000 ? 244 : 358}
                                 height={width < 1000 ? 26 : 40}
@@ -31,12 +33,14 @@ export const Cover = () => {
                     <picture className={styles.picture}>
                         <span className={styles.position}>
                             <Image
+                                priority={true}
                                 className={styles.bgFlow_1}
                                 src={CoverForward}
                                 width={759}
                                 alt="Cover"
                             />
                             <Image
+                                priority={true}
                                 className={styles.bgFlow_2}
                                 src={CoverUnder}
                                 width={759}
@@ -50,6 +54,29 @@ export const Cover = () => {
                             alt="Cover"
                         />
                     </picture>
+                </section>
+                <section className={styles.cardsWrap}>
+                    {DCard.map((item) => (
+                        <article key={item.id} className={styles.card}>
+                            <h4 className={styles.h4}>{item.title}</h4>
+                            <p className={styles.p}>{item.description}</p>
+                            <Image
+                                className={styles.img}
+                                style={
+                                    width > 1200
+                                        ? {
+                                              marginTop: item.id === 1 ? '-20%' : undefined,
+                                          }
+                                        : {
+                                              marginTop: item.id === 1 ? '-15%' : undefined,
+                                          }
+                                }
+                                layout="responsive"
+                                src={item.img}
+                                alt={item.title}
+                            />
+                        </article>
+                    ))}
                 </section>
             </div>
         </>
