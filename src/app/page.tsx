@@ -3,6 +3,7 @@
 import { Cover } from '@/entities/landing-slice/cover/ui/ui';
 import { Header } from '@/entities/landing-slice/header';
 import { Layout } from '@/entities/landing-slice/layout';
+import { ProductEffects } from '@/entities/landing-slice/productEffects';
 import { WorkSteps } from '@/entities/landing-slice/workSteps';
 import localFont from 'next/font/local';
 const LabGrotesque = localFont({
@@ -44,6 +45,7 @@ export default function Home() {
                 <Layout>
                     <Cover />
                     <WorkSteps />
+                    <ProductEffects />
                 </Layout>
             </div>
         </>
