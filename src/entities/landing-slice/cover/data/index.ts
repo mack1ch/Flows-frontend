@@ -9,7 +9,7 @@ interface ICard {
     img: StaticImageData;
 }
 
-export const DCard: ICard[] = [
+export const DCards: ICard[] = [
     {
         id: 0,
         title: 'Оптимизируйте процессы',

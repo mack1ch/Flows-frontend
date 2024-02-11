@@ -7,7 +7,7 @@ import CoverForward from '../../../../../public/assets/cover_flows_forward.png';
 import CoverMain from '../../../../../public/assets/cover_main_flow.png';
 import Image from 'next/image';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
-import { DCard } from '../data';
+import { DCards } from '../data';
 export const Cover = () => {
     const { width, height } = useWindowSize();
 
@@ -56,7 +56,7 @@ export const Cover = () => {
                     </picture>
                 </section>
                 <section className={styles.cardsWrap}>
-                    {DCard.map((item) => (
+                    {DCards.map((item) => (
                         <article key={item.id} className={styles.card}>
                             <h4 className={styles.h4}>{item.title}</h4>
                             <p className={styles.p}>{item.description}</p>
