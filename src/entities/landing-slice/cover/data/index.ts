@@ -18,7 +18,7 @@ export const DCards: ICard[] = [
     },
     {
         id: 1,
-        title: 'Поощаряйте сотрудников',
+        title: 'Поощряйте сотрудников',
         description: 'Специальная система рейтингов и достижений',
         img: Achievements,
     },

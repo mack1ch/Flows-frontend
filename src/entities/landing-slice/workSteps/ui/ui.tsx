@@ -15,7 +15,10 @@ export const WorkSteps = () => {
                                 <h3 className={styles.h3}>{item.id + 1}</h3>
                             </div>
                             <Image
-                                style={{ height: item.id === 0 ? '100%' : undefined }}
+                                style={{
+                                    height: item.id === 0 ? '100%' : undefined,
+                                    marginLeft: item.id === 1 || item.id === 2 ? '4%' : undefined,
+                                }}
                                 src={item.img}
                                 alt={item.title}
                                 className={styles.img}
