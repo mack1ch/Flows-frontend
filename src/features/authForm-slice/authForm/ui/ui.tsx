@@ -11,7 +11,6 @@ import { useRouter } from 'next/navigation';
 import { getAccessToken } from '@/shared/lib/auth/auth-token';
 import Link from 'next/link';
 import { IToken } from '@/shared/interface/auth';
-import { setCookie } from '@/shared/lib/auth/setCookie';
 
 interface IFormData {
     email: string;
@@ -56,9 +55,8 @@ export const AuthForm = () => {
     ];
     const getNewSession = async () => {
         const fetchSession: IToken | Error = await postSession();
-        if (fetchSession instanceof Error) console.log('not');
+        if (fetchSession instanceof Error) return;
         else {
-            setCookie('accessToken', fetchSession.accessToken, { expires: 30, path: '/' });
             router.prefetch('/flows/my');
             router.push('/flows/my/');
         }
