@@ -6,8 +6,10 @@ export const isAuthenticated = (): boolean => {
 };
 
 export const getAccessToken = (): string | null => {
-    const token = sessionStorage.getItem('accessToken');
-    return token;
+    if (typeof window !== 'undefined') {
+        sessionStorage.getItem('accessToken');
+    }
+    return null;
 };
 
 export const redirectToLogin = (router: any) => {
