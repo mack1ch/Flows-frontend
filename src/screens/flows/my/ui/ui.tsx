@@ -8,15 +8,15 @@ import { getFlowsByStatusID, getFlowsStatuses } from '../api';
 
 export const MyFlowScreen = () => {
     const [flows, setFlows] = useState<IFlow[]>([] as IFlow[]);
-    const [flowStatuses, setFlowStatuses] = useState<IFlowStatus[]>([] as IFlowStatus[])
+    const [flowStatuses, setFlowStatuses] = useState<IFlowStatus[]>([] as IFlowStatus[]);
     const [flowStatusesChoise, setFlowStatusChoise] = useState<string>('');
     const [filteredFlows, setFilteredFlows] = useState<IFlow[]>([]);
     useEffect(() => {
         const GetFlowStatuses = async () => {
             const fetchStatuses: IFlowStatus[] | Error = await getFlowsStatuses();
-            if (fetchStatuses instanceof Error) window.location.reload();
+            if (fetchStatuses instanceof Error) console.log(fetchStatuses);
             else {
-                setFlowStatuses(fetchStatuses)
+                setFlowStatuses(fetchStatuses);
             }
         };
 
@@ -25,13 +25,13 @@ export const MyFlowScreen = () => {
     useEffect(() => {
         const GetFlows = async () => {
             const fetchFlows: IFlow[] | Error = await getFlowsByStatusID(flowStatusesChoise);
-            if (fetchFlows instanceof Error) return
+            if (fetchFlows instanceof Error) return;
             else {
-                setFlows(fetchFlows)
+                setFlows(fetchFlows);
             }
         };
         GetFlows();
-    }, [flowStatusesChoise])
+    }, [flowStatusesChoise]);
     useEffect(() => {
         setFilteredFlows(flows);
     }, [flows]);
@@ -48,7 +48,7 @@ export const MyFlowScreen = () => {
                 onSearch={(searchText) => {
                     if (searchText) {
                         const filteredArray = flows.filter((item) =>
-                            item.name.toLowerCase().includes(searchText.toLowerCase())
+                            item.name.toLowerCase().includes(searchText.toLowerCase()),
                         );
                         setFilteredFlows(filteredArray);
                     } else {

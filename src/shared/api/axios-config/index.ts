@@ -6,10 +6,11 @@ const BASE_URL = 'https://api.postideas.ru/api';
 export const instanceLogged: AxiosInstance = axios.create({
     baseURL: BASE_URL,
     timeout: 10000,
-    headers: { Authorization: `Token ${getAccessToken()}` },
+    headers: { Authorization: `Bearer ${getAccessToken()}` },
 });
 
 export const instance: AxiosInstance = axios.create({
     baseURL: BASE_URL,
     timeout: 5000,
+    withCredentials: true,
 });

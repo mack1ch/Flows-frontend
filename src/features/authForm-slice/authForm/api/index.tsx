@@ -9,7 +9,15 @@ export const postUser = async (authProps: IFormData): Promise<IToken | Error> =>
             password: authProps.password,
         });
         setCookie('accessToken', data.accessToken, { expires: 30, path: '/' });
+        return data;
+    } catch (error) {
+        return error as Error;
+    }
+};
 
+export const postSession = async (): Promise<IToken | Error> => {
+    try {
+        const { data }: { data: IToken } = await instance.post('/session/refresh/');
         return data;
     } catch (error) {
         return error as Error;

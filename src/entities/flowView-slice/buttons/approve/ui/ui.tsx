@@ -16,7 +16,7 @@ export const ApproveButton = ({ flowID }: { flowID: number }) => {
                     type: 'success',
                     content: 'Заявка успешно согласована',
                 });
-                window.location.reload();
+             
             }
         } catch (error) {
             messageApi.open({

@@ -5,11 +5,13 @@ import styles from './ui.module.scss';
 import { NavLogo } from '@/shared/ui/header-slice/navLogo';
 import { FormInputs } from '@/entities/authForm-slice/formInputs';
 import { FormHelpers } from '@/entities/authForm-slice/formHelpers';
-import { useState } from 'react';
-import { postUser } from '../api';
+import { useEffect, useState } from 'react';
+import { postSession, postUser } from '../api';
 import { useRouter } from 'next/navigation';
 import { getAccessToken } from '@/shared/lib/auth/auth-token';
 import Link from 'next/link';
+import { IToken } from '@/shared/interface/auth';
+import { setCookie } from '@/shared/lib/auth/setCookie';
 
 interface IFormData {
     email: string;
@@ -52,7 +54,18 @@ export const AuthForm = () => {
             ),
         },
     ];
-
+    const getNewSession = async () => {
+        const fetchSession: IToken | Error = await postSession();
+        if (fetchSession instanceof Error) console.log('not');
+        else {
+            setCookie('accessToken', fetchSession.accessToken, { expires: 30, path: '/' });
+            router.prefetch('/flows/my');
+            router.push('/flows/my/');
+        }
+    };
+    useEffect(() => {
+        getNewSession();
+    }, []);
     const loadingFinish = () => {
         setTimeout(() => {
             setButtonLoading(false);

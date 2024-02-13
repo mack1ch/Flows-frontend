@@ -8,6 +8,7 @@ import CoverMain from '../../../../../public/assets/cover_main_flow.png';
 import Image from 'next/image';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
 import { DCards } from '../data';
+import Link from 'next/link';
 export const Cover = () => {
     const { width, height } = useWindowSize();
 
@@ -28,7 +29,9 @@ export const Cover = () => {
                                 Создание и управление заявками внутри бизнеса
                             </p>
                         </span>
-                        <button className={styles.button}>Попробовать</button>
+                        <Link href="#contact" className={styles.button}>
+                            Попробовать
+                        </Link>
                     </dt>
                     <picture className={styles.picture}>
                         <span className={styles.position}>
