@@ -44,7 +44,7 @@ export const Footer = () => {
                         <Link href="/" className={styles.link}>
                             Оферта
                         </Link>
-                        <Link href="/" className={styles.link}>
+                        <Link href="/document" className={styles.link}>
                             Политика конфиденциальности
                         </Link>
                     </span>
