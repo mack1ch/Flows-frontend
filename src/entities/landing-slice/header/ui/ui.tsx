@@ -9,7 +9,7 @@ import { useState } from 'react'; // import component 👇
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 export const Header = () => {
-    const { width, height } = useWindowSize();
+    const { width = 1500, height } = useWindowSize();
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState<boolean>(false);
     const [isDrawerOpen, setDrawerOpen] = useState<boolean>(false);
     return (
@@ -50,7 +50,9 @@ export const Header = () => {
                             </Link>
                         </>
                     ) : (
-                        <Hamburger toggled={isBurgerMenuOpen} toggle={setBurgerMenuOpen} />
+                        !width && (
+                            <Hamburger toggled={isBurgerMenuOpen} toggle={setBurgerMenuOpen} />
+                        )
                     )}
                 </section>
             </div>

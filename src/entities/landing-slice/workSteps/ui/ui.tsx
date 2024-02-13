@@ -6,7 +6,9 @@ export const WorkSteps = () => {
     return (
         <>
             <div className={styles.layout}>
-                <h2 className={styles.h2}>Как работают “Inverse Заявки”?</h2>
+                <h2 id="work" className={styles.h2}>
+                    Как работают “Inverse Заявки”?
+                </h2>
                 <section className={styles.cardWrap}>
                     {DCards.map((item) => (
                         <article key={item.id} className={styles.card}>

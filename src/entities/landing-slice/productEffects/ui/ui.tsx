@@ -8,7 +8,9 @@ export const ProductEffects = () => {
     return (
         <>
             <div className={styles.layout}>
-                <h2 className={styles.h2}>Зачем внедрять наш продукт?</h2>
+                <h2 id="effects" className={styles.h2}>
+                    Зачем внедрять наш продукт?
+                </h2>
                 <section className={styles.cardWrap}>
                     {width > 650 ? (
                         DCards.map((item) => (

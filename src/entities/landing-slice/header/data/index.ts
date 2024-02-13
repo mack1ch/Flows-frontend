@@ -14,6 +14,6 @@ export const DNav: INavigation[] = [
     {
         id: 2,
         name: 'Контакты',
-        href: '#contacts',
+        href: '#contact',
     },
 ];

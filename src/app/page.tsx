@@ -1,6 +1,8 @@
 'use client';
 
-import { Cover } from '@/entities/landing-slice/cover/ui/ui';
+import { Cover } from '@/entities/landing-slice/cover';
+import { Footer } from '@/entities/landing-slice/footer';
+import { Form } from '@/entities/landing-slice/form';
 import { Header } from '@/entities/landing-slice/header';
 import { Layout } from '@/entities/landing-slice/layout';
 import { ProductEffects } from '@/entities/landing-slice/productEffects';
@@ -46,7 +48,9 @@ export default function Home() {
                     <Cover />
                     <WorkSteps />
                     <ProductEffects />
+                    <Form />
                 </Layout>
+                <Footer />
             </div>
         </>
     );
