@@ -1,12 +1,15 @@
+'use client';
+
 import { Form, ConfigProvider, ThemeConfig, TabsProps, Tabs, Button, message } from 'antd';
 import styles from './ui.module.scss';
 import { NavLogo } from '@/shared/ui/header-slice/navLogo';
 import { FormInputs } from '@/entities/authForm-slice/formInputs';
 import { FormHelpers } from '@/entities/authForm-slice/formHelpers';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { postUser } from '../api';
 import { useRouter } from 'next/navigation';
 import { getAccessToken } from '@/shared/lib/auth/auth-token';
+import Link from 'next/link';
 
 interface IFormData {
     email: string;
@@ -113,6 +116,11 @@ export const AuthForm = () => {
                             </Form.Item>
                         </div>
                     </Form>
+                    <div className={styles.linkLayout}>
+                        <Link className={styles.link} href="/">
+                            postideas.ru
+                        </Link>
+                    </div>
                 </section>
             </ConfigProvider>
         </>
