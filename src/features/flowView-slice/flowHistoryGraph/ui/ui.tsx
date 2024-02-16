@@ -3,7 +3,6 @@
 import { Button, ConfigProvider, StepProps, Steps, ThemeConfig } from 'antd';
 import styles from './ui.module.scss';
 import { ShowHistory } from '@/shared/ui/icons/showHistory';
-
 import { useEffect, useState } from 'react';
 import { getLastTwoElementsArray } from '../model';
 import { IFlow, IFlowHistory } from '@/shared/interface/flow';
@@ -13,7 +12,7 @@ export const FlowHistoryGraph = ({ flowData }: { flowData: IFlow }) => {
     const [isShowFullGraph, setShowFullGraph] = useState<boolean>(false);
     const [graphItems, setGraphItems] = useState<StepProps[]>([] as StepProps[]);
     const [missedGraphItemsArray, setMissedGraphItemsArray] = useState<number>(0);
-    const historyItems: IFlowHistory[] = flowData.histories || [];
+    const historyItems: IFlowHistory[] = flowData.history || [];
     const stepPropsArray: StepProps[] = convertHistoryToStepProps(historyItems);
 
     useEffect(() => {
@@ -23,6 +22,7 @@ export const FlowHistoryGraph = ({ flowData }: { flowData: IFlow }) => {
             setMissedGraphItemsArray(missed);
         } else {
             const { newArray, missed } = getLastTwoElementsArray(stepPropsArray, isShowFullGraph);
+            console.log(stepPropsArray);
             setGraphItems(newArray);
             setMissedGraphItemsArray(missed);
         }
@@ -47,9 +47,8 @@ export const FlowHistoryGraph = ({ flowData }: { flowData: IFlow }) => {
                 </section>
             </ConfigProvider>
         </>
-    )
-}
-
+    );
+};
 
 const flowGraphTheme: ThemeConfig = {
     components: {

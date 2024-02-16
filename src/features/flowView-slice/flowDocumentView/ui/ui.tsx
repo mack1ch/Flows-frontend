@@ -5,65 +5,152 @@ import { useEffect, useState } from 'react';
 import { IFlow } from '@/shared/interface/flow';
 import { getFlowByID, getPostByID } from '../api';
 import { IPost } from '@/shared/interface/post';
+import { headersMapping } from '../model';
+import { getUserFIO, getUserTelegram } from '@/shared/lib/parse/user';
+import Link from 'next/link';
 
 export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?: number }) => {
-    const [viewFlowData, setFlowData] = useState<IFlow>({} as IFlow)
+    const [viewFlowData, setFlowData] = useState<IFlow>({} as IFlow);
     const [viewPostData, setPostData] = useState<IPost>({} as IPost);
     useEffect(() => {
         const GetFlowByID = async () => {
             const fetchFlowByID: IFlow | Error = await getFlowByID(flowID);
             if (fetchFlowByID instanceof Error) return;
             else {
-                setFlowData(fetchFlowByID)
+                setFlowData(fetchFlowByID);
             }
         };
         const GetPostByID = async () => {
             const fetchPost: IPost | Error = await getPostByID(flowID);
             if (fetchPost instanceof Error) return;
             else {
-                setPostData(fetchPost)
+                setPostData(fetchPost);
             }
         };
         if (postID) {
-            GetPostByID()
+            GetPostByID();
         } else if (flowID) {
             GetFlowByID();
         }
-    }, [])
+    }, []);
 
     return (
         <>
-            {/* <section className={styles.layout}>
+            <section className={styles.layout}>
                 <div className={styles.document}>
                     <h2 className={styles.heading}>{viewFlowData.name}</h2>
                     <Divider />
                     <div className={styles.date}>
-                        <div className={styles.items}>
-                            {viewFlowData.content ? Object.keys(viewFlowData.content).map((key) => (
-                                <FlowDocumentItemTitle key={key} dataKey={key} />
-                            )) : viewPostData?.proposal?.content && Object.keys(viewPostData?.proposal?.content).map((key) => (
-                                <FlowDocumentItemTitle key={key} dataKey={key} />))}
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-start',
+                            }}>
+                            <div
+                                className={styles.contentTitle}
+                                style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                ФИО создателя:
+                            </div>
+                            <div
+                                className={styles.contentItem}
+                                style={{ flex: '1', textAlign: 'left' }}>
+                                {viewFlowData.author && getUserFIO(viewFlowData.author)}
+                            </div>
                         </div>
-                        <div className={styles.items}>
-                            {viewFlowData.content ? Object.keys(viewFlowData.content).map((key: string) => (
-                                <div key={key} className={styles.contentItem}>
-                                    {// @ts-ignore
-                                        viewFlowData.content[key]
-                                    }
-                                </div>
-                            )) : viewPostData?.proposal?.content && Object.keys(viewPostData?.proposal?.content).map((key: string) => (
-                                <div key={key} className={styles.contentItem}>
-                                    {// @ts-ignore
-                                        viewFlowData.content[key]
-                                    }
-                                </div>))}
-
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-start',
+                            }}>
+                            <div
+                                className={styles.contentTitle}
+                                style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                ID в Telegram:
+                            </div>
+                            <Link
+                                className={styles.link}
+                                href={
+                                    (viewFlowData.author &&
+                                        `${
+                                            'https://t.me/' +
+                                            getUserTelegram(viewFlowData.author.telegram)
+                                        }`) ||
+                                    '/flow/my'
+                                }
+                                style={{ flex: '1', textAlign: 'left' }}>
+                                {viewFlowData.author && viewFlowData.author.telegram}
+                            </Link>
+                        </div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-start',
+                            }}>
+                            <div
+                                className={styles.contentTitle}
+                                style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                Отдел:
+                            </div>
+                            <div
+                                className={styles.contentItem}
+                                style={{ flex: '1', textAlign: 'left' }}>
+                                {(viewFlowData.author && viewFlowData.author?.job?.name) ||
+                                    'Не найден'}
+                            </div>
+                        </div>
+                        {viewFlowData.content &&
+                            Object.entries(viewFlowData?.content).map(([key, value]) => {
+                                if (!key || typeof value !== 'string') return null;
+                                const header = headersMapping[key] || key;
+                                return (
+                                    <div
+                                        key={key}
+                                        style={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'flex-start',
+                                        }}>
+                                        <div
+                                            className={styles.contentTitle}
+                                            style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                            {header}:
+                                        </div>
+                                        <div
+                                            className={styles.contentItem}
+                                            style={{ flex: '1', textAlign: 'left' }}>
+                                            {value}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-start',
+                            }}>
+                            <div
+                                className={styles.contentTitle}
+                                style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                Техническое задание:
+                            </div>
+                            <Link
+                                className={styles.link}
+                                href={
+                                    (viewFlowData.documentLink && viewFlowData.documentLink) ||
+                                    '/flows/my/'
+                                }
+                                style={{ flex: '1', textAlign: 'left' }}>
+                                {(viewFlowData.documentLink && viewFlowData.documentLink) ||
+                                    'Не найдено'}
+                            </Link>
                         </div>
                     </div>
                 </div>
-            </section> */}
-            
-
+            </section>
         </>
     );
 };

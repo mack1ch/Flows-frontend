@@ -21,10 +21,10 @@ export const FlowsTable = ({
     const filteredFlows: IFlow[] | null = isApproved
         ? flows &&
           flows.filter((flow) => {
-              const hasStatus = flow.histories.some(
+              const hasStatus = flow.history.some(
                   (history) =>
-                      history.status.status_type === 'proposal_done' ||
-                      history.status.status_type === 'proposal_in_work',
+                      history.status.statusType === 'proposalDone' ||
+                      history.status.statusType === 'proposalInWork',
               );
               return hasStatus;
           })
@@ -68,7 +68,6 @@ export const FlowsTable = ({
                                 </td>
                             </tr>
                             {renderFlows?.map((item) => {
-                               
                                 return (
                                     <React.Fragment key={item.id}>
                                         <ApproveModal
@@ -95,9 +94,9 @@ export const FlowsTable = ({
                                             </td>
                                             <td>
                                                 <FlowStatus
-                                                    responsible={item?.histories?.at(-1)?.by_user}
+                                                    responsible={item?.history?.at(-1)?.user}
                                                     status={
-                                                        item?.histories?.at(-1)?.status || undefined
+                                                        item?.history?.at(-1)?.status || undefined
                                                     }
                                                 />
                                             </td>

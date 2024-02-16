@@ -8,7 +8,7 @@ export const getLastTwoElementsArray = (
     else {
         const length = arr.length;
         const lastTwo = arr.slice(length - 2, length);
-        const missed = length - 2;
+        const missed = arr.length === 0 ? 0 : length - 2;
         return { newArray: lastTwo, missed };
     }
 };

@@ -1,4 +1,4 @@
-import { TFlowStatusType } from "@/shared/interface/flow";
+import { TFlowStatusType } from '@/shared/interface/flow';
 
 interface Status {
     text: string;
@@ -9,30 +9,30 @@ export function getStatusByType(status: TFlowStatusType): Status {
     let text: string = '';
     let color: string = '#449429';
     switch (status) {
-        case 'proposal_created':
+        case 'proposalCreated':
             text = 'заявка отправлена';
             color = '#449429';
             break;
-        case 'proposal_approved':
+        case 'proposalApproved':
             text = 'заявка согласована';
             color = '#449429';
             break;
-        case 'proposal_rejected':
+        case 'proposalRejected':
             text = 'заявка отклонена';
             color = '#F16161';
             break;
-        case 'proposal_done':
+        case 'proposalDone':
             text = 'работа над заявкой завершена ';
             color = '#449429';
             break;
-        case 'proposal_in_approve':
+        case 'proposalInApprove':
             text = 'на согласовании';
             color = '#EDC156';
             break;
-        case 'proposal_need_revision':
+        case 'proposalNeedRevision':
             text = 'требуется уточнения у автора';
             color = '#F0BA38';
-        case 'proposal_in_work':
+        case 'proposalInWork':
             text = 'заявка находится в работе';
             color = '#F0BA38';
 

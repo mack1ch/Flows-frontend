@@ -6,7 +6,7 @@ export interface IFlow {
     author: IUser;
     category: IFlowCategory;
     level: number;
-    histories: IFlowHistory[];
+    history: IFlowHistory[];
     content: IContent;
     document: IDocument;
     createdAt: Date;
@@ -26,9 +26,8 @@ export interface IFlowCategory {
 }
 export interface IFlowHistory {
     id: number;
-    by_user: IUser;
+    user: IUser;
     status: IFlowStatus;
-    date: Date;
 }
 
 export interface IContent {
@@ -45,16 +44,17 @@ export interface IContent {
 export interface IFlowStatus {
     id: number;
     name: TFlowStatusName;
-    status_type: TFlowStatusType;
+    statusType: TFlowStatusType;
+    createdAt: Date;
 }
 export type TFlowStatusType =
-    | 'proposal_created'
-    | 'proposal_done'
-    | 'proposal_need_revision'
-    | 'proposal_rejected'
-    | 'proposal_approved'
-    | 'proposal_in_work'
-    | 'proposal_in_approve';
+    | 'proposalCreated'
+    | 'proposalDone'
+    | 'proposalNeedRevision'
+    | 'proposalRejected'
+    | 'proposalApproved'
+    | 'proposalInWork'
+    | 'proposalInApprove';
 export type TFlowStatusName =
     | 'Заявка создана'
     | 'Выполнено'

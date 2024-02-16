@@ -1,9 +1,8 @@
-import { IUser } from "@/shared/interface/user";
+import { IUser } from '@/shared/interface/user';
 
 interface IFullNameObject {
     value: string;
 }
-
 
 export function getFullName(users: IUser[] | IUser): IFullNameObject[] {
     const userArray = Array.isArray(users) ? users : [users];
@@ -36,11 +35,15 @@ export function getUserFIO(user: IUser): string {
     return `${user.lastname} ${user.firstname} ${user.surname}`;
 }
 
-
 export function getUserIdByFullName(users: IUser[], fullName: string): number {
-    const selectedUser = users.find(user =>
-        (user.lastname + ' ' + user.firstname + ' ' + user.surname) === fullName
+    const selectedUser = users.find(
+        (user) => user.lastname + ' ' + user.firstname + ' ' + user.surname === fullName,
     );
 
     return selectedUser ? selectedUser.id : 0;
+}
+
+export function getUserTelegram(telegram: string): string {
+    if (telegram[0] === '@') return telegram.slice(1);
+    return telegram;
 }

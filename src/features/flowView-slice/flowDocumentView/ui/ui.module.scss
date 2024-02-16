@@ -27,13 +27,41 @@
         .date {
             display: flex;
             gap: 24px;
+            flex-direction: column;
+            width: 50%;
 
+            .link {
+                color: #73ae62;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 22px;
+
+                &:hover {
+                    color: #449429;
+                    text-decoration: underline;
+                }
+            }
+            .contentItem {
+                color: #222;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 22px;
+            }
+            .contentTitle {
+                color: #74757a;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 22px;
+            }
             .items {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 24px;
-width: 50%;
+                width: 50%;
                 .contentItem {
                     color: #222;
                     font-size: 16px;
@@ -45,4 +73,3 @@ width: 50%;
         }
     }
 }
-

@@ -1,6 +1,5 @@
 'use client';
 
-
 import { IFlowStatus } from '@/shared/interface/flow';
 
 import styles from './ui.module.scss';
@@ -12,8 +11,14 @@ import { CommentButton } from '@/entities/flowView-slice/buttons/coment';
 import { IUser } from '@/shared/interface/user';
 import { getAuthUserData } from '../api';
 import { ApproveButton } from '@/entities/flowView-slice/buttons/approve';
-export const FlowManagement = ({ flowStatus, flowID = 0}: { flowStatus?: IFlowStatus; flowID?: number }) => {
-    const statusType = flowStatus?.status_type;
+export const FlowManagement = ({
+    flowStatus,
+    flowID = 0,
+}: {
+    flowStatus?: IFlowStatus;
+    flowID?: number;
+}) => {
+    const statusType = flowStatus?.statusType;
     const [authUser, setAuthUser] = useState<IUser | null>({} as IUser);
     useEffect(() => {
         const GetUser = async () => {
@@ -25,30 +30,36 @@ export const FlowManagement = ({ flowStatus, flowID = 0}: { flowStatus?: IFlowSt
         };
         GetUser();
     }, []);
-    const userRole = !!authUser?.role?.role_type && (authUser.role.role_type === 'admin' || authUser.role.role_type === 'head') ? true : false;
-
+    const userRole =
+        !!authUser?.role?.name &&
+        (authUser.role.name === 'member' || authUser.role.name === 'moderator')
+            ? true
+            : false;
     return (
         <>
             <section className={styles.layout}>
-                {
-                    statusType === 'proposal_created' ? <>
+                {statusType === 'proposalCreated' ? (
+                    <>
                         {userRole && <ApproveButton flowID={flowID} />}
                         <ChangeButton />
                         <DeleteButton flowID={flowID} />
                         <DownloadButton flowID={flowID} />
-                    </> :
-                        statusType === 'proposal_in_work' || statusType === 'proposal_rejected' || statusType === 'proposal_done' ? <>
-                            <DownloadButton flowID={flowID} />
-                        </>
-                            : statusType === 'proposal_in_approve' ? <>
-                                {userRole && <ApproveButton flowID={flowID} />}
-                                <CommentButton />
-                                <ChangeButton />
-                                <DeleteButton flowID={flowID} />
-                                <DownloadButton flowID={flowID} />
-                            </>
-                                : null
-                }
+                    </>
+                ) : statusType === 'proposalInWork' ||
+                  statusType === 'proposalRejected' ||
+                  statusType === 'proposalDone' ? (
+                    <>
+                        <DownloadButton flowID={flowID} />
+                    </>
+                ) : statusType === 'proposalInApprove' ? (
+                    <>
+                        {userRole && <ApproveButton flowID={flowID} />}
+                        <CommentButton />
+                        <ChangeButton />
+                        <DeleteButton flowID={flowID} />
+                        <DownloadButton flowID={flowID} />
+                    </>
+                ) : null}
             </section>
         </>
     );

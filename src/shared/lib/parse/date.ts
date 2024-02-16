@@ -9,7 +9,7 @@ export function parseDateToDotFormat(inputDateString: Date): string {
 
 //  parseDateToDotFormate(inputDateString); === 14.11.2011
 
-export function parseDateToTextFormate(dateString: Date): string {
+export function parseDateToTextFormat(dateString: Date): string {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
     return date.toLocaleDateString('ru-RU', options);

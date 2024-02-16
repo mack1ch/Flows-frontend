@@ -8,21 +8,22 @@ import { getUserFIO } from '@/shared/lib/parse/user';
 
 export const FlowGraphTitle = ({
     flowStatus,
-    responsibleUser
+    responsibleUser,
 }: {
     responsibleUser: IUser | undefined;
     flowStatus: IFlowStatus | undefined;
 }) => {
+    const responsibleName = getUserFIO(responsibleUser ? responsibleUser : ({} as IUser));
 
-    const responsibleName = getUserFIO(responsibleUser ? responsibleUser : {} as IUser);
-
-    const color = getStatusByType(flowStatus?.status_type ? flowStatus.status_type : 'proposal_done').color;
+    const color = getStatusByType(
+        flowStatus?.statusType ? flowStatus.statusType : 'proposalDone',
+    ).color;
     return (
         <>
             <h4 className={styles.graphTitle}>
                 <Link style={{ color: color }} className={styles.responsibleName} href="/">
                     {responsibleName}
-                    {flowStatus?.status_type === 'proposal_need_revision' ? '' : ','}
+                    {flowStatus?.statusType === 'proposalNeedRevision' ? '' : ','}
                 </Link>{' '}
                 {flowStatus?.name.toLocaleLowerCase()}
             </h4>

@@ -27,7 +27,7 @@ export interface IUser {
 
 export interface IRole {
     id: number;
-    role_type: string;
+    name: 'member' | 'moderator';
 }
 
 // Должность
