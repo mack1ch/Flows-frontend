@@ -1,4 +1,5 @@
-import { IAchievement } from "./achievement";
+import { IAchievement } from './achievement';
+import { IFlow } from './flow';
 
 export interface IUser {
     id: number;
@@ -20,8 +21,8 @@ export interface IUser {
     likes_sended: number;
     avatar: string;
     rating_position: number;
-    proposals: number;
-    department: string;
+    proposalsCount: number; // Количество поданных заявок
+    department: IDepartment;
 }
 
 export interface IRole {
@@ -36,3 +37,8 @@ export interface IJob {
     description: string;
 }
 
+export interface IDepartment {
+    id: number;
+    name: string;
+    description: string;
+}

@@ -6,6 +6,7 @@ import { Form } from '@/entities/landing-slice/form';
 import { Header } from '@/entities/landing-slice/header';
 import { Layout } from '@/entities/landing-slice/layout';
 import { ProductEffects } from '@/entities/landing-slice/productEffects';
+import { SwiperTariff } from '@/entities/landing-slice/swiperTarif';
 import { WorkSteps } from '@/entities/landing-slice/workSteps';
 import localFont from 'next/font/local';
 const LabGrotesque = localFont({
@@ -48,6 +49,7 @@ export default function Home() {
                     <Cover />
                     <WorkSteps />
                     <ProductEffects />
+                    <SwiperTariff />
                     <Form />
                 </Layout>
                 <Footer />

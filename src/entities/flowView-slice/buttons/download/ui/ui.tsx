@@ -8,23 +8,25 @@ import { getFlowByID } from '../api';
 import Link from 'next/link';
 
 export const DownloadButton = ({ flowID }: { flowID: number }) => {
-    const [viewFlowData, setFlowData] = useState<IFlow>({} as IFlow)
+    const [viewFlowData, setFlowData] = useState<IFlow>({} as IFlow);
     useEffect(() => {
         const GetFlowByID = async () => {
             const fetchFlowByID: IFlow | Error = await getFlowByID(flowID);
             if (fetchFlowByID instanceof Error) return;
             else {
-                setFlowData(fetchFlowByID)
+                setFlowData(fetchFlowByID);
             }
         };
 
         GetFlowByID();
-    }, [])
-    
+    }, []);
+
     return (
         <>
             <ConfigProvider theme={downloadButtonTheme}>
-                <Link href={viewFlowData.document ? viewFlowData.document : ''} download={viewFlowData.document}>
+                <Link
+                    href={viewFlowData.documentLink ? viewFlowData.documentLink : ''}
+                    download={viewFlowData.document}>
                     <Button size="large" type="text">
                         <Space>
                             <Download />

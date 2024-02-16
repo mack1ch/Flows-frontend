@@ -33,7 +33,7 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
 
     return (
         <>
-            <section className={styles.layout}>
+            {/* <section className={styles.layout}>
                 <div className={styles.document}>
                     <h2 className={styles.heading}>{viewFlowData.name}</h2>
                     <Divider />
@@ -61,7 +61,8 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
+            
 
         </>
     );

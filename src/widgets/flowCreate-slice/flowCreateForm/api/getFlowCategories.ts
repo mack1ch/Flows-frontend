@@ -1,5 +1,5 @@
-import { instanceLogged } from "@/shared/api/axios-config";
-import { IFlowCategory } from "@/shared/interface/flow";
+import { instanceLogged } from '@/shared/api/axios-config';
+import { IFlowCategory } from '@/shared/interface/flow';
 
 export const getFlowCategories = async (): Promise<IFlowCategory[] | Error> => {
     try {
@@ -8,7 +8,6 @@ export const getFlowCategories = async (): Promise<IFlowCategory[] | Error> => {
         );
         return data;
     } catch (error) {
-
         return error as Error;
     }
 };

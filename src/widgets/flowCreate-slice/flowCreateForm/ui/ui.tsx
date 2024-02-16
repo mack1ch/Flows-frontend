@@ -19,7 +19,7 @@ import { ConfirmModal } from '../modal';
 import { ICreateFlow } from '@/shared/interface/flowsCreateForm';
 import { getCategoryNameById, isNonEmptyArray } from '../model';
 import { IFlowCategory } from '@/shared/interface/flow';
-import { getFlowCategories, } from '../api/getFlowCategories';
+import { getFlowCategories } from '../api/getFlowCategories';
 import Document from '../../../../../public/icons/document-green.svg';
 import { IUser } from '@/shared/interface/user';
 import { getAuthUser } from '../api/getUser';
@@ -34,14 +34,14 @@ const { TextArea } = Input;
 export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolean }) => {
     const router = useRouter();
     const [formData] = Form.useForm();
-    const [authUser, setAuthUser] = useState<IUser>({} as IUser)
+    const [authUser, setAuthUser] = useState<IUser>({} as IUser);
     const [isButtonDisable, setButtonDisable] = useState(false);
     const { width, height } = useWindowSize();
     const [choiceUserID, setChoiceUserID] = useState<number>(0);
     const [usersArray, setUserArray] = useState<IUser[]>([] as IUser[]);
     const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
     const [isGenerateModalLoading, setModalGenerateLoading] = useState<boolean>(false);
-    const [messageApi, contextHolder] = message.useMessage()
+    const [messageApi, contextHolder] = message.useMessage();
     const [flowCategories, setFlowCategories] = useState<IFlowCategory[]>([] as IFlowCategory[]);
     const [generateDocumentData, setGenerateDocumentData] = useState<string>('');
     const [isGenerateTextModalOpen, setGenerateModalTextOpen] = useState<boolean>(false);
@@ -63,8 +63,16 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     };
     const isFormValid = () => {
         const requiredFields: (keyof ICreateFlow)[] = isFullFormat
-            ? ['title', 'requestType', 'projectGoal', 'financialBenefit', 'limitingFactors', 'description', 'effects']
-            : ['title', 'requestType', 'description', 'effects', 'financialBenefit', ];
+            ? [
+                  'title',
+                  'requestType',
+                  'projectGoal',
+                  'financialBenefit',
+                  'limitingFactors',
+                  'description',
+                  'effects',
+              ]
+            : ['title', 'requestType', 'description', 'effects', 'financialBenefit'];
 
         for (const fieldName of requiredFields) {
             const fieldValue = inputValues[fieldName];
@@ -77,28 +85,31 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     useEffect(() => {
         const GetFlowCategories = async () => {
             const fetchCategories: IFlowCategory[] | Error = await getFlowCategories();
-            if (fetchCategories instanceof Error) return
+            if (fetchCategories instanceof Error) return;
             else {
-                setFlowCategories(fetchCategories)
+                setFlowCategories(fetchCategories);
             }
         };
 
         const GetUser = async () => {
             const fetchUser: IUser | Error = await getAuthUser();
-            if (fetchUser instanceof Error) return
+            if (fetchUser instanceof Error) return;
             else {
                 setAuthUser(fetchUser);
                 setInputValues((prevValues) => ({
                     ...prevValues,
                     fullName: authUser.lastname + ' ' + authUser.firstname + ' ' + authUser.surname,
                     telegramId: authUser.telegram,
-                }))
+                }));
             }
         };
         GetUser();
         GetFlowCategories();
-    }, [])
-    const handleInputChange = (name: string, value: string | number | CheckboxValueType[] | null) => {
+    }, []);
+    const handleInputChange = (
+        name: string,
+        value: string | number | CheckboxValueType[] | null,
+    ) => {
         setInputValues((prevValues) => ({
             ...prevValues,
             [name]: value,
@@ -107,44 +118,63 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     };
     const handleSubmit = async () => {
         try {
-
-            const res = await createFlow(inputValues, choiceUserID, getCategoryNameById(inputValues.requestType, flowCategories), isFullFormat, generateDocumentData);
-            if (!(res instanceof Error)) router.push('/flows/my')
-          
+            const res = await createFlow(
+                inputValues,
+                choiceUserID,
+                inputValues.requestType || undefined,
+                isFullFormat,
+                generateDocumentData,
+            );
+            if (!(res instanceof Error)) router.push('/flows/my');
         } catch (error) {
             messageApi.open({
                 type: 'error',
                 content: 'Ошибка на сервере, мы уже работаем над устранением',
             });
         }
-    }
+    };
     const handleGetTechTask = async () => {
         try {
             setModalGenerateLoading(true);
-            const res = await getGenerateFuncTask(inputValues, getCategoryNameById(inputValues.requestType, flowCategories), isFullFormat);
+            const res = await getGenerateFuncTask(
+                inputValues,
+                isFullFormat,
+                getCategoryNameById(inputValues.requestType, flowCategories),
+            );
             if (!(res instanceof Error)) {
-                setGenerateDocumentData(res)
+                setGenerateDocumentData(res);
                 setModalGenerateLoading(false);
                 setInputValues((prevValues) => ({
                     ...prevValues,
-                    'technicalSpecificationLink': res,
+                    technicalSpecificationLink: res,
                 }));
                 isFormValid() ? setButtonDisable(true) : setButtonDisable(false);
-            };
+            }
         } catch (error) {
             messageApi.open({
                 type: 'error',
                 content: 'Ошибка на сервере, мы уже работаем над устранением',
             });
-            setModalGenerateLoading(false)
+            setModalGenerateLoading(false);
         }
-    }
+    };
 
     return (
         <>
             {contextHolder}
-            <FuncTaskDoc document={generateDocumentData || ''} isModalOpen={isGenerateTextModalOpen} setModalOpen={setGenerateModalTextOpen} />
-            <ConfirmModal setChoiceUserID={setChoiceUserID} userArray={usersArray} setUsersArray={setUserArray} handleSubmit={handleSubmit} modalOpen={isConfirmModalOpen} setModalOpen={setConfirmModalOpen} />
+            <FuncTaskDoc
+                document={generateDocumentData || ''}
+                isModalOpen={isGenerateTextModalOpen}
+                setModalOpen={setGenerateModalTextOpen}
+            />
+            <ConfirmModal
+                setChoiceUserID={setChoiceUserID}
+                userArray={usersArray}
+                setUsersArray={setUserArray}
+                handleSubmit={handleSubmit}
+                modalOpen={isConfirmModalOpen}
+                setModalOpen={setConfirmModalOpen}
+            />
             <section className={styles.layout}>
                 <ConfigProvider theme={flowFormTheme}>
                     <Form style={{ width: '100%' }} layout="vertical" form={formData}>
@@ -171,8 +201,20 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         size="large"
                                         disabled
                                         name="fullName"
-                                        defaultValue={authUser.lastname + ' ' + authUser.firstname + ' ' + authUser.surname}
-                                        value={(authUser.lastname + ' ' + authUser.firstname + ' ' + authUser.surname) || 'Загрузка...'}
+                                        defaultValue={
+                                            authUser.lastname +
+                                            ' ' +
+                                            authUser.firstname +
+                                            ' ' +
+                                            authUser.surname
+                                        }
+                                        value={
+                                            authUser.lastname +
+                                                ' ' +
+                                                authUser.firstname +
+                                                ' ' +
+                                                authUser.surname || 'Загрузка...'
+                                        }
                                     />
                                 </Form.Item>
 
@@ -184,8 +226,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         disabled
                                         name="telegramId"
                                         defaultValue={authUser.telegram}
-                                        value={(authUser.telegram) || 'Загрузка...'}
-
+                                        value={authUser.telegram || 'Загрузка...'}
                                     />
                                 </Form.Item>
 
@@ -196,17 +237,16 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         size="large"
                                         name="department"
                                         disabled
-                                        defaultValue={authUser?.division}
-                                        value={(authUser?.division) || 'Загрузка...'}
+                                        defaultValue={authUser?.department?.name || 'Загрузка...'}
+                                        value={authUser?.department?.name || 'Загрузка...'}
                                     />
                                 </Form.Item>
 
                                 {/* Request Type */}
-                                <Form.Item
-                                    style={{ width: '100%' }}
-                                    required
-                                    label="Тип запроса:">
-                                    <Radio.Group onChange={onRequestTypeChange} value={inputValues.requestType}>
+                                <Form.Item style={{ width: '100%' }} required label="Тип запроса:">
+                                    <Radio.Group
+                                        onChange={onRequestTypeChange}
+                                        value={inputValues.requestType}>
                                         <Space direction="vertical">
                                             {flowCategories.map((item) => (
                                                 <Radio key={item.id} value={item.id}>
@@ -218,7 +258,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 </Form.Item>
 
                                 {/* Project Goal */}
-                                {isFullFormat &&
+                                {isFullFormat && (
                                     <Form.Item
                                         style={{ width: '100%' }}
                                         required
@@ -229,10 +269,12 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                             size="large"
                                             name="projectGoal"
                                             value={inputValues.projectGoal}
-                                            onChange={(e) => handleInputChange('projectGoal', e.target.value)}
+                                            onChange={(e) =>
+                                                handleInputChange('projectGoal', e.target.value)
+                                            }
                                         />
                                     </Form.Item>
-                                }
+                                )}
                                 {/* Project discription */}
                                 <Form.Item
                                     style={{ width: '100%' }}
@@ -244,7 +286,9 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         size="large"
                                         name="description"
                                         value={inputValues.description}
-                                        onChange={(e) => handleInputChange('description', e.target.value)}
+                                        onChange={(e) =>
+                                            handleInputChange('description', e.target.value)
+                                        }
                                     />
                                 </Form.Item>
 
@@ -259,7 +303,9 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         size="large"
                                         name="effects"
                                         value={inputValues.effects}
-                                        onChange={(e) => handleInputChange('effects', e.target.value)}
+                                        onChange={(e) =>
+                                            handleInputChange('effects', e.target.value)
+                                        }
                                     />
                                 </Form.Item>
 
@@ -267,7 +313,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                     <Space>
                                         {/* Submit Button */}
                                         <Button
-                                            onClick={() => setConfirmModalOpen(true)}
+                                            onClick={handleSubmit}
                                             disabled={!isButtonDisable}
                                             htmlType="submit"
                                             style={{
@@ -286,7 +332,6 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                             </div>
 
                             <div style={{ maxWidth: '100%' }} className={styles.inputLayout}>
-
                                 {/* Financial benefit */}
                                 <Form.Item
                                     style={{ width: '100%' }}
@@ -298,11 +343,13 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         size="large"
                                         name="financialBenefit"
                                         value={inputValues.financialBenefit}
-                                        onChange={(e) => handleInputChange('financialBenefit', e.target.value)}
+                                        onChange={(e) =>
+                                            handleInputChange('financialBenefit', e.target.value)
+                                        }
                                     />
                                 </Form.Item>
                                 {/* Limiting Factors */}
-                                {isFullFormat &&
+                                {isFullFormat && (
                                     <Form.Item
                                         style={{ width: '100%' }}
                                         required
@@ -313,10 +360,12 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                             size="large"
                                             name="limitingFactors"
                                             value={inputValues.limitingFactors}
-                                            onChange={(e) => handleInputChange('limitingFactors', e.target.value)}
+                                            onChange={(e) =>
+                                                handleInputChange('limitingFactors', e.target.value)
+                                            }
                                         />
                                     </Form.Item>
-                                }
+                                )}
                                 {/* Technical Specification Link */}
                                 <Form.Item
                                     style={{ width: '100%' }}
@@ -327,21 +376,58 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         size="large"
                                         name="technicalSpecificationLink"
                                         value={inputValues.technicalSpecificationLink}
-                                        onChange={(e) => handleInputChange('technicalSpecificationLink', e.target.value)}
+                                        onChange={(e) =>
+                                            handleInputChange(
+                                                'technicalSpecificationLink',
+                                                e.target.value,
+                                            )
+                                        }
                                     />
                                 </Form.Item>
 
                                 {/* Technical Specification Link */}
                                 <div className={styles.generateButton}>
-                                    <Button onClick={handleGetTechTask} loading={isGenerateModalLoading} size='middle'>Сгенерировать с помощью ИИ</Button>
-                                    {isGenerateModalLoading && <span className={styles.cross} onClick={() => setModalGenerateLoading(!isGenerateModalLoading)}><Image src={Cross} width={16} height={16} alt='Омтена' /></span>}
+                                    <Button
+                                        onClick={handleGetTechTask}
+                                        loading={isGenerateModalLoading}
+                                        size="middle">
+                                        Сгенерировать с помощью ИИ
+                                    </Button>
+                                    {isGenerateModalLoading && (
+                                        <span
+                                            className={styles.cross}
+                                            onClick={() =>
+                                                setModalGenerateLoading(!isGenerateModalLoading)
+                                            }>
+                                            <Image
+                                                src={Cross}
+                                                width={16}
+                                                height={16}
+                                                alt="Омтена"
+                                            />
+                                        </span>
+                                    )}
                                 </div>
-                                {generateDocumentData.length > 0 && <span onClick={() => setGenerateModalTextOpen(!isGenerateTextModalOpen)} className={styles.generateDoc}><Image src={Document} width={20} height={20} alt='Document' />Смотреть сгенерированный докумнент</span>}
+                                {generateDocumentData.length > 0 && (
+                                    <span
+                                        onClick={() =>
+                                            setGenerateModalTextOpen(!isGenerateTextModalOpen)
+                                        }
+                                        className={styles.generateDoc}>
+                                        <Image
+                                            src={Document}
+                                            width={20}
+                                            height={20}
+                                            alt="Document"
+                                        />
+                                        Смотреть сгенерированный докумнент
+                                    </span>
+                                )}
                                 {width <= 768 && (
                                     <Space>
                                         {/* Submit Button */}
                                         <Button
-                                            onClick={() => setConfirmModalOpen(true)}
+                                            onClick={handleSubmit}
                                             disabled={!isButtonDisable}
                                             htmlType="submit"
                                             style={{

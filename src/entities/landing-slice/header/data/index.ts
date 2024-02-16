@@ -9,7 +9,7 @@ export const DNav: INavigation[] = [
     {
         id: 1,
         name: 'Цены',
-        href: '#price',
+        href: '#tariff',
     },
     {
         id: 2,

@@ -4,7 +4,7 @@ import { IFlow, IFlowStatus } from '@/shared/interface/flow';
 export const getFlowsByStatusID = async (statusID: string): Promise<IFlow[] | Error> => {
     try {
         const { data }: { data: IFlow[] } = await instanceLogged.get(
-            `/proposals/my/?status_id=${statusID && statusID}`,
+            `/proposals/my/?status=${statusID && statusID}`,
         );
         return data;
     } catch (error) {

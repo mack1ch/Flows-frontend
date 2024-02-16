@@ -16,21 +16,21 @@ import { getAccessToken } from '@/shared/lib/auth/auth-token';
 export const Header = () => {
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);
     const [profileData, setProfileData] = useState<IHeaderItem>(SideBarProfileItem);
-    useEffect(() => {
-        const GetUser = async () => {
-            const fetchUser: IUser | Error = await GetAuthUserData();
-            if (fetchUser instanceof Error) GetUser();
-            else {
-                const userName: string = fetchUser.firstname + ' ' + fetchUser.lastname;
-                setProfileData((prevProfileData: IHeaderItem) => ({
-                    ...prevProfileData,
-                    title: userName || 'Профиль',
-                    path: prevProfileData?.path || '/profile',
-                }));
-            }
-        };
-        GetUser();
-    }, []);
+
+    const GetUser = async () => {
+        const fetchUser: IUser | Error = await GetAuthUserData();
+        if (fetchUser instanceof Error) GetUser();
+        else {
+            const userName: string = fetchUser.firstname + ' ' + fetchUser.lastname;
+            setProfileData((prevProfileData: IHeaderItem) => ({
+                ...prevProfileData,
+                title: userName || 'Профиль',
+                path: prevProfileData?.path || '/profile',
+            }));
+        }
+    };
+    GetUser();
+
     const onDrawerCloseByBurgerClick = () => {
         setBurgerMenuOpen(false);
     };

@@ -38,7 +38,7 @@ export const DFooter: IFooter[] = [
         subItems: [
             {
                 name: 'Тарифы',
-                href: '',
+                href: '#tariff',
             },
         ],
     },

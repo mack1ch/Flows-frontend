@@ -1,28 +1,34 @@
-import { instanceLogged } from "@/shared/api/axios-config";
-import { ICreateFlow } from "@/shared/interface/flowsCreateForm";
+import { instanceLogged } from '@/shared/api/axios-config';
+import { IContent } from '@/shared/interface/flow';
+import { ICreateFlow } from '@/shared/interface/flowsCreateForm';
 
-export const getGenerateFuncTask = async (flowProps: ICreateFlow, categoryValue: string | undefined, isFullFormat: boolean): Promise<string | Error> => {
-    const content = isFullFormat ? {
-        'Название заявки': flowProps.title,
-        'Описание заявки': flowProps.description,
-        'Тип запроса': categoryValue,
-        'Цель проекта': flowProps.projectGoal,
-        'Какую выгоду несет реализация проекта?': flowProps.financialBenefit,
-        'Какие эффекты будут от внедрения проекта?': flowProps.effects,
-    } : {
-        'Название заявки': flowProps.title,
-        'Описание заявки': flowProps.description,
-        'Тип запроса': categoryValue,
-        'Цель проекта': flowProps.projectGoal,
-        'Какую выгоду несет реализация проекта?': flowProps.financialBenefit,
-        'Какие эффекты будут от внедрения проекта?': flowProps.effects,
+interface IResponse {
+    message: {
+        role: string;
+        text: string;
+    };
+    status: string;
+}
+
+export const getGenerateFuncTask = async (
+    flowProps: ICreateFlow,
+    isFullFormat: boolean,
+    categoryValue?: string,
+): Promise<string | Error> => {
+    const postContent: IContent = {
+        proposalAim: flowProps.projectGoal,
+        proposalType: categoryValue && categoryValue,
+        benefits: flowProps.financialBenefit,
+        name: flowProps.title,
+        description: flowProps.description,
+        limitFactors: (isFullFormat && flowProps.limitingFactors) || undefined,
     };
     try {
-        const { data }: { data: string } = await instanceLogged.post(
-            `proposals/requirements/generate/`, { proposal_content: content }
+        const { data }: { data: IResponse } = await instanceLogged.post(
+            `proposals/documents/`,
+            postContent,
         );
-        console.log(content, data);
-        return data;
+        return data.message.text;
     } catch (error) {
         return error as Error;
     }
