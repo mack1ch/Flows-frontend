@@ -19,13 +19,13 @@ export const FlowsListHeader = ({
     filterItemsArray,
     onSort,
     onSearch,
-    setFlowStatusChoise
+    setFlowStatusChoise,
 }: {
     id?: number;
     title: string;
     filterName: string;
     searchItemsArray: IFlow[];
-    filterItemsArray: IFlowStatus[],
+    filterItemsArray: IFlowStatus[];
     setFlowStatusChoise?: (flowStatusChoiseID: string) => void | undefined;
     onSort: (sortedArray: IFlow[]) => void;
     onSearch: (searchText: string) => void;
@@ -43,11 +43,10 @@ export const FlowsListHeader = ({
         onSort(sortedArray);
     }, [searchItemsArray, onSort]);
     useEffect(() => {
-        setItems(mapFlowTableItemsToMenuArray(filterItemsArray),)
-    }, [filterItemsArray])
+        setItems(mapFlowTableItemsToMenuArray(filterItemsArray));
+    }, [filterItemsArray]);
     const handleMenuClick: MenuProps['onClick'] = (e) => {
-        setFlowStatusChoise && setFlowStatusChoise(e.key)
-
+        setFlowStatusChoise && setFlowStatusChoise(e.key);
     };
     return (
         <section className={styles.section} key={id}>
@@ -148,7 +147,7 @@ const groupComponentTheme: ThemeConfig = {
             colorPrimary: '#73AE62',
         },
         Dropdown: {
-            colorPrimary: '#449429',
+            colorPrimary: '#73AE62',
             controlItemBgActive: '#D6ECDB',
             controlItemBgActiveHover: '#D6ECDB ',
         },
@@ -158,7 +157,7 @@ const groupComponentTheme: ThemeConfig = {
 const createFlowButtonTheme: ThemeConfig = {
     components: {
         Button: {
-            defaultBg: '#449429',
+            defaultBg: '#73AE62',
             colorText: '#fff',
             colorPrimaryHover: '#ebebeb',
             colorPrimaryActive: '#ebebeb',

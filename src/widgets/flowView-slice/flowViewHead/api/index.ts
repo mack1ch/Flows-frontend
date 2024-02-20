@@ -13,7 +13,7 @@ export const getFlowByID = async (id?: number): Promise<IFlow | Error> => {
 
 export const getPostByID = async (id?: number): Promise<IPost | Error> => {
     try {
-        const { data }: { data: IPost } = await instanceLogged.get(`/proposals/posts/${id}/`);
+        const { data }: { data: IPost } = await instanceLogged.get(`/proposals/events/${id}/`);
         return data;
     } catch (error) {
         return error as Error;

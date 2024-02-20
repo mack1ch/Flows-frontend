@@ -22,7 +22,7 @@ export const FlowHistoryGraph = ({ flowData }: { flowData: IFlow }) => {
             setMissedGraphItemsArray(missed);
         } else {
             const { newArray, missed } = getLastTwoElementsArray(stepPropsArray, isShowFullGraph);
-            console.log(stepPropsArray);
+
             setGraphItems(newArray);
             setMissedGraphItemsArray(missed);
         }

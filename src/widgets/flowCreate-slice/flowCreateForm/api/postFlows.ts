@@ -20,13 +20,11 @@ export const createFlow = async (
         },
         document: techTask,
     };
-    console.log(postContent);
+
     try {
         const { data }: { data: IFlow } = await instanceLogged.post('/proposals/', postContent);
-        console.log(data);
         return data;
     } catch (error) {
-        console.log(error);
         return error as Error;
     }
 };

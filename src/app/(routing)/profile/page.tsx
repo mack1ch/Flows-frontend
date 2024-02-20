@@ -1,9 +1,10 @@
-import { ProfileScreen } from "@/screens/profile";
+import { UserAvatar } from '@/entities/profile-slice/avatar';
+import { Profile } from '@/widgets/profile-slice/profile';
 
-export default function Profile() {
+export default function ProfilePage() {
     return (
         <>
-            <ProfileScreen />
+            <Profile />
         </>
     );
 }

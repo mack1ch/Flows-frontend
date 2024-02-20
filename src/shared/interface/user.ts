@@ -1,28 +1,46 @@
 import { IAchievement } from './achievement';
-import { IFlow } from './flow';
+
+// export interface IUser {
+//     id: number;
+//     email: string;
+//     telegram: string;
+//     vk: string;
+//     phone: string;
+//     firstname: string;
+//     lastname: string;
+//     surname: string;
+//     birthday: string;
+//     job: IJob;
+//     role: IRole;
+//     password: string;
+//     division: string;
+//     achievements: IAchievement[];
+//     achievements_count: number;
+//     achievements_points: number;
+//     likes_sended: number;
+//     avatar: string;
+//     rating_position: number;
+//     proposalsCount: number; // Количество поданных заявок
+//     department: IDepartment;
+// }
 
 export interface IUser {
     id: number;
+    firstname: string;
+    surname: string;
+    lastname: string;
     email: string;
+    phone: string;
+    birthday: Date;
+    role: IRole;
+    department: IDepartment
+    job: IJob
+    proposalCount: number;
     telegram: string;
     vk: string;
-    phone: string;
-    firstname: string;
-    lastname: string;
-    surname: string;
-    birthday: string;
-    job: IJob;
-    role: IRole;
-    password: string;
-    division: string;
-    achievements: IAchievement[];
-    achievements_count: number;
-    achievements_points: number;
-    likes_sended: number;
     avatar: string;
-    rating_position: number;
-    proposalsCount: number; // Количество поданных заявок
-    department: IDepartment;
+    updatedAt: Date;
+    createdAt: Date;
 }
 
 export interface IRole {

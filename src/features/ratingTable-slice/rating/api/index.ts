@@ -5,7 +5,7 @@ import { IUser } from "@/shared/interface/user";
 export const getRatingPosts = async (): Promise<IPost[] | Error> => {
     try {
         const { data }: { data: IPost[] } = await instanceLogged.get(
-            `/proposals/posts/rating/`
+            `/proposals/events/rating/`
         );
         return data;
     } catch (error) {

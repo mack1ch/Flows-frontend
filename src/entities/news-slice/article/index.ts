@@ -1,1 +1,1 @@
-export {NewsArticle} from './ui/ui'
+export { NewsArticle } from './ui/ui';

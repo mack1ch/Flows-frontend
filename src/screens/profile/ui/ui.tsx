@@ -4,8 +4,6 @@ import { IUser } from "@/shared/interface/user"
 import { Flex, Typography } from "antd"
 import { useEffect, useState } from "react"
 import { getAuthUser } from "../api";
-import { UserInfoProfileBlock } from "@/widgets/profile-slice/userInfoProfileBlock";
-import { AchievementsProfileBlock } from "@/widgets/profile-slice/achievementProfileBlock";
 
 export const  ProfileScreen =()=> {
     const [user, setUser] = useState<IUser>({} as IUser);
@@ -33,8 +31,7 @@ export const  ProfileScreen =()=> {
             }}
         >
             <Typography.Title level={2} style={{ marginBottom: "0.25rem" }}>Профиль</Typography.Title>
-            <UserInfoProfileBlock user={user} />
-            <AchievementsProfileBlock user={user} />
+     
         </Flex>
     )
 }

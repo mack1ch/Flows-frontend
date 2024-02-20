@@ -40,7 +40,7 @@ instanceLogged.interceptors.response.use(
                 sessionStorage.setItem('accessToken', res.data.accessToken);
                 return instance.request(originalRequest);
             } catch (error) {
-                console.log('AUTH ERROR');
+                throw error;
             }
         }
         throw error;

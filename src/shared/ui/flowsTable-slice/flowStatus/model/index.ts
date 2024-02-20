@@ -18,14 +18,19 @@ export function getStatusByType(status: TFlowStatusType | 'loading'): Status {
             text = 'На согласовании';
             break;
         case 'proposalInApprove':
-            color = '#73AE62';
+            color = '#5ACC71';
             title = 'Процесс согласования';
             text = 'Ответственный';
             break;
         case 'proposalInWork':
             color = '#73AE62';
             title = 'В работе';
-            text = 'Согласован';
+            text = 'Согласующий';
+            break;
+        case 'proposalApproved':
+            color = '#FFC95C';
+            title = 'Согласована';
+            text = 'Ответственный';
             break;
         case 'proposalRejected':
             color = '#ED5656';
@@ -34,6 +39,7 @@ export function getStatusByType(status: TFlowStatusType | 'loading'): Status {
         case 'proposalDone':
             color = '#538A1B';
             title = 'Выполнено';
+            text = 'Ответственный';
             break;
         case 'proposalNeedRevision':
             color = '#EDC156';

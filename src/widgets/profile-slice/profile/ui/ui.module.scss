@@ -1,0 +1,85 @@
+.layout {
+    width: 100%;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    .bg {
+        margin-top: -32px;
+        margin-left: -40px;
+        width: 100vw;
+        height: 20%;
+        background: linear-gradient(93deg, #8fce7b 14.67%, #88d372 37.67%, #75c75d 68.96%);
+
+        @media screen and (max-width: 770px) {
+            margin-top: -24px;
+            margin-left: -8px;
+        }
+    }
+    .userFirstBlock {
+        margin-top: -7%;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        width: 100%;
+        .user {
+            display: flex;
+            align-items: flex-end;
+            gap: 32px;
+            width: 100%;
+            .userInfo {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+
+                .userFIO {
+                    color: #222;
+                    font-size: 26px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                    letter-spacing: 0.52px;
+                }
+                .job {
+                    color: #757575;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: 0.4px;
+                }
+                .achievementsList {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+
+                    .achievement {
+                        border-radius: 6px;
+                        background: #d5efcd;
+                        width: fit-content;
+                        padding: 5px 10px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #3f9e37;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+                        letter-spacing: 0.24px;
+                    }
+                }
+            }
+        }
+    }
+    .userLocalData {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+    }
+}

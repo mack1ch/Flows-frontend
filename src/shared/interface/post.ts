@@ -1,10 +1,10 @@
-import { IFlow } from "./flow";
+import { IFlow } from './flow';
 
 export interface IPost {
-    likes: number;
+    id: number;
     comments: number;
     proposal: IFlow;
-    id: number;
+    likes: number;
     views: number;
-    user_likes: number[];
+    isLiked: boolean;
 }

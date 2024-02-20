@@ -10,7 +10,7 @@ import { LikesAndViews } from '@/shared/ui/news-slice/likesAndViews';
 import Link from 'next/link';
 import { capitalizeFirstLetter } from '@/shared/lib/parse/firstLetter';
 import { IUser } from '@/shared/interface/user';
-import { checkIfUserLiked } from '@/shared/lib/parse/post';
+
 export const RatingTable = () => {
     const [ratingPosts, setRatingPosts] = useState<IPost[]>([] as IPost[]);
     const [authUser, setAuthUser] = useState<IUser>({} as IUser);
@@ -64,7 +64,6 @@ export const RatingTable = () => {
                         {filteredFlows?.map((item, index) => {
                             const userFIO = getUserFIO(item.proposal.author);
                             const ratingPos = index + 1;
-                            const isUserLikedPost = checkIfUserLiked(item, authUser.id);
                             return (
                                 <React.Fragment key={item.id}>
                                     <tr key={item.id} className={styles.tableBody__place}>
@@ -90,7 +89,7 @@ export const RatingTable = () => {
                                         <td className={styles.likesAndviews}>
                                             <span className={styles.td__item}>
                                                 <LikesAndViews
-                                                    isLiked={isUserLikedPost}
+                                                    isLiked={item.isLiked}
                                                     post={item}
                                                 />
                                             </span>

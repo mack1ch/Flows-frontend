@@ -1,35 +1,72 @@
-'use client'
+'use client';
+'use client';
 
-import { NewsTag } from '@/shared/ui/news-slice/tag/'
-import styles from './ui.module.scss'
-import { CreaterUser } from '@/shared/ui/news-slice/createrUser'
-import { LikesAndViews } from '@/shared/ui/news-slice/likesAndViews'
-import { IPost } from '@/shared/interface/post'
-import Link from 'next/link'
-import { capitalizeFirstLetter } from '@/shared/lib/parse/firstLetter'
+import styles from './ui.module.scss';
+import { IPost } from '@/shared/interface/post';
+import Link from 'next/link';
+import PostComplete from '../../../../../public/assets/postComplete.svg';
+import { PostProcess } from '../process';
+import { getUserFI } from '@/shared/lib/parse/user';
+import { LikesAndViews } from '@/shared/ui/news-slice/likesAndViews';
+import { useState } from 'react';
+import Image from 'next/image';
 
-export const NewsArticle = ({ flowItem, isUserLikedPost }: { flowItem: IPost; isUserLikedPost: boolean }) => {
+export const NewsArticle = ({ item }: { item?: IPost }) => {
+    const [isPostComplete, setPostComplete] = useState(false);
+    if (!item) return;
     return (
         <>
-            <article className={styles.article}>
-                <div className={styles.main}>
-                    <h3 className={styles.article__title}>
+            {isPostComplete ? (
+                <span className={styles.isDone} key={item.id}>
+                    <article className={styles.article}>
+                        <section className={styles.article__data}>
+                            <Link
+                                title={item.proposal.name}
+                                href={`/flows/view/${item.proposal.id}`}
+                                className={styles.h3}>
+                                {item.proposal.name}
+                            </Link>
+                            <PostProcess
+                                setPostComplete={setPostComplete}
+                                proposal={item.proposal}
+                            />
+                        </section>
+                        <section className={styles.article__post_info}>
+                            <Link className={styles.user_FI} href="/profile">
+                                {getUserFI(item.proposal.author)}{' '}
+                                {item.proposal.author.job && `/ ${item.proposal.author?.job?.name}`}
+                            </Link>
+                            <LikesAndViews post={item} isLiked={item.isLiked} />
+                        </section>
+                    </article>
+                    <Image
+                        className={styles.img}
+                        src={PostComplete}
+                        width={48}
+                        height={48}
+                        alt="Заявка выполнена"
+                    />
+                </span>
+            ) : (
+                <article key={item.id} className={styles.article}>
+                    <section className={styles.article__data}>
                         <Link
-                            title={capitalizeFirstLetter(flowItem.proposal.name)}
-                            href={`/flows/view/${flowItem.proposal.id}`} >
-                            {capitalizeFirstLetter(flowItem.proposal.name)}
+                            title={item.proposal.name}
+                            href={`/flows/view/${item.proposal.id}`}
+                            className={styles.h3}>
+                            {item.proposal.name}
                         </Link>
-                    </h3>
-                    <div className={styles.article__tags}>
-                        <NewsTag text='Интересное' />
-                        <NewsTag text='Работа' />
-                    </div>
-                    <CreaterUser user={flowItem?.proposal?.author} />
-                </div>
-                <div className={styles.footer}>
-                    <LikesAndViews isLiked={isUserLikedPost} post={flowItem} />
-                </div>
-            </article>
+                        <PostProcess setPostComplete={setPostComplete} proposal={item.proposal} />
+                    </section>
+                    <section className={styles.article__post_info}>
+                        <Link className={styles.user_FI} href="/profile">
+                            {getUserFI(item.proposal.author)}{' '}
+                            {item.proposal.author.job && `/ ${item.proposal.author?.job?.name}`}
+                        </Link>
+                        <LikesAndViews post={item} isLiked={item.isLiked} />
+                    </section>
+                </article>
+            )}
         </>
-    )
-}
+    );
+};

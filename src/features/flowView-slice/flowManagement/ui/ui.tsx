@@ -11,6 +11,8 @@ import { CommentButton } from '@/entities/flowView-slice/buttons/coment';
 import { IUser } from '@/shared/interface/user';
 import { getAuthUserData } from '../api';
 import { ApproveButton } from '@/entities/flowView-slice/buttons/approve';
+import { InWorkButton } from '@/entities/flowView-slice/buttons/inWork';
+import { ToDoneButton } from '@/entities/flowView-slice/buttons/toDone';
 export const FlowManagement = ({
     flowStatus,
     flowID = 0,
@@ -30,30 +32,36 @@ export const FlowManagement = ({
         };
         GetUser();
     }, []);
-    const userRole =
-        !!authUser?.role?.name &&
-        (authUser.role.name === 'member' || authUser.role.name === 'moderator')
+
+    const isModerator =
+        !!authUser && authUser.role?.name === 'moderator'
             ? true
-            : false;
+            : !!authUser && authUser.role?.name === 'member'
+            ? false
+            : undefined;
+
     return (
         <>
             <section className={styles.layout}>
-                {statusType === 'proposalCreated' ? (
+                {statusType === 'proposalApproved' ? (
                     <>
-                        {userRole && <ApproveButton flowID={flowID} />}
-                        <ChangeButton />
+                        {isModerator && <InWorkButton flowID={flowID} />}
                         <DeleteButton flowID={flowID} />
                         <DownloadButton flowID={flowID} />
                     </>
-                ) : statusType === 'proposalInWork' ||
-                  statusType === 'proposalRejected' ||
-                  statusType === 'proposalDone' ? (
+                ) : statusType === 'proposalInWork' ? (
+                    <>
+                        {isModerator && <ToDoneButton flowID={flowID} />}
+                        <DeleteButton flowID={flowID} />
+                        <DownloadButton flowID={flowID} />
+                    </>
+                ) : statusType === 'proposalRejected' || statusType === 'proposalDone' ? (
                     <>
                         <DownloadButton flowID={flowID} />
                     </>
                 ) : statusType === 'proposalInApprove' ? (
                     <>
-                        {userRole && <ApproveButton flowID={flowID} />}
+                        {isModerator && <ApproveButton flowID={flowID} />}
                         <CommentButton />
                         <ChangeButton />
                         <DeleteButton flowID={flowID} />

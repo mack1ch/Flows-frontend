@@ -1,0 +1,42 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 4px;
+    .text {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        .h5 {
+            color: #757575;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+        }
+    }
+    .progressBar {
+        width: 100%;
+        height: auto;
+        display: grid;
+        flex-direction: column;
+        gap: 4px;
+
+        .currentValue {
+            height: 4px;
+            grid-area: 1 / 1;
+            z-index: 2;
+            background: rgba(68, 148, 41, 0.6);
+            border-radius: 6px;
+            transition: all 0.4s;
+        }
+        .maxValue {
+            width: 100%;
+            grid-area: 1 / 1;
+            height: 4px;
+            background: #eeeeee;
+            border-radius: 6px;
+        }
+    }
+}

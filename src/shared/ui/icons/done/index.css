@@ -1,0 +1,12 @@
+.done_icon {
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+    font-style: normal;
+    line-height: 0;
+    text-align: center;
+    text-transform: none;
+    vertical-align: -0.2em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}

@@ -65,9 +65,9 @@ export const LayoutDesktop = ({ children }: { children: React.ReactNode }) => {
                             }}>
                             {children}
                         </Content>
-                        <Footer style={{ textAlign: 'left', background: '#fff' }}>
+                        {/* <Footer style={{ textAlign: 'left', background: '#fff' }}>
                             Inverse Заявки ©2023 Сделано в Inverse
-                        </Footer>
+                        </Footer> */}
                     </Layout>
                 </Layout>
             )}

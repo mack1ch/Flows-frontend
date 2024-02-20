@@ -1,4 +1,4 @@
-import styles from './ui.module.scss'
+import styles from './ui.module.scss';
 import Eye from '../../../../../../public/icons/eye-grey.svg';
 import HeartGrey from '../../../../../../public/icons/heart-grey.svg';
 import HeartRed from '../../../../../../public/icons/heart-red.svg';
@@ -13,22 +13,20 @@ export const LikesAndViews = ({ post, isLiked = false }: { post: IPost; isLiked:
     const [viewsCount, setViewsCount] = useState<number>(post.views || 0);
     const [likeCount, setLikeCount] = useState<number>(post.likes || 0);
     useEffect(() => {
-        setViewsCount(post.views)
-        setLikeCount(post.likes)
-    }, [post])
+        setViewsCount(post.views);
+        setLikeCount(post.likes);
+    }, [post]);
     useEffect(() => {
-        setLike(isLiked)
-
-    }, [isLiked])
+        setLike(isLiked);
+    }, [isLiked]);
     const handleLike = async () => {
         if (!isLike) {
             try {
                 const response = await postLike(post.id);
                 if (!(response instanceof Error)) {
-                    setLikeCount((prev) => prev + 1)
+                    setLikeCount((prev) => prev + 1);
                     setLike(!isLike);
-                }
-                else throw new Error;
+                } else throw new Error();
             } catch (error) {
                 messageApi.open({
                     type: 'error',
@@ -39,32 +37,36 @@ export const LikesAndViews = ({ post, isLiked = false }: { post: IPost; isLiked:
             try {
                 const response = await postLike(post.id);
                 if (!(response instanceof Error)) {
-                    setLikeCount((prev) => prev - 1)
+                    setLikeCount((prev) => prev - 1);
                     setLike(!isLike);
-                }
-                else throw new Error;
+                } else throw new Error();
             } catch (error) {
                 messageApi.open({
                     type: 'error',
                     content: 'Произошла ошибка на сервере, мы уже работаем над решением проблемы',
                 });
             }
-        };
-    }
+        }
+    };
     return (
         <>
             {contextHolder}
             <div className={styles.layout}>
                 <span className={styles.item}>
-                    <Image src={Eye} width={14} height={14} alt='Количество просмотров' />
+                    <Image src={Eye} width={14} height={14} alt="Количество просмотров" />
                     <p className={styles.text}>{viewsCount}</p>
                 </span>
                 <button onClick={handleLike} className={styles.like}>
-                    {
-                        isLike ? <Image src={HeartRed} width={15} height={15} alt='Лайки' /> : <Image src={HeartGrey} width={14} height={14} alt='Лайки' />
-                    }
-                    <p style={{ color: isLike ? '#FF5A49' : undefined }} className={styles.text}>{likeCount}</p>
+                    {isLike ? (
+                        <Image src={HeartRed} width={15} height={15} alt="Лайки" />
+                    ) : (
+                        <Image src={HeartGrey} width={14} height={14} alt="Лайки" />
+                    )}
+                    <p style={{ color: isLike ? '#FF5A49' : undefined }} className={styles.text}>
+                        {likeCount}
+                    </p>
                 </button>
             </div>
-        </>)
-}
+        </>
+    );
+};

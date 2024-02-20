@@ -1,0 +1,33 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 42%;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 40px;
+    -webkit-overflow-scrolling: touch;
+    .h3 {
+        color: #222;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.48px;
+    }
+    .wrap {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        overflow-x: auto;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            background: transparent;
+        }
+    }
+}

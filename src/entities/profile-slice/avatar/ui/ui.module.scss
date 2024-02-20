@@ -1,0 +1,46 @@
+.avatar {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: #bad6b1;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    .inputHidden {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        overflow: hidden;
+        appearance: none;
+        cursor: pointer;
+        clip: rect(0 0 0 0);
+        opacity: 0;
+        background: transparent;
+    }
+    .edit {
+        width: 100%;
+        height: 100%;
+        background: rgba(53, 95, 50, 0.8);
+        border-radius: 50%;
+        display: flex;
+        opacity: 0;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        .img {
+            width: 50%;
+            height: 50%;
+        }
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
