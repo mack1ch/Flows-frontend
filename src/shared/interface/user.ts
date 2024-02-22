@@ -31,10 +31,10 @@ export interface IUser {
     lastname: string;
     email: string;
     phone: string;
-    birthday: Date;
+    birthday: string;
     role: IRole;
-    department: IDepartment
-    job: IJob
+    department: IDepartment;
+    job: IJob;
     proposalCount: number;
     telegram: string;
     vk: string;

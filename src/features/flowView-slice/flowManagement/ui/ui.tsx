@@ -62,7 +62,7 @@ export const FlowManagement = ({
                 ) : statusType === 'proposalInApprove' ? (
                     <>
                         {isModerator && <ApproveButton flowID={flowID} />}
-                        <CommentButton />
+                        <CommentButton flowID={flowID}/>
                         <ChangeButton />
                         <DeleteButton flowID={flowID} />
                         <DownloadButton flowID={flowID} />

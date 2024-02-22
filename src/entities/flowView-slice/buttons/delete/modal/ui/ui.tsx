@@ -4,17 +4,23 @@ import { Button, ConfigProvider, Modal, ThemeConfig } from 'antd';
 import { useState } from 'react';
 import ModalCircle from '../../../../../../../public/assets/modalCircle-red.svg';
 import Image from 'next/image';
+import { deleteProposal } from '../../api';
+import { useRouter } from 'next/navigation';
 export const DeleteButtonModal = ({
     modalOpen = false,
     setModalOpen,
+    flowID,
 }: {
     modalOpen: boolean;
+    flowID: number;
     setModalOpen: (arg: boolean) => void;
 }) => {
     const [confirmLoading, setConfirmLoading] = useState(false);
-
-    const handleOk = () => {
+    const router = useRouter();
+    const handleOk = async () => {
         setConfirmLoading(true);
+        const res: undefined | Error = await deleteProposal(flowID);
+        if (typeof res === 'undefined') router.push('/flows/my');
         setTimeout(() => {
             setModalOpen(false);
             setConfirmLoading(false);

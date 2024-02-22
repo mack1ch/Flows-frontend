@@ -1,8 +1,7 @@
-
 export interface IAchievement {
     id: number;
-    current_progress: number;
-    achievement_type: TAchievementType
+    currentProgress: number;
+    achievementType: TAchievementType;
 }
 
 export type TAchievementType = {
@@ -11,5 +10,5 @@ export type TAchievementType = {
     cover: string;
     description: string;
     points: number;
-    total_progress: number;
-}
+    totalProgress: number;
+};

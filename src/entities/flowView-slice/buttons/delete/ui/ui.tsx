@@ -5,7 +5,7 @@ import { Button, ConfigProvider, Space, ThemeConfig } from 'antd';
 import { useState } from 'react';
 import { DeleteButtonModal } from '../modal';
 
-export const DeleteButton = ({flowID}: {flowID:number}) => {
+export const DeleteButton = ({ flowID }: { flowID: number }) => {
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <>
@@ -17,7 +17,7 @@ export const DeleteButton = ({flowID}: {flowID:number}) => {
                     </Space>
                 </Button>
             </ConfigProvider>
-            <DeleteButtonModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+            <DeleteButtonModal flowID={flowID} modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </>
     );
 };

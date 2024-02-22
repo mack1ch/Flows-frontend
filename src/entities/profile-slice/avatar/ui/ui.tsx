@@ -4,11 +4,11 @@ import Image from 'next/image';
 import styles from './ui.module.scss';
 import Avatar from '../../../../../public/icons/avatar-black.svg';
 import Edit from '../../../../../public/icons/edit-white.svg';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { postAvatar } from '../api';
 
-export const UserAvatar = ({ avatarLink }: { avatarLink: string }) => {
-    const [avatar, setAvatar] = useState<string>(avatarLink);
+export const UserAvatar = ({ avatarLink }: { avatarLink?: string }) => {
+    const [avatar, setAvatar] = useState<string | null>(avatarLink || null);
     const filePicker = useRef<HTMLInputElement | null>(null);
     async function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         if (event.target.files && event.target.files.length > 0) {
@@ -27,7 +27,10 @@ export const UserAvatar = ({ avatarLink }: { avatarLink: string }) => {
             filePicker.current.click();
         }
     }
-
+    useEffect(() => {
+        if (typeof avatarLink === 'undefined') return;
+        setAvatar(avatarLink);
+    }, [avatarLink]);
     return (
         <>
             <article

@@ -12,10 +12,9 @@ export const Articles = () => {
     useEffect(() => {
         const GetPosts = async () => {
             const fetchPosts: IPost[] | Error = await getPosts();
-           
+
             if (fetchPosts instanceof Error) return;
             else {
-                fetchPosts;
                 setFlows(fetchPosts);
             }
         };

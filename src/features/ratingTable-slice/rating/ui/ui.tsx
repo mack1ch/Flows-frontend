@@ -14,16 +14,6 @@ import { IUser } from '@/shared/interface/user';
 export const RatingTable = () => {
     const [ratingPosts, setRatingPosts] = useState<IPost[]>([] as IPost[]);
     const [authUser, setAuthUser] = useState<IUser>({} as IUser);
-    const filteredFlows: IPost[] | null = ratingPosts
-        ? ratingPosts.filter((flow) => {
-              const hasStatus = flow.proposal.history.some(
-                  (history) =>
-                      history.status.statusType === 'proposalDone' ||
-                      history.status.statusType === 'proposalInWork',
-              );
-              return hasStatus;
-          })
-        : null;
 
     useEffect(() => {
         const GetFlows = async () => {
@@ -61,7 +51,7 @@ export const RatingTable = () => {
                             </td>
                             <td align="left" className={styles.tableHeader} />
                         </tr>
-                        {filteredFlows?.map((item, index) => {
+                        {ratingPosts?.map((item, index) => {
                             const userFIO = getUserFIO(item.proposal.author);
                             const ratingPos = index + 1;
                             return (
@@ -88,10 +78,7 @@ export const RatingTable = () => {
                                         <td className={styles.postCreater}>{userFIO}</td>
                                         <td className={styles.likesAndviews}>
                                             <span className={styles.td__item}>
-                                                <LikesAndViews
-                                                    isLiked={item.isLiked}
-                                                    post={item}
-                                                />
+                                                <LikesAndViews isLiked={item.isLiked} post={item} />
                                             </span>
                                         </td>
                                     </tr>

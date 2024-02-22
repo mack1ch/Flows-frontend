@@ -1,0 +1,40 @@
+.layout {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .service {
+        border-radius: 16px;
+        background: #fff;
+        display: inline-flex;
+        padding: 24px 16px;
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        width: 320px;
+        height: 170px;
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            .h3 {
+                color: #222;
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+        }
+        .p {
+            color: #222;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+}
