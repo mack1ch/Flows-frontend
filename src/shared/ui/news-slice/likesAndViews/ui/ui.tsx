@@ -58,7 +58,7 @@ export const LikesAndViews = ({ post, isLiked = false }: { post: IPost; isLiked:
                 </span>
                 <button onClick={handleLike} className={styles.like}>
                     {isLike ? (
-                        <Image src={HeartRed} width={15} height={15} alt="Лайки" />
+                        <Image src={HeartRed} width={14} height={14} alt="Лайки" />
                     ) : (
                         <Image src={HeartGrey} width={14} height={14} alt="Лайки" />
                     )}

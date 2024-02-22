@@ -34,10 +34,9 @@
             line-height: normal;
             letter-spacing: 0.16px;
             color: #adadad;
-
-
+            transition: all 0.2s;
             &:hover {
-                color: #757575;
+                color: #a1a1a1;
             }
         }
     }
