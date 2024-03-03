@@ -3,12 +3,12 @@ import { useRouter } from 'next/navigation';
 import styles from './ui.module.scss';
 import Image from 'next/image';
 import ArrowLeft from '../../../../../../public/icons/arrow-left-darkBlue.svg';
-import { CSSProperties } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 export const PageHeaderWithBackArray = ({
     pageName,
     style,
 }: {
-    pageName: string;
+    pageName: ReactNode | string;
     style?: CSSProperties;
 }) => {
     const router = useRouter();
@@ -21,7 +21,6 @@ export const PageHeaderWithBackArray = ({
                     src={ArrowLeft}
                     width={24}
                     height={24}
-                    
                     alt="Вернуться назад"
                 />
                 <h1 className={styles.pageTitle}>{pageName}</h1>

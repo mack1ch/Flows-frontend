@@ -14,7 +14,7 @@ export const createFlow = async (
         description: flowProps.description,
         category: categoryValue,
         content: {
-            aboutCompanyAim: flowProps.projectGoal,
+            aboutCompanyAim: flowProps.effects,
             benefits: flowProps.financialBenefit,
             limitFactors: (isFullFormat && flowProps.limitingFactors) || undefined,
         },

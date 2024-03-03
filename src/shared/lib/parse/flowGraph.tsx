@@ -18,7 +18,7 @@ export const convertHistoryToStepProps = (history: IFlowHistory[]): StepProps[] 
         const stepProps: StepProps = {
             title: <FlowGraphTitle responsibleUser={item.user} flowStatus={item.status} />,
             icon: <FlowGraphIcon isFinish />,
-            description: <FlowGraphDate date={item.status.createdAt} />,
+            description: <FlowGraphDate date={item?.createdAt} />,
         };
 
         return stepProps;

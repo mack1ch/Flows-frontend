@@ -10,6 +10,7 @@ import { IPost } from '@/shared/interface/post';
 export const FlowViewHead = ({ flowID, postID }: { flowID?: number; postID?: number }) => {
     const [viewFlowData, setFlowData] = useState<IFlow>({} as IFlow);
     const [viewPostData, setPostData] = useState<IPost>({} as IPost);
+    console.log(viewFlowData);
     useEffect(() => {
         const GetFlowByID = async () => {
             const fetchFlowByID: IFlow | Error = await getFlowByID(flowID);

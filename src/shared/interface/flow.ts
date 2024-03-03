@@ -28,6 +28,8 @@ export interface IFlowHistory {
     id: number;
     user: IUser;
     status: IFlowStatus;
+    createdAt: Date;
+    comment?: string;
 }
 
 export interface IContent {
@@ -45,7 +47,6 @@ export interface IFlowStatus {
     id: number;
     name: TFlowStatusName;
     statusType: TFlowStatusType;
-    createdAt: Date;
 }
 export type TFlowStatusType =
     | 'proposalCreated'

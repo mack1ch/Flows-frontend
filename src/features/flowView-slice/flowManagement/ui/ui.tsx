@@ -59,10 +59,10 @@ export const FlowManagement = ({
                     <>
                         <DownloadButton flowID={flowID} />
                     </>
-                ) : statusType === 'proposalInApprove' ? (
+                ) : statusType === 'proposalInApprove' || statusType === 'proposalNeedRevision' ? (
                     <>
                         {isModerator && <ApproveButton flowID={flowID} />}
-                        <CommentButton flowID={flowID}/>
+                        <CommentButton flowID={flowID} />
                         <ChangeButton />
                         <DeleteButton flowID={flowID} />
                         <DownloadButton flowID={flowID} />

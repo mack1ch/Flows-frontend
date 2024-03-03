@@ -1,6 +1,7 @@
 import { instanceLogged } from '@/shared/api/axios-config';
-import { IComment } from '@/shared/interface/comment';
+
 import { IUser } from '@/shared/interface/user';
+import { IFlow } from '@/shared/interface/flow';
 
 export const getAuthUserData = async (): Promise<IUser | Error> => {
     try {
@@ -11,11 +12,9 @@ export const getAuthUserData = async (): Promise<IUser | Error> => {
     }
 };
 
-export const getComments = async (flowID: number): Promise<IComment[] | Error> => {
+export const getFlowByID = async (id: number): Promise<IFlow | Error> => {
     try {
-        const { data }: { data: IComment[] } = await instanceLogged.get(
-            `proposals/comments/private/?proposalId=${flowID && flowID}`,
-        );
+        const { data }: { data: IFlow } = await instanceLogged.get(`/proposals/byId/${id}/`);
         return data;
     } catch (error) {
         return error as Error;
