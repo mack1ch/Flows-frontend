@@ -35,6 +35,7 @@ export function getStatusByType(status: TFlowStatusType | 'loading'): Status {
         case 'proposalRejected':
             color = '#ED5656';
             title = 'Отклонено';
+            text = 'Ответственный';
             break;
         case 'proposalDone':
             color = '#538A1B';
@@ -46,6 +47,7 @@ export function getStatusByType(status: TFlowStatusType | 'loading'): Status {
             title = 'Требуется уточнения у автора';
             text = 'На согласовании';
             break;
+
         case 'loading':
             color = '#3d3d3d';
             title = 'Загрузка';

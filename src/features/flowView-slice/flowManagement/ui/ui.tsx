@@ -13,6 +13,7 @@ import { getAuthUserData } from '../api';
 import { ApproveButton } from '@/entities/flowView-slice/buttons/approve';
 import { InWorkButton } from '@/entities/flowView-slice/buttons/inWork';
 import { ToDoneButton } from '@/entities/flowView-slice/buttons/toDone';
+import { RejectedButton } from '@/entities/flowView-slice/buttons/rejected';
 export const FlowManagement = ({
     flowStatus,
     flowID = 0,
@@ -64,7 +65,7 @@ export const FlowManagement = ({
                         {isModerator && <ApproveButton flowID={flowID} />}
                         <CommentButton flowID={flowID} />
                         <ChangeButton />
-                        <DeleteButton flowID={flowID} />
+                        <RejectedButton flowID={flowID} />
                         <DownloadButton flowID={flowID} />
                     </>
                 ) : null}
