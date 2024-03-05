@@ -27,6 +27,7 @@ import { getGenerateFuncTask } from '../api/getGenerateFuncTask';
 import Cross from '../../../../../public/icons/x-black.svg';
 import Image from 'next/image';
 import { FuncTaskDoc } from '@/features/generateFuncTaskView-slice/funcTaskDoc';
+import { isURL } from '@/shared/lib/parse/link';
 
 const { TextArea } = Input;
 
@@ -55,6 +56,9 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
         description: '',
         user_to: null,
         effects: '',
+        userName: '',
+        departmentName: '',
+        telegramID: '',
     });
 
     const onRequestTypeChange = (e: RadioChangeEvent) => {
@@ -70,8 +74,20 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                   'limitingFactors',
                   'description',
                   'effects',
+                  'userName',
+                  'telegramID',
+                  'departmentName',
               ]
-            : ['title', 'requestType', 'description', 'effects', 'financialBenefit'];
+            : [
+                  'title',
+                  'requestType',
+                  'description',
+                  'effects',
+                  'financialBenefit',
+                  'userName',
+                  'telegramID',
+                  'departmentName',
+              ];
 
         for (const fieldName of requiredFields) {
             const fieldValue = inputValues[fieldName];
@@ -116,47 +132,54 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
         isFormValid() ? setButtonDisable(true) : setButtonDisable(false);
     };
     const handleSubmit = async () => {
-        try {
-            const res = await createFlow(
-                inputValues,
-                choiceUserID,
-                inputValues.requestType || undefined,
-                isFullFormat,
-                generateDocumentData,
-            );
-            if (!(res instanceof Error)) router.push('/flows/my');
-        } catch (error) {
-            messageApi.open({
-                type: 'error',
-                content: 'Ошибка на сервере, мы уже работаем над устранением',
-            });
-        }
-    };
-    const handleGetTechTask = async () => {
-        try {
-            setModalGenerateLoading(true);
-            const res = await getGenerateFuncTask(
-                inputValues,
-                isFullFormat,
-                getCategoryNameById(inputValues.requestType, flowCategories),
-            );
-            if (!(res instanceof Error)) {
-                setGenerateDocumentData(res);
-                setModalGenerateLoading(false);
-                setInputValues((prevValues) => ({
-                    ...prevValues,
-                    technicalSpecificationLink: res,
-                }));
-                isFormValid() ? setButtonDisable(true) : setButtonDisable(false);
+        if (isURL(inputValues.technicalSpecificationLink.toString())) {
+            try {
+                const res = await createFlow(
+                    inputValues,
+                    inputValues.requestType || undefined,
+                    isFullFormat,
+                    generateDocumentData,
+                );
+                if (!(res instanceof Error)) router.push('/flows/my');
+            } catch (error) {
+                messageApi.open({
+                    type: 'error',
+                    content: 'Ошибка на сервере, мы уже работаем над устранением',
+                });
             }
-        } catch (error) {
+        } else {
             messageApi.open({
                 type: 'error',
-                content: 'Ошибка на сервере, мы уже работаем над устранением',
+                content:
+                    'Вы неверно ввели ссылку на техническое задание. Используйте формат "https://www.example.com"',
             });
-            setModalGenerateLoading(false);
         }
     };
+    // const handleGetTechTask = async () => {
+    //     try {
+    //         setModalGenerateLoading(true);
+    //         const res = await getGenerateFuncTask(
+    //             inputValues,
+    //             isFullFormat,
+    //             getCategoryNameById(inputValues.requestType, flowCategories),
+    //         );
+    //         if (!(res instanceof Error)) {
+    //             setGenerateDocumentData(res);
+    //             setModalGenerateLoading(false);
+    //             setInputValues((prevValues) => ({
+    //                 ...prevValues,
+    //                 technicalSpecificationLink: res,
+    //             }));
+    //             isFormValid() ? setButtonDisable(true) : setButtonDisable(false);
+    //         }
+    //     } catch (error) {
+    //         messageApi.open({
+    //             type: 'error',
+    //             content: 'Ошибка на сервере, мы уже работаем над устранением',
+    //         });
+    //         setModalGenerateLoading(false);
+    //     }
+    // };
 
     return (
         <>
@@ -198,21 +221,10 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                     <Input
                                         width={360}
                                         size="large"
-                                        disabled
                                         name="fullName"
-                                        defaultValue={
-                                            authUser.lastname +
-                                            ' ' +
-                                            authUser.firstname +
-                                            ' ' +
-                                            authUser.surname
-                                        }
-                                        value={
-                                            authUser.lastname +
-                                                ' ' +
-                                                authUser.firstname +
-                                                ' ' +
-                                                authUser.surname || 'Загрузка...'
+                                        value={inputValues.userName}
+                                        onChange={(e) =>
+                                            handleInputChange('userName', e.target.value)
                                         }
                                     />
                                 </Form.Item>
@@ -222,10 +234,11 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                     <Input
                                         width={360}
                                         size="large"
-                                        disabled
                                         name="telegramId"
-                                        defaultValue={authUser.telegram}
-                                        value={authUser.telegram || 'Загрузка...'}
+                                        value={inputValues.telegramID}
+                                        onChange={(e) =>
+                                            handleInputChange('telegramID', e.target.value)
+                                        }
                                     />
                                 </Form.Item>
 
@@ -235,9 +248,10 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         width={360}
                                         size="large"
                                         name="department"
-                                        disabled
-                                        defaultValue={authUser?.department?.name || 'Загрузка...'}
-                                        value={authUser?.department?.name || 'Загрузка...'}
+                                        value={inputValues.departmentName}
+                                        onChange={(e) =>
+                                            handleInputChange('departmentName', e.target.value)
+                                        }
                                     />
                                 </Form.Item>
 
@@ -369,7 +383,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 <Form.Item
                                     style={{ width: '100%' }}
                                     required
-                                    label="Ссылка на функциональные требования / текст">
+                                    label="Ссылка на техническое задание">
                                     <Input
                                         width={360}
                                         size="large"
@@ -384,7 +398,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                     />
                                 </Form.Item>
 
-                                {/* Technical Specification Link */}
+                                {/* Technical Specification Link
                                 <div className={styles.generateButton}>
                                     <Button
                                         onClick={handleGetTechTask}
@@ -421,7 +435,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                         />
                                         Смотреть сгенерированный докумнент
                                     </span>
-                                )}
+                                )} */}
                                 {width <= 768 && (
                                     <Space>
                                         {/* Submit Button */}

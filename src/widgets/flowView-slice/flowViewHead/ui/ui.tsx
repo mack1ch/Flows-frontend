@@ -2,7 +2,7 @@ import { PageHeaderWithBackArray } from '@/shared/ui/pageHeaders-slice/backArray
 import styles from './ui.module.scss';
 import { FlowHistoryGraph } from '@/features/flowView-slice/flowHistoryGraph';
 import { FlowManagement } from '@/features/flowView-slice/flowManagement';
-import { IFlow, IFlowStatus } from '@/shared/interface/flow';
+import { IFlow } from '@/shared/interface/flow';
 import { useEffect, useState } from 'react';
 import { getFlowByID, getPostByID } from '../api';
 import { IPost } from '@/shared/interface/post';

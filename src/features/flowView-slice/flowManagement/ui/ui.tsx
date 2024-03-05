@@ -64,7 +64,7 @@ export const FlowManagement = ({
                     <>
                         {isModerator && <ApproveButton flowID={flowID} />}
                         <CommentButton flowID={flowID} />
-                        <ChangeButton />
+                        {/* <ChangeButton /> */}
                         <RejectedButton flowID={flowID} />
                         <DownloadButton flowID={flowID} />
                     </>

@@ -1,14 +1,15 @@
 import { instanceLogged } from '@/shared/api/axios-config';
 import { IFlow } from '@/shared/interface/flow';
 import { ICreateFlow } from '@/shared/interface/flowsCreateForm';
+import { splitFullName } from '@/shared/lib/parse/user';
 
 export const createFlow = async (
     flowProps: ICreateFlow,
-    user_to: number,
     categoryValue: number | undefined,
     isFullFormat: boolean,
     techTask: string,
 ): Promise<IFlow | Error> => {
+    const { lastName, firstName, surName } = splitFullName(flowProps.userName);
     const postContent = {
         name: flowProps.title,
         description: flowProps.description,
@@ -18,7 +19,13 @@ export const createFlow = async (
             benefits: flowProps.financialBenefit,
             limitFactors: (isFullFormat && flowProps.limitingFactors) || undefined,
         },
-        document: techTask,
+        document: flowProps.technicalSpecificationLink,
+        isDocumentGenerated: false,
+        firstname: firstName,
+        surname: surName,
+        lastname: lastName,
+        department: flowProps.departmentName,
+        telegram: flowProps.telegramID,
     };
 
     try {

@@ -11,4 +11,7 @@ export interface ICreateFlow {
     user_to: number | null;
     description: string;
     effects: string;
+    userName: string;
+    telegramID: string;
+    departmentName: string;
 }

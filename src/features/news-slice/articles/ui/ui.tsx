@@ -4,9 +4,9 @@ import { NewsArticle } from '@/entities/news-slice/article';
 import styles from './ui.module.scss';
 import { useEffect, useState } from 'react';
 import { IPost } from '@/shared/interface/post';
-import { getPosts } from '../api';
+import { getMyPosts, getPosts } from '../api';
 
-export const Articles = () => {
+export const Articles = ({ isMy = false }: { isMy?: boolean }) => {
     const [flows, setFlows] = useState<IPost[] | null>(null);
 
     useEffect(() => {
@@ -18,9 +18,22 @@ export const Articles = () => {
                 setFlows(fetchPosts);
             }
         };
+        const GetMyPosts = async () => {
+            const fetchPosts: IPost[] | Error = await getMyPosts();
 
-        GetPosts();
-    }, []);
+            if (fetchPosts instanceof Error) return;
+            else {
+                setFlows(fetchPosts);
+            }
+        };
+
+        if (isMy) {
+            GetMyPosts();
+        } else {
+            GetPosts();
+        }
+    }, [isMy]);
+
     return (
         <>
             <section className={styles.wrap}>

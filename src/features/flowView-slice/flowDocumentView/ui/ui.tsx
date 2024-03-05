@@ -49,7 +49,7 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                             }}>
                             <div
                                 className={styles.contentTitle}
-                                style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                style={{ flex: '0 0 25%', textAlign: 'left' }}>
                                 ФИО создателя:
                             </div>
                             <div
@@ -66,7 +66,7 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                             }}>
                             <div
                                 className={styles.contentTitle}
-                                style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                style={{ flex: '0 0 25%', textAlign: 'left' }}>
                                 ID в Telegram:
                             </div>
                             <Link
@@ -91,7 +91,7 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                             }}>
                             <div
                                 className={styles.contentTitle}
-                                style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                style={{ flex: '0 0 25%', textAlign: 'left' }}>
                                 Отдел:
                             </div>
                             <div
@@ -115,7 +115,7 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                         }}>
                                         <div
                                             className={styles.contentTitle}
-                                            style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                            style={{ flex: '0 0 25%', textAlign: 'left' }}>
                                             {header}:
                                         </div>
                                         <div
@@ -134,7 +134,7 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                             }}>
                             <div
                                 className={styles.contentTitle}
-                                style={{ flex: '0 0 35%', textAlign: 'left' }}>
+                                style={{ flex: '0 0 25%', textAlign: 'left' }}>
                                 Техническое задание:
                             </div>
                             <Link

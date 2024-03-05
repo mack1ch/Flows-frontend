@@ -53,3 +53,16 @@ export function getUserTelegram(telegram: string): string {
     if (telegram[0] === '@') return telegram.slice(1);
     return telegram;
 }
+
+interface FullNameParts {
+    lastName: string;
+    firstName: string;
+    surName: string;
+}
+
+export function splitFullName(fullName: string): FullNameParts {
+    const parts = fullName.split(' ');
+    const [lastName, firstName, ...surNameArray] = parts;
+    const surName = surNameArray.join(' ');
+    return { lastName, firstName, surName };
+}

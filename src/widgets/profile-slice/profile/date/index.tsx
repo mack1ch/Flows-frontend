@@ -7,7 +7,7 @@ export const tabItems: TabsProps['items'] = [
     {
         key: '1',
         label: 'Заявки',
-        children: <Articles />,
+        children: <Articles isMy />,
     },
     {
         key: '2',
