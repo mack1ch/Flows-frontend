@@ -12,6 +12,7 @@ export interface IFlow {
     createdAt: Date;
     comment: string[] | null;
     documentLink: string;
+    description: string;
 }
 
 export interface IDocument {

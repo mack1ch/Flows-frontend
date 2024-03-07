@@ -97,6 +97,24 @@ export const FlowDocumentView = ({flowID, postID}: { flowID?: number; postID?: n
                             <div
                                 className={styles.contentTitle}
                                 style={{flex: width > 570 ? '0 0 25%' : '0 0 fit-content', textAlign: 'left'}}>
+                                Описание идеи:
+                            </div>
+                            <div
+                                className={styles.contentItem}
+                                style={{flex: '1', textAlign: 'left'}}>
+                                {viewFlowData?.description}
+                            </div>
+                        </div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-start',
+                                gap: '8px',
+                            }}>
+                            <div
+                                className={styles.contentTitle}
+                                style={{flex: width > 570 ? '0 0 25%' : '0 0 fit-content', textAlign: 'left'}}>
                                 Отдел:
                             </div>
                             <div
