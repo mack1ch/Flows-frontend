@@ -5,6 +5,7 @@ import { IPost } from '@/shared/interface/post';
 export const getFlowByID = async (id?: number): Promise<IFlow | Error> => {
     try {
         const { data }: { data: IFlow } = await instanceLogged.get(`/proposals/byId/${id}/`);
+        console.log(data);
         return data;
     } catch (error) {
         return error as Error;

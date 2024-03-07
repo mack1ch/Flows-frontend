@@ -1,16 +1,18 @@
-import { Divider } from 'antd';
+import {Divider} from 'antd';
 import styles from './ui.module.scss';
-import { FlowDocumentItemTitle } from '@/entities/flowView-slice/flowDocumentItem/title';
-import { useEffect, useState } from 'react';
-import { IFlow } from '@/shared/interface/flow';
-import { getFlowByID, getPostByID } from '../api';
-import { IPost } from '@/shared/interface/post';
-import { headersMapping } from '../model';
-import { getUserFIO, getUserTelegram } from '@/shared/lib/parse/user';
+import {FlowDocumentItemTitle} from '@/entities/flowView-slice/flowDocumentItem/title';
+import {useEffect, useState} from 'react';
+import {IFlow} from '@/shared/interface/flow';
+import {getFlowByID, getPostByID} from '../api';
+import {IPost} from '@/shared/interface/post';
+import {headersMapping} from '../model';
+import {getUserFIO, getUserTelegram} from '@/shared/lib/parse/user';
 import Link from 'next/link';
+import {useWindowSize} from "@/shared/hooks/useWindowSize";
 
-export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?: number }) => {
+export const FlowDocumentView = ({flowID, postID}: { flowID?: number; postID?: number }) => {
     const [viewFlowData, setFlowData] = useState<IFlow>({} as IFlow);
+    const {width, height} = useWindowSize();
     const [viewPostData, setPostData] = useState<IPost>({} as IPost);
     useEffect(() => {
         const GetFlowByID = async () => {
@@ -39,22 +41,23 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
             <section className={styles.layout}>
                 <div className={styles.document}>
                     <h2 className={styles.heading}>{viewFlowData.name}</h2>
-                    <Divider />
+                    <Divider/>
                     <div className={styles.date}>
                         <div
                             style={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'flex-start',
+                                gap: '8px',
                             }}>
                             <div
                                 className={styles.contentTitle}
-                                style={{ flex: '0 0 25%', textAlign: 'left' }}>
+                                style={{flex: width > 570 ? '0 0 25%' : '0 0 fit-content', textAlign: 'left'}}>
                                 ФИО создателя:
                             </div>
                             <div
                                 className={styles.contentItem}
-                                style={{ flex: '1', textAlign: 'left' }}>
+                                style={{flex: '1', textAlign: 'left'}}>
                                 {viewFlowData.author && getUserFIO(viewFlowData.author)}
                             </div>
                         </div>
@@ -63,10 +66,11 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'flex-start',
+                                gap: '8px',
                             }}>
                             <div
                                 className={styles.contentTitle}
-                                style={{ flex: '0 0 25%', textAlign: 'left' }}>
+                                style={{flex: width > 570 ? '0 0 25%' : '0 0 fit-content', textAlign: 'left'}}>
                                 ID в Telegram:
                             </div>
                             <Link
@@ -79,7 +83,7 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                         }`) ||
                                     '/flow/my'
                                 }
-                                style={{ flex: '1', textAlign: 'left' }}>
+                                style={{flex: '1', textAlign: 'left'}}>
                                 {viewFlowData.author && viewFlowData.author.telegram}
                             </Link>
                         </div>
@@ -88,15 +92,16 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'flex-start',
+                                gap: '8px',
                             }}>
                             <div
                                 className={styles.contentTitle}
-                                style={{ flex: '0 0 25%', textAlign: 'left' }}>
+                                style={{flex: width > 570 ? '0 0 25%' : '0 0 fit-content', textAlign: 'left'}}>
                                 Отдел:
                             </div>
                             <div
                                 className={styles.contentItem}
-                                style={{ flex: '1', textAlign: 'left' }}>
+                                style={{flex: '1', textAlign: 'left'}}>
                                 {(viewFlowData.author && viewFlowData.author?.job?.name) ||
                                     'Не найден'}
                             </div>
@@ -112,15 +117,19 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                             display: 'flex',
                                             justifyContent: 'space-between',
                                             alignItems: 'flex-start',
+                                            gap: '8px',
                                         }}>
                                         <div
                                             className={styles.contentTitle}
-                                            style={{ flex: '0 0 25%', textAlign: 'left' }}>
+                                            style={{
+                                                flex: width > 570 ? '0 0 25%' : '0 0 fit-content',
+                                                textAlign: 'left'
+                                            }}>
                                             {header}:
                                         </div>
                                         <div
                                             className={styles.contentItem}
-                                            style={{ flex: '1', textAlign: 'left' }}>
+                                            style={{flex: '1', textAlign: 'left'}}>
                                             {value}
                                         </div>
                                     </div>
@@ -131,10 +140,11 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'flex-start',
+                                gap: '8px',
                             }}>
                             <div
                                 className={styles.contentTitle}
-                                style={{ flex: '0 0 25%', textAlign: 'left' }}>
+                                style={{flex: width > 570 ? '0 0 25%' : '0 0 fit-content', textAlign: 'left'}}>
                                 Техническое задание:
                             </div>
                             <Link
@@ -143,7 +153,7 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                     (viewFlowData.documentLink && viewFlowData.documentLink) ||
                                     '/flows/my/'
                                 }
-                                style={{ flex: '1', textAlign: 'left' }}>
+                                style={{flex: '1', textAlign: 'left'}}>
                                 {(viewFlowData.documentLink && viewFlowData.documentLink) ||
                                     'Не найдено'}
                             </Link>
