@@ -9,7 +9,6 @@ export const createFlow = async (
     isFullFormat: boolean,
     techTask: string,
 ): Promise<IFlow | Error> => {
-    const { lastName, firstName, surName } = splitFullName(flowProps.userName);
     const postContent = {
         name: flowProps.title,
         description: flowProps.description,
@@ -21,11 +20,6 @@ export const createFlow = async (
         },
         document: flowProps.technicalSpecificationLink,
         isDocumentGenerated: false,
-        firstname: firstName,
-        surname: surName,
-        lastname: lastName,
-        department: flowProps.departmentName,
-        telegram: flowProps.telegramID,
     };
 
     try {

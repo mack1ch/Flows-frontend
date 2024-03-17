@@ -10,33 +10,34 @@ import {
     message,
 } from 'antd';
 import styles from './ui.module.scss';
-import { useEffect, useState } from 'react';
-import { CheckboxValueType } from 'antd/es/checkbox/Group';
-import { useWindowSize } from '@/shared/hooks/useWindowSize';
-import { createFlow } from '../api/postFlows';
-import { ConfirmModal } from '../modal';
-import { ICreateFlow } from '@/shared/interface/flowsCreateForm';
-import { getCategoryNameById, isNonEmptyArray } from '../model';
-import { IFlowCategory } from '@/shared/interface/flow';
-import { getFlowCategories } from '../api/getFlowCategories';
+import {useEffect, useState} from 'react';
+import {CheckboxValueType} from 'antd/es/checkbox/Group';
+import {useWindowSize} from '@/shared/hooks/useWindowSize';
+import {createFlow} from '../api/postFlows';
+import {ConfirmModal} from '../modal';
+import {ICreateFlow} from '@/shared/interface/flowsCreateForm';
+import {getCategoryNameById, isNonEmptyArray} from '../model';
+import {IFlowCategory} from '@/shared/interface/flow';
+import {getFlowCategories} from '../api/getFlowCategories';
 import Document from '../../../../../public/icons/document-green.svg';
-import { IUser } from '@/shared/interface/user';
-import { getAuthUser } from '../api/getUser';
-import { useRouter } from 'next/navigation';
-import { getGenerateFuncTask } from '../api/getGenerateFuncTask';
+import {IUser} from '@/shared/interface/user';
+import {getAuthUser} from '../api/getUser';
+import {useRouter} from 'next/navigation';
+import {getGenerateFuncTask} from '../api/getGenerateFuncTask';
 import Cross from '../../../../../public/icons/x-black.svg';
 import Image from 'next/image';
-import { FuncTaskDoc } from '@/features/generateFuncTaskView-slice/funcTaskDoc';
-import { isURL } from '@/shared/lib/parse/link';
+import {FuncTaskDoc} from '@/features/generateFuncTaskView-slice/funcTaskDoc';
+import {isURL} from '@/shared/lib/parse/link';
+import {getUserFIO} from "@/shared/lib/parse/user";
 
-const { TextArea } = Input;
+const {TextArea} = Input;
 
-export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolean }) => {
+export const FlowCreateForm = ({isFullFormat = false}: { isFullFormat?: boolean }) => {
     const router = useRouter();
     const [formData] = Form.useForm();
     const [authUser, setAuthUser] = useState<IUser>({} as IUser);
     const [isButtonDisable, setButtonDisable] = useState(false);
-    const { width, height } = useWindowSize();
+    const {width, height} = useWindowSize();
     const [choiceUserID, setChoiceUserID] = useState<number>(0);
     const [usersArray, setUserArray] = useState<IUser[]>([] as IUser[]);
     const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
@@ -67,27 +68,21 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
     const isFormValid = () => {
         const requiredFields: (keyof ICreateFlow)[] = isFullFormat
             ? [
-                  'title',
-                  'requestType',
-                  'projectGoal',
-                  'financialBenefit',
-                  'limitingFactors',
-                  'description',
-                  'effects',
-                  'userName',
-                  'telegramID',
-                  'departmentName',
-              ]
+                'title',
+                'requestType',
+                'projectGoal',
+                'financialBenefit',
+                'limitingFactors',
+                'description',
+                'effects',
+            ]
             : [
-                  'title',
-                  'requestType',
-                  'description',
-                  'effects',
-                  'financialBenefit',
-                  'userName',
-                  'telegramID',
-                  'departmentName',
-              ];
+                'title',
+                'requestType',
+                'description',
+                'effects',
+                'financialBenefit',
+            ];
 
         for (const fieldName of requiredFields) {
             const fieldValue = inputValues[fieldName];
@@ -199,12 +194,12 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
             />
             <section className={styles.layout}>
                 <ConfigProvider theme={flowFormTheme}>
-                    <Form style={{ width: '100%' }} layout="vertical" form={formData}>
+                    <Form style={{width: '100%'}} layout="vertical" form={formData}>
                         <div className={styles.formLayout}>
                             <div className={styles.inputLayout}>
                                 {/* Title */}
                                 <Form.Item
-                                    style={{ width: '100%' }}
+                                    style={{width: '100%'}}
                                     required
                                     label="Название заявки">
                                     <Input
@@ -217,12 +212,13 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 </Form.Item>
 
                                 {/* Full Name */}
-                                <Form.Item style={{ width: '100%' }} required label="ФИО">
+                                <Form.Item style={{width: '100%'}} required label="ФИО">
                                     <Input
                                         width={360}
                                         size="large"
                                         name="fullName"
-                                        value={inputValues.userName}
+                                        disabled
+                                        value={getUserFIO(authUser)}
                                         onChange={(e) =>
                                             handleInputChange('userName', e.target.value)
                                         }
@@ -230,12 +226,13 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 </Form.Item>
 
                                 {/* Telegram ID */}
-                                <Form.Item style={{ width: '100%' }} required label="ID в Telegram">
+                                <Form.Item style={{width: '100%'}} required label="ID в Telegram">
                                     <Input
                                         width={360}
                                         size="large"
                                         name="telegramId"
-                                        value={inputValues.telegramID}
+                                        disabled
+                                        value={authUser.telegram}
                                         onChange={(e) =>
                                             handleInputChange('telegramID', e.target.value)
                                         }
@@ -243,12 +240,13 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 </Form.Item>
 
                                 {/* Department */}
-                                <Form.Item style={{ width: '100%' }} required label="Ваш отдел">
+                                <Form.Item style={{width: '100%'}} required label="Ваш отдел">
                                     <Input
                                         width={360}
                                         size="large"
                                         name="department"
-                                        value={inputValues.departmentName}
+                                        disabled
+                                        value={authUser.department?.name}
                                         onChange={(e) =>
                                             handleInputChange('departmentName', e.target.value)
                                         }
@@ -256,7 +254,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 </Form.Item>
 
                                 {/* Request Type */}
-                                <Form.Item style={{ width: '100%' }} required label="Тип запроса:">
+                                <Form.Item style={{width: '100%'}} required label="Тип запроса:">
                                     <Radio.Group
                                         onChange={onRequestTypeChange}
                                         value={inputValues.requestType}>
@@ -273,7 +271,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 {/* Project Goal */}
                                 {isFullFormat && (
                                     <Form.Item
-                                        style={{ width: '100%' }}
+                                        style={{width: '100%'}}
                                         required
                                         label="Цель проекта">
                                         <TextArea
@@ -290,7 +288,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 )}
                                 {/* Project discription */}
                                 <Form.Item
-                                    style={{ width: '100%' }}
+                                    style={{width: '100%'}}
                                     required
                                     label="Описание проекта">
                                     <TextArea
@@ -307,7 +305,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
 
                                 {/* Project effects */}
                                 <Form.Item
-                                    style={{ width: '100%' }}
+                                    style={{width: '100%'}}
                                     required
                                     label="Как ваш проект позволит достичь цели компании?">
                                     <TextArea
@@ -344,10 +342,10 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 )}
                             </div>
 
-                            <div style={{ maxWidth: '100%' }} className={styles.inputLayout}>
+                            <div style={{maxWidth: '100%'}} className={styles.inputLayout}>
                                 {/* Financial benefit */}
                                 <Form.Item
-                                    style={{ width: '100%' }}
+                                    style={{width: '100%'}}
                                     required
                                     label="Какую выгоду несет реализация проекта?">
                                     <TextArea
@@ -364,7 +362,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 {/* Limiting Factors */}
                                 {isFullFormat && (
                                     <Form.Item
-                                        style={{ width: '100%' }}
+                                        style={{width: '100%'}}
                                         required
                                         label="Есть ли какие-либо ограничивающие факторы?">
                                         <TextArea
@@ -381,7 +379,7 @@ export const FlowCreateForm = ({ isFullFormat = false }: { isFullFormat?: boolea
                                 )}
                                 {/* Technical Specification Link */}
                                 <Form.Item
-                                    style={{ width: '100%' }}
+                                    style={{width: '100%'}}
                                     required
                                     label="Ссылка на техническое задание">
                                     <Input

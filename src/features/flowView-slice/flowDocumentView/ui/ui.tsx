@@ -120,7 +120,7 @@ export const FlowDocumentView = ({flowID, postID}: { flowID?: number; postID?: n
                             <div
                                 className={styles.contentItem}
                                 style={{flex: '1', textAlign: 'left'}}>
-                                {(viewFlowData.author && viewFlowData.author?.job?.name) ||
+                                {(viewFlowData.author && viewFlowData.author?.department?.name) ||
                                     'Не найден'}
                             </div>
                         </div>

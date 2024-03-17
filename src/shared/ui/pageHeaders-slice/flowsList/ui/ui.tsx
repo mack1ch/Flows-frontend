@@ -1,26 +1,26 @@
 'use client ';
 
-import { Filter } from '@/shared/ui/icons/filter';
-import { Plus } from '@/shared/ui/icons/plusWhite';
+import {Filter} from '@/shared/ui/icons/filter';
+import {Plus} from '@/shared/ui/icons/plusWhite';
 import styles from './ui.module.scss';
-import type { MenuProps, ThemeConfig } from 'antd';
-import { AutoComplete, Button, ConfigProvider, Dropdown, Flex, Space } from 'antd';
-import { useEffect, useState } from 'react';
-import { mapFlowTableItemsToMenuArray, sortFlowTableItems } from '../model';
+import type {MenuProps, ThemeConfig} from 'antd';
+import {AutoComplete, Button, ConfigProvider, Dropdown, Flex, Space} from 'antd';
+import {useEffect, useState} from 'react';
+import {mapFlowTableItemsToMenuArray, sortFlowTableItems} from '../model';
 import Link from 'next/link';
-import { useWindowSize } from '@/shared/hooks/useWindowSize';
-import { IFlow, IFlowStatus } from '@/shared/interface/flow';
+import {useWindowSize} from '@/shared/hooks/useWindowSize';
+import {IFlow, IFlowStatus} from '@/shared/interface/flow';
 
 export const FlowsListHeader = ({
-    id,
-    title,
-    filterName,
-    searchItemsArray,
-    filterItemsArray,
-    onSort,
-    onSearch,
-    setFlowStatusChoise,
-}: {
+                                    id,
+                                    title,
+                                    filterName,
+                                    searchItemsArray,
+                                    filterItemsArray,
+                                    onSort,
+                                    onSearch,
+                                    setFlowStatusChoise,
+                                }: {
     id?: number;
     title: string;
     filterName: string;
@@ -32,7 +32,7 @@ export const FlowsListHeader = ({
 }) => {
     const [inputValue, setInputValue] = useState('');
     const [options, setOptions] = useState<{ value: string }[]>([]);
-    const { width, height } = useWindowSize();
+    const {width, height} = useWindowSize();
     const [items, setItems] = useState<MenuProps['items']>([]);
 
     useEffect(() => {
@@ -61,9 +61,9 @@ export const FlowsListHeader = ({
                         }}>
                         <h1 className={styles.title}>{title}</h1>
                         <Link href="/flows/choice">
-                            <Button size="large">
+                            <Button type='primary' size="large">
                                 <Space>
-                                    <Plus />
+                                    <Plus/>
                                     Создать заявку
                                 </Space>
                             </Button>
@@ -86,9 +86,9 @@ export const FlowsListHeader = ({
                                         onClick: handleMenuClick,
                                     }}
                                     placement="bottomLeft">
-                                    <Button size="large">
+                                    <Button type='primary' size="large">
                                         <Space>
-                                            <Filter />
+                                            <Filter/>
                                             {filterName}
                                         </Space>
                                     </Button>
@@ -99,7 +99,7 @@ export const FlowsListHeader = ({
                                 options={options}
                                 onChange={setInputValue}
                                 placeholder="Найти по названию"
-                                style={{ width: '242px' }}
+                                style={{width: '242px'}}
                                 onSearch={(text) => setInputValue(text)}
                                 size="large"
                             />
@@ -110,7 +110,7 @@ export const FlowsListHeader = ({
                             options={options}
                             onChange={setInputValue}
                             placeholder="Найти по названию"
-                            style={{ minWidth: '320px' }}
+                            style={{minWidth: '320px'}}
                             onSearch={(text) => setInputValue(text)}
                             size="large"
                         />
@@ -119,9 +119,9 @@ export const FlowsListHeader = ({
                 <ConfigProvider theme={createFlowButtonTheme}>
                     {width > 768 && (
                         <Link href="/flows/choice">
-                            <Button size="large">
+                            <Button type='primary' size="large">
                                 <Space>
-                                    <Plus />
+                                    <Plus/>
                                     Создать заявку
                                 </Space>
                             </Button>
@@ -136,11 +136,9 @@ export const FlowsListHeader = ({
 const groupComponentTheme: ThemeConfig = {
     components: {
         Button: {
-            defaultBg: '#73AE62',
+            colorPrimary: '#73AE62',
             colorText: '#fff',
-            colorBorder: '#73AE62',
-            colorPrimaryHover: '#ebebeb',
-            colorPrimaryActive: '#ebebeb',
+            colorPrimaryHover: '#449429',
         },
         Select: {
             colorPrimaryHover: '#73AE62',
@@ -149,7 +147,7 @@ const groupComponentTheme: ThemeConfig = {
         Dropdown: {
             colorPrimary: '#73AE62',
             controlItemBgActive: '#D6ECDB',
-            controlItemBgActiveHover: '#D6ECDB ',
+            controlItemBgActiveHover: '#D6ECDB',
         },
     },
 };
@@ -157,10 +155,9 @@ const groupComponentTheme: ThemeConfig = {
 const createFlowButtonTheme: ThemeConfig = {
     components: {
         Button: {
-            defaultBg: '#73AE62',
+            colorPrimary: '#73AE62',
             colorText: '#fff',
-            colorPrimaryHover: '#ebebeb',
-            colorPrimaryActive: '#ebebeb',
+            colorPrimaryHover: '#449429',
         },
     },
 };
