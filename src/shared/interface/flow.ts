@@ -37,7 +37,7 @@ export interface IContent {
     name?: string;
     description?: string;
     proposalAim?: string; // Цель
-    aboutCompanyAim?: string;
+    aboutCompanyAim?: string[];
     proposalType?: string; // Тип заявки
     benefits: string; // Выгода от проекта
     limitFactors?: string; // Стоп-факторы

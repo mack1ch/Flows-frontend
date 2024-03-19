@@ -1,4 +1,4 @@
-import { CheckboxValueType } from "antd/es/checkbox/Group";
+import { CheckboxValueType } from 'antd/es/checkbox/Group';
 
 export interface ICreateFlow {
     title: string;
@@ -14,4 +14,15 @@ export interface ICreateFlow {
     userName: string;
     telegramID: string;
     departmentName: string;
+}
+
+export interface ICreateCommerceForm {
+    title: string;
+    flowType: number | null;
+    description: string;
+    flowTarget: CheckboxValueType[] | undefined;
+    address: string;
+    city: string;
+    material: string;
+    problem: string;
 }
