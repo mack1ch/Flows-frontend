@@ -186,7 +186,7 @@ export const FlowCommerceForm = () => {
                                     <Form.Item
                                         style={{ width: '100%' }}
                                         required
-                                        label="Город, в которм работаю">
+                                        label="Город, в котором работаю">
                                         <Input
                                             width={360}
                                             autoComplete="Екатеринбург"
