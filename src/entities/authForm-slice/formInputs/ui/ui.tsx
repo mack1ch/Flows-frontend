@@ -27,11 +27,6 @@ export const FormInputs = ({
             ...prevData,
             [name]: value,
         }));
-
-        const hasEmail = formData.email?.length > 0;
-        const hasPassword = formData.password?.length > 0;
-        console.log(hasEmail, hasPassword, formData);
-        setSubmitted(hasEmail && hasPassword);
     };
 
     useEffect(() => {
