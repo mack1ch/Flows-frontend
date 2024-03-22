@@ -37,7 +37,6 @@ export const FlowCommerceForm = () => {
     const [flowCategories, setFlowCategories] = useState<IFlowCategory[]>([] as IFlowCategory[]);
     const router = useRouter();
     const [authUser, setAuthUser] = useState<IUser>({} as IUser);
-    const [isButtonDisable, setButtonDisable] = useState(false);
     const [inputValues, setInputValues] = useState<ICreateCommerceForm>({
         title: '',
         flowType: null,
@@ -51,24 +50,33 @@ export const FlowCommerceForm = () => {
 
     // Запрос на получение данных о пользователе и типе заявки
     useEffect(() => {
-        const GetUser = async () => {
-            const fetchUser: IUser | Error = await getAuthUser();
-            if (fetchUser instanceof Error) return;
-            else {
+        const fetchData = async () => {
+            const fetchUser = await getAuthUser();
+            if (!(fetchUser instanceof Error)) {
                 setAuthUser(fetchUser);
             }
-        };
 
-        const GetFlowCategories = async () => {
-            const fetchCategories: IFlowCategory[] | Error = await getFlowCategories();
-            if (fetchCategories instanceof Error) return;
-            else {
+            const fetchCategories = await getFlowCategories();
+            if (!(fetchCategories instanceof Error)) {
                 setFlowCategories(fetchCategories);
             }
         };
-        GetUser();
-        GetFlowCategories();
+        fetchData();
     }, []);
+
+    useEffect(() => {
+        // Проверяем готовность формы при изменении данных
+        if (isFormValid(inputValues)) {
+            formData
+                .validateFields()
+                .then(() => {
+                    // Все поля валидны
+                })
+                .catch(() => {
+                    // Есть невалидные поля
+                });
+        }
+    }, [inputValues, formData]);
 
     // Изменение типа заявки
     const onRequestTypeChange = (e: RadioChangeEvent) => {
@@ -76,15 +84,18 @@ export const FlowCommerceForm = () => {
     };
 
     // Проверка, является ли форма заполненной
-    const isFormValid = (): boolean => {
-        for (const fieldName of RequestFields) {
-            const fieldValue = inputValues[fieldName];
-            if (!fieldValue || (Array.isArray(fieldValue) && !isNonEmptyArray(fieldValue))) {
-                return false;
-            }
-        }
-        return true;
+    const isFormValid = (values: Partial<ICreateCommerceForm>): boolean => {
+        return RequestFields.every((fieldName) => {
+            const fieldValue = values[fieldName];
+            return (
+                fieldValue !== undefined &&
+                fieldValue !== null &&
+                fieldValue !== '' &&
+                (Array.isArray(fieldValue) ? isNonEmptyArray(fieldValue) : true)
+            );
+        });
     };
+
     // Функция для изменения инпутов в форме
     const handleInputChange = (
         name: string,
@@ -94,7 +105,6 @@ export const FlowCommerceForm = () => {
             ...prevValues,
             [name]: value,
         }));
-        isFormValid() ? setButtonDisable(true) : setButtonDisable(false);
     };
 
     // Изменение Checkboxes для целей заявки
@@ -107,22 +117,12 @@ export const FlowCommerceForm = () => {
 
     // Отпрвка формы
     const handleSubmit = async () => {
-        if (isURL(inputValues.material.toString())) {
-            try {
-                const res = await createFlow(inputValues);
-                if (!(res instanceof Error)) router.push('/flows/my');
-            } catch (error) {
-                messageApi.open({
-                    type: 'error',
-                    content: 'Ошибка на сервере, мы уже работаем над устранением',
-                });
-            }
-        } else {
-            messageApi.open({
-                type: 'error',
-                content:
-                    'Вы неверно ввели ссылку на техническое задание. Используйте формат "https://www.example.com"',
-            });
+        try {
+            await formData.validateFields();
+            const res = await createFlow(inputValues);
+            if (!(res instanceof Error)) router.push('/flows/my');
+        } catch (error) {
+            message.error('Ошибка на сервере, мы уже работаем над устранением');
         }
     };
     return (
@@ -254,10 +254,10 @@ export const FlowCommerceForm = () => {
                                             {/* Submit Button */}
                                             <Button
                                                 onClick={handleSubmit}
-                                                disabled={!isButtonDisable}
+                                                disabled={!isFormValid(inputValues)}
                                                 htmlType="submit"
                                                 style={{
-                                                    background: !!isButtonDisable
+                                                    background: !!isFormValid(inputValues)
                                                         ? '#73AE62'
                                                         : undefined,
                                                 }}
@@ -312,7 +312,14 @@ export const FlowCommerceForm = () => {
 
                                     {/* Technical Specification Link */}
                                     <Form.Item
-                                        required
+                                        name="url"
+                                        rules={[
+                                            {
+                                                type: 'url',
+                                                warningOnly: true,
+                                                message: 'Ссылка введена неверно',
+                                            },
+                                        ]}
                                         style={{ width: '100%' }}
                                         label="Ссылка на материалы">
                                         <Input
@@ -332,10 +339,10 @@ export const FlowCommerceForm = () => {
                                             {/* Submit Button */}
                                             <Button
                                                 onClick={handleSubmit}
-                                                disabled={!isButtonDisable}
+                                                disabled={!isFormValid(inputValues)}
                                                 htmlType="submit"
                                                 style={{
-                                                    background: !!isButtonDisable
+                                                    background: !!isFormValid(inputValues)
                                                         ? '#73AE62'
                                                         : undefined,
                                                 }}

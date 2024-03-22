@@ -6,6 +6,7 @@ import { Button, ConfigProvider, Space, ThemeConfig } from 'antd';
 import { useEffect, useState } from 'react';
 import { getFlowByID } from '../api';
 import Link from 'next/link';
+import { isURL } from '@/shared/lib/parse/link';
 
 export const DownloadButton = ({ flowID }: { flowID: number }) => {
     const [viewFlowData, setFlowData] = useState<IFlow>({} as IFlow);
@@ -23,18 +24,20 @@ export const DownloadButton = ({ flowID }: { flowID: number }) => {
 
     return (
         <>
-            <ConfigProvider theme={downloadButtonTheme}>
-                <Link
-                    href={viewFlowData.documentLink ? viewFlowData.documentLink : ''}
-                    download={viewFlowData.document}>
-                    <Button size="large" type="text">
-                        <Space>
-                            <Download />
-                            Скачать
-                        </Space>
-                    </Button>
-                </Link>
-            </ConfigProvider>
+            {isURL(viewFlowData.documentLink) ? (
+                <ConfigProvider theme={downloadButtonTheme}>
+                    <Link
+                        href={viewFlowData.documentLink ? viewFlowData.documentLink : ''}
+                        download={viewFlowData.document}>
+                        <Button size="large" type="text">
+                            <Space>
+                                <Download />
+                                Скачать
+                            </Space>
+                        </Button>
+                    </Link>
+                </ConfigProvider>
+            ) : undefined}
         </>
     );
 };

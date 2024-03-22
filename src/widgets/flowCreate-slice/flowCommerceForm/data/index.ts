@@ -5,7 +5,6 @@ export const RequestFields: (keyof ICreateCommerceForm)[] = [
     'city',
     'description',
     'flowTarget',
-    'material',
     'flowType',
     'title',
     'problem',

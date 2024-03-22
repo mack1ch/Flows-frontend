@@ -4,7 +4,6 @@ import { IFlowStatus } from '@/shared/interface/flow';
 
 import styles from './ui.module.scss';
 import React, { useEffect, useState } from 'react';
-import { ChangeButton } from '@/entities/flowView-slice/buttons/change';
 import { DeleteButton } from '@/entities/flowView-slice/buttons/delete';
 import { DownloadButton } from '@/entities/flowView-slice/buttons/download';
 import { CommentButton } from '@/entities/flowView-slice/buttons/coment';
@@ -64,7 +63,6 @@ export const FlowManagement = ({
                     <>
                         {isModerator && <ApproveButton flowID={flowID} />}
                         <CommentButton flowID={flowID} />
-                        {/* <ChangeButton /> */}
                         <RejectedButton flowID={flowID} />
                         <DownloadButton flowID={flowID} />
                     </>

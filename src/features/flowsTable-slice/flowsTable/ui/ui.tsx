@@ -9,6 +9,7 @@ import { Button, ConfigProvider, ThemeConfig } from 'antd';
 import { useEffect, useState } from 'react';
 import { ApproveModal } from '../approveModal';
 import React from 'react';
+import { isURL } from '@/shared/lib/parse/link';
 
 export const FlowsTable = ({
     flows,
@@ -86,11 +87,17 @@ export const FlowsTable = ({
                                                 </Link>
                                             </td>
                                             <td>
-                                                <Link
-                                                    className={styles.link}
-                                                    href={item.documentLink}>
-                                                    {item.documentLink}
-                                                </Link>
+                                                {isURL(item.documentLink) ? (
+                                                    <Link
+                                                        className={styles.link}
+                                                        href={item.documentLink}>
+                                                        {item.documentLink}
+                                                    </Link>
+                                                ) : (
+                                                    <p className={styles.material}>
+                                                        Материалов нет
+                                                    </p>
+                                                )}
                                             </td>
                                             <td>
                                                 <FlowStatus
