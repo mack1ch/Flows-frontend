@@ -33,7 +33,7 @@ export const AuthForm = () => {
                 <FormInputs
                     formData={formData}
                     setFormData={setFormData}
-                    setSubmited={setButtonDisable}
+                    setSubmitted={setButtonDisable}
                     label="Почта"
                     placeholder="Введите почту"
                 />
@@ -46,7 +46,7 @@ export const AuthForm = () => {
                 <FormInputs
                     formData={formData}
                     setFormData={setFormData}
-                    setSubmited={setButtonDisable}
+                    setSubmitted={setButtonDisable}
                     label="Телефон"
                     placeholder="Введите телефон"
                 />

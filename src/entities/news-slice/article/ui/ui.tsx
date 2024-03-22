@@ -9,7 +9,6 @@ import { PostProcess } from '../process';
 import { getUserFI } from '@/shared/lib/parse/user';
 import { LikesAndViews } from '@/shared/ui/news-slice/likesAndViews';
 import { useState } from 'react';
-import Image from 'next/image';
 
 export const NewsArticle = ({ item }: { item?: IPost }) => {
     const [isPostComplete, setPostComplete] = useState(false);
