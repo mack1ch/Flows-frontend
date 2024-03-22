@@ -6,7 +6,7 @@ export const FlowCreateChoose = () => {
     return (
         <>
             <div className={styles.layout}>
-                <Link className={styles.section} href="/flows/create/small">
+                {/* <Link className={styles.section} href="/flows/create/small">
                     <h2 className={styles.section__title}>Упрощенный формат</h2>
                     <h3 className={styles.section__discription}>
                         Используйте эту форму, если ваша заявка еще не полностью проработана
@@ -29,7 +29,7 @@ export const FlowCreateChoose = () => {
                         Не забывайте, чем лучше вы распишете свою идею, тем больше вероятность ее
                         реализации
                     </h4>
-                </Link>
+                </Link> */}
                 <Link className={styles.section} href="/flows/create/full">
                     <h2 className={styles.section__title}>Форма для некоммерческого отдела</h2>
                     <h3 className={styles.section__discription}>
