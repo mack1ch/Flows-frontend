@@ -18,12 +18,12 @@ export const NewsArticle = ({ item }: { item?: IPost }) => {
         <>
             <article key={item.id} className={styles.article}>
                 <section className={styles.article__data}>
-                    <Link
+                    <span
                         title={item.proposal.name}
-                        href={`/flows/view/${item.proposal.id}`}
+                        // href={`/flows/view/${item.proposal.id}`}
                         className={styles.h3}>
                         {item.proposal.name}
-                    </Link>
+                    </span>
                     <PostProcess setPostComplete={setPostComplete} proposal={item.proposal} />
                 </section>
                 <section className={styles.article__post_info}>
