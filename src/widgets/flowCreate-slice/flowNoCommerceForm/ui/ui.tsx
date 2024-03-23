@@ -16,36 +16,29 @@ import styles from './ui.module.scss';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ICreateCommerceForm } from '@/shared/interface/flowsCreateForm';
+import { ICreateNoCommerceForm } from '@/shared/interface/flowsCreateForm';
 import { getAuthUser } from '../api/getAuthUser';
 import { IUser } from '@/shared/interface/user';
 import { getUserFIO } from '@/shared/lib/parse/user';
-import { RequestFields, checkboxFlowTargetValues } from '../data';
+import { RequestFields } from '../data';
 import { isNonEmptyArray } from '../model';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
-import { IFlowCategory } from '@/shared/interface/flow';
-import { getFlowCategories } from '../api/getFlowType';
-import { isURL } from '@/shared/lib/parse/link';
 import { createFlow } from '../api/createFlow';
 
 const { TextArea } = Input;
 
-export const FlowCommerceForm = () => {
+export const FlowNoCommerceForm = () => {
     const [messageApi, contextHolder] = message.useMessage();
     const [formData] = Form.useForm();
     const { width, height } = useWindowSize();
-    const [flowCategories, setFlowCategories] = useState<IFlowCategory[]>([] as IFlowCategory[]);
     const router = useRouter();
     const [authUser, setAuthUser] = useState<IUser>({} as IUser);
-    const [inputValues, setInputValues] = useState<ICreateCommerceForm>({
-        title: '',
-        flowType: null,
-        description: '',
-        flowTarget: undefined,
-        city: '',
+    const [inputValues, setInputValues] = useState<ICreateNoCommerceForm>({
         address: '',
+        city: '',
+        cause: '',
         material: '',
-        problem: '',
+        newProduct: '',
     });
 
     // Запрос на получение данных о пользователе и типе заявки
@@ -54,11 +47,6 @@ export const FlowCommerceForm = () => {
             const fetchUser = await getAuthUser();
             if (!(fetchUser instanceof Error)) {
                 setAuthUser(fetchUser);
-            }
-
-            const fetchCategories = await getFlowCategories();
-            if (!(fetchCategories instanceof Error)) {
-                setFlowCategories(fetchCategories);
             }
         };
         fetchData();
@@ -84,7 +72,7 @@ export const FlowCommerceForm = () => {
     };
 
     // Проверка, является ли форма заполненной
-    const isFormValid = (values: Partial<ICreateCommerceForm>): boolean => {
+    const isFormValid = (values: Partial<ICreateNoCommerceForm>): boolean => {
         return RequestFields.every((fieldName) => {
             const fieldValue = values[fieldName];
             return (
@@ -134,22 +122,6 @@ export const FlowCommerceForm = () => {
                         <Form style={{ width: '100%' }} layout="vertical" form={formData}>
                             <div className={styles.formLayout}>
                                 <div className={styles.inputLayout}>
-                                    {/* Title */}
-                                    <Form.Item
-                                        style={{ width: '100%' }}
-                                        required
-                                        label="Название заявки">
-                                        <Input
-                                            width={360}
-                                            size="large"
-                                            name="title"
-                                            value={inputValues.title}
-                                            onChange={(e) =>
-                                                handleInputChange('title', e.target.value)
-                                            }
-                                        />
-                                    </Form.Item>
-
                                     {/* Full Name */}
                                     <Form.Item style={{ width: '100%' }} required label="ФИО">
                                         <Input
@@ -206,7 +178,7 @@ export const FlowCommerceForm = () => {
                                         <Input
                                             width={360}
                                             size="large"
-                                            name="department"
+                                            name="address"
                                             value={inputValues.address}
                                             onChange={(e) =>
                                                 handleInputChange('address', e.target.value)
@@ -214,36 +186,19 @@ export const FlowCommerceForm = () => {
                                         />
                                     </Form.Item>
 
-                                    {/* Request Type */}
+                                    {/* New products */}
                                     <Form.Item
                                         style={{ width: '100%' }}
                                         required
-                                        label="Тип запроса:">
-                                        <Radio.Group
-                                            onChange={onRequestTypeChange}
-                                            value={inputValues.flowType}>
-                                            <Space direction="vertical">
-                                                {flowCategories.map((item) => (
-                                                    <Radio key={item.id} value={item.id}>
-                                                        {item.name}
-                                                    </Radio>
-                                                ))}
-                                            </Space>
-                                        </Radio.Group>
-                                    </Form.Item>
-                                    {/* Project discription */}
-                                    <Form.Item
-                                        style={{ width: '100%' }}
-                                        required
-                                        label="Описание проекта">
+                                        label="Что необходимо добавить на полку магазина?">
                                         <TextArea
                                             autoSize
-                                            placeholder="Напишите краткое описание вашего проекта"
+                                            placeholder="Напишите ваши варианты"
                                             size="large"
-                                            name="description"
-                                            value={inputValues.description}
+                                            name="newProduct"
+                                            value={inputValues.newProduct}
                                             onChange={(e) =>
-                                                handleInputChange('description', e.target.value)
+                                                handleInputChange('newProduct', e.target.value)
                                             }
                                         />
                                     </Form.Item>
@@ -271,47 +226,26 @@ export const FlowCommerceForm = () => {
                                 </div>
 
                                 <div style={{ maxWidth: '100%' }} className={styles.inputLayout}>
-                                    {/* flowTargets */}
+                                    {/* Cause */}
                                     <Form.Item
-                                        required
                                         style={{ width: '100%' }}
-                                        label="Цель предложенного проекта">
-                                        <Checkbox.Group
-                                            value={inputValues.flowTarget}
-                                            onChange={onCheckBoxChange}>
-                                            <Space direction="vertical">
-                                                {checkboxFlowTargetValues.map((item, index) => (
-                                                    <Checkbox
-                                                        style={{ userSelect: 'none' }}
-                                                        key={index}
-                                                        value={item}>
-                                                        {item}
-                                                    </Checkbox>
-                                                ))}
-                                            </Space>
-                                        </Checkbox.Group>
-                                    </Form.Item>
-
-                                    {/* FlowResolveProblem */}
-                                    <Form.Item
                                         required
-                                        style={{ width: '100%' }}
-                                        label="Какая проблема решается этим проектом?">
+                                        label="Почему это так важно?">
                                         <TextArea
                                             autoSize
-                                            placeholder="Жалобы клиентов, неавтоматизированный процесс, собственный опыт"
+                                            placeholder="Пример: гости часто просят, мне нравится"
                                             size="large"
-                                            name="description"
-                                            value={inputValues.problem}
+                                            name="cause"
+                                            value={inputValues.cause}
                                             onChange={(e) =>
-                                                handleInputChange('problem', e.target.value)
+                                                handleInputChange('cause', e.target.value)
                                             }
                                         />
                                     </Form.Item>
-
                                     {/* Technical Specification Link */}
                                     <Form.Item
                                         name="url"
+                                        required
                                         rules={[
                                             {
                                                 type: 'url',
@@ -320,7 +254,7 @@ export const FlowCommerceForm = () => {
                                             },
                                         ]}
                                         style={{ width: '100%' }}
-                                        label="Ссылка на материалы">
+                                        label="Фото, скриншоты товара или другие материалы">
                                         <Input
                                             width={360}
                                             size="large"

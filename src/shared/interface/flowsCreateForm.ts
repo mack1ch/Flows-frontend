@@ -26,3 +26,11 @@ export interface ICreateCommerceForm {
     material: string;
     problem: string;
 }
+
+export interface ICreateNoCommerceForm {
+    address: string;
+    city: string;
+    newProduct: string;
+    cause: string;
+    material: string;
+}

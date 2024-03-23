@@ -35,7 +35,6 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
             GetFlowByID();
         }
     }, []);
-
     return (
         <>
             <section className={styles.layout}>
@@ -56,7 +55,28 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                     flex: width > 570 ? '0 0 25%' : '0 0 fit-content',
                                     textAlign: 'left',
                                 }}>
-                                ФИО создателя:
+                                Название:
+                            </div>
+                            <div
+                                className={styles.contentItem}
+                                style={{ flex: '1', textAlign: 'left' }}>
+                                {viewFlowData.name}
+                            </div>
+                        </div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-start',
+                                gap: '8px',
+                            }}>
+                            <div
+                                className={styles.contentTitle}
+                                style={{
+                                    flex: width > 570 ? '0 0 25%' : '0 0 fit-content',
+                                    textAlign: 'left',
+                                }}>
+                                ФИО отправителя:
                             </div>
                             <div
                                 className={styles.contentItem}
@@ -93,6 +113,29 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                 {viewFlowData.author && viewFlowData.author.telegram}
                             </Link>
                         </div>
+                        {viewFlowData.description && (
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'flex-start',
+                                    gap: '8px',
+                                }}>
+                                <div
+                                    className={styles.contentTitle}
+                                    style={{
+                                        flex: width > 570 ? '0 0 25%' : '0 0 fit-content',
+                                        textAlign: 'left',
+                                    }}>
+                                    Описание идеи:
+                                </div>
+                                <div
+                                    className={styles.contentItem}
+                                    style={{ flex: '1', textAlign: 'left' }}>
+                                    {viewFlowData.description}
+                                </div>
+                            </div>
+                        )}
                         <div
                             style={{
                                 display: 'flex',
@@ -106,28 +149,7 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                     flex: width > 570 ? '0 0 25%' : '0 0 fit-content',
                                     textAlign: 'left',
                                 }}>
-                                Описание идеи:
-                            </div>
-                            <div
-                                className={styles.contentItem}
-                                style={{ flex: '1', textAlign: 'left' }}>
-                                {viewFlowData?.description}
-                            </div>
-                        </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'flex-start',
-                                gap: '8px',
-                            }}>
-                            <div
-                                className={styles.contentTitle}
-                                style={{
-                                    flex: width > 570 ? '0 0 25%' : '0 0 fit-content',
-                                    textAlign: 'left',
-                                }}>
-                                Отдел:
+                                Отдел, в котором работает отправитель:
                             </div>
                             <div
                                 className={styles.contentItem}
@@ -136,31 +158,31 @@ export const FlowDocumentView = ({ flowID, postID }: { flowID?: number; postID?:
                                     'Не найден'}
                             </div>
                         </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'flex-start',
-                                gap: '8px',
-                            }}>
+                        {viewFlowData.content?.aboutCompanyAim && (
                             <div
-                                className={styles.contentTitle}
                                 style={{
-                                    flex: width > 570 ? '0 0 25%' : '0 0 fit-content',
-                                    textAlign: 'left',
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'flex-start',
+                                    gap: '8px',
                                 }}>
-                                Цель:
-                            </div>
-                            <div
-                                className={styles.contentItem}
-                                style={{ flex: '1', textAlign: 'left' }}>
-                                {(viewFlowData.content?.aboutCompanyAim &&
-                                    viewFlowData.content.aboutCompanyAim.map((item, index) => (
+                                <div
+                                    className={styles.contentTitle}
+                                    style={{
+                                        flex: width > 570 ? '0 0 25%' : '0 0 fit-content',
+                                        textAlign: 'left',
+                                    }}>
+                                    Цель:
+                                </div>
+                                <div
+                                    className={styles.contentItem}
+                                    style={{ flex: '1', textAlign: 'left' }}>
+                                    {viewFlowData.content.aboutCompanyAim.map((item, index) => (
                                         <p key={index}>{item} </p>
-                                    ))) ||
-                                    'Не найден'}
+                                    ))}
+                                </div>
                             </div>
-                        </div>
+                        )}
                         {viewFlowData.content &&
                             Object.entries(viewFlowData?.content).map(([key, value]) => {
                                 if (!key || typeof value !== 'string') return null;
