@@ -8,7 +8,6 @@ import { getAuthUser } from '../api';
 import { getUserFI, getUserTelegram } from '@/shared/lib/parse/user';
 import { formatAgeFromString } from '@/shared/lib/parse/birthday';
 import Link from 'next/link';
-import { Button } from 'antd';
 
 export const ProfileHeader = () => {
     const [user, setUser] = useState<IUser | null>(null);
@@ -42,7 +41,6 @@ export const ProfileHeader = () => {
                                 </Link>
                             </span>
                         </div>
-                        {/* <Button className={styles.btn}>Выйти из аккаунта</Button> */}
                     </div>
                 </div>
             </section>

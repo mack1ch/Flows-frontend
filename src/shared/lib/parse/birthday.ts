@@ -1,9 +1,16 @@
 export function formatAgeFromString(birthDateStr: string): string {
-    const birthYear = parseInt(birthDateStr.substring(0, 4));
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    const age = currentYear - birthYear;
-    return `${age} ${pluralize(age, 'год', 'года', 'лет')}`;
+    const birthDate: Date = new Date(birthDateStr);
+    const currentDate: Date = new Date();
+    let age: number = currentDate.getFullYear() - birthDate.getFullYear();
+    if (
+        currentDate.getMonth() < birthDate.getMonth() ||
+        (currentDate.getMonth() === birthDate.getMonth() &&
+            currentDate.getDate() < birthDate.getDate())
+    ) {
+        age--;
+    }
+
+    return `${age.toString()} ${pluralize(age, 'год', 'года', 'лет')}`;
 }
 
 export function pluralize(count: number, one: string, two: string, many: string): string {
