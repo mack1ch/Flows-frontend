@@ -129,7 +129,7 @@ export const FlowNoCommerceForm = () => {
                                             size="large"
                                             name="fullName"
                                             disabled
-                                            value={getUserFIO(authUser)}
+                                            value={getUserFIO(authUser) || 'Загрузка'}
                                             onChange={(e) =>
                                                 handleInputChange('userName', e.target.value)
                                             }
@@ -146,7 +146,7 @@ export const FlowNoCommerceForm = () => {
                                             size="large"
                                             name="telegramId"
                                             disabled
-                                            value={authUser.telegram}
+                                            value={authUser.telegram || 'Загрузка'}
                                             onChange={(e) =>
                                                 handleInputChange('telegramID', e.target.value)
                                             }
