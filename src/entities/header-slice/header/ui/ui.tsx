@@ -2,8 +2,7 @@
 
 import { NavLogo } from '@/shared/ui/header-slice/navLogo';
 import styles from './ui.module.scss';
-import { useEffect, useState } from 'react';
-import type { DrawerProps } from 'antd';
+import { useState } from 'react';
 import { Divider, Drawer } from 'antd';
 import { SideBarProfileItem, SideNavBarItems } from '../../data/items';
 import { IHeaderItem } from '@/shared/interface/header';
@@ -11,7 +10,6 @@ import { NavItem } from '@/shared/ui/header-slice/navItem';
 import { IUser } from '@/shared/interface/user';
 import { GetAuthUserData } from '../../api';
 import { BurgerButton } from '@/shared/ui/header-slice/burgerButton';
-import { getAccessToken } from '@/shared/lib/auth/auth-token';
 
 export const Header = () => {
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);

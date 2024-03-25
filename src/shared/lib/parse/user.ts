@@ -32,12 +32,15 @@ export function getFullName(users: IUser[] | IUser): IFullNameObject[] {
 }
 
 export function getUserFIO(user?: IUser): string {
-    if (!user) return 'Загрузка';
-    return `${user.surname} ${user.firstname} ${user.lastname}`;
+    if (!user) return 'Загрузка...';
+    if (typeof user.firstname === 'undefined') return 'Загрузка';
+    else {
+        return `${user.surname} ${user.firstname} ${user.lastname}`;
+    }
 }
 
 export function getUserFI(user?: IUser): string {
-    if (!user) return 'Загрузка';
+    if (!user) return 'Загрузка...';
     return `${user.firstname} ${user.surname}`;
 }
 
@@ -50,6 +53,7 @@ export function getUserIdByFullName(users: IUser[], fullName: string): number {
 }
 
 export function getUserTelegram(telegram: string): string {
+    if (!telegram) return 'Загрузка';
     if (telegram[0] === '@') return telegram.slice(1);
     return telegram;
 }
