@@ -46,13 +46,13 @@ export const FlowManagement = ({
                 {statusType === 'proposalApproved' ? (
                     <>
                         {isModerator && <InWorkButton flowID={flowID} />}
-                        <DeleteButton flowID={flowID} />
+                        {isModerator && <DeleteButton flowID={flowID} />}
                         <DownloadButton flowID={flowID} />
                     </>
                 ) : statusType === 'proposalInWork' ? (
                     <>
                         {isModerator && <ToDoneButton flowID={flowID} />}
-                        <DeleteButton flowID={flowID} />
+                        {isModerator && <DeleteButton flowID={flowID} />}
                         <DownloadButton flowID={flowID} />
                     </>
                 ) : statusType === 'proposalRejected' || statusType === 'proposalDone' ? (
@@ -63,7 +63,7 @@ export const FlowManagement = ({
                     <>
                         {isModerator && <ApproveButton flowID={flowID} />}
                         <CommentButton flowID={flowID} />
-                        <RejectedButton flowID={flowID} />
+                        {isModerator && <RejectedButton flowID={flowID} />}
                         <DownloadButton flowID={flowID} />
                     </>
                 ) : null}
