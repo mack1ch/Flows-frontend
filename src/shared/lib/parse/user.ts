@@ -33,12 +33,12 @@ export function getFullName(users: IUser[] | IUser): IFullNameObject[] {
 
 export function getUserFIO(user?: IUser): string {
     if (!user) return 'Загрузка';
-    return `${user.lastname} ${user.firstname} ${user.surname}`;
+    return `${user.surname} ${user.firstname} ${user.lastname}`;
 }
 
 export function getUserFI(user?: IUser): string {
     if (!user) return 'Загрузка';
-    return `${user.firstname} ${user.lastname}`;
+    return `${user.firstname} ${user.surname}`;
 }
 
 export function getUserIdByFullName(users: IUser[], fullName: string): number {
