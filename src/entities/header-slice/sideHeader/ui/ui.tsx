@@ -16,7 +16,7 @@ export const SideHeader = ({ style }: { style?: CSSProperties }) => {
             const fetchUser: IUser | Error = await GetAuthUserData();
             if (fetchUser instanceof Error) return;
             else {
-                const userName: string = fetchUser.firstname + ' ' + fetchUser.lastname;
+                const userName: string = fetchUser.firstname + ' ' + fetchUser.surname;
                 setProfileData((prevProfileData: IHeaderItem) => ({
                     ...prevProfileData,
                     title: userName || 'Профиль',

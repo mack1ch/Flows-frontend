@@ -21,7 +21,7 @@ export const Header = () => {
         const fetchUser: IUser | Error = await GetAuthUserData();
         if (fetchUser instanceof Error) GetUser();
         else {
-            const userName: string = fetchUser.firstname + ' ' + fetchUser.lastname;
+            const userName: string = fetchUser.firstname + ' ' + fetchUser.surname;
             setProfileData((prevProfileData: IHeaderItem) => ({
                 ...prevProfileData,
                 title: userName || 'Профиль',
