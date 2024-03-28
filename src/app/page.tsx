@@ -45,7 +45,7 @@ export default function Home() {
                 <header style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                     <Header />
                 </header>
-                <Layout>
+                <Layout style={{ scrollBehavior: 'smooth' }}>
                     <Cover />
                     <WorkSteps />
                     <ProductEffects />
