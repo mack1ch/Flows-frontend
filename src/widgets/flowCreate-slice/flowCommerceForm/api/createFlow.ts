@@ -8,6 +8,7 @@ export const createFlow = async (flowProps: ICreateCommerceForm): Promise<IFlow 
         description: flowProps.description,
         category: flowProps.flowType,
         document: flowProps.material,
+        isCommercial: true,
         content: {
             aboutCompanyAim: flowProps.flowTarget,
             customQuestions: [

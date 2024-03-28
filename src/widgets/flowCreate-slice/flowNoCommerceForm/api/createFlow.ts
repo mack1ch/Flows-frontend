@@ -7,6 +7,7 @@ export const createFlow = async (flowProps: ICreateNoCommerceForm): Promise<IFlo
         name: flowProps.newProduct,
         document: flowProps.material,
         isDocumentGenerated: false,
+        isCommercial: false,
         content: {
             customQuestions: [
                 {
