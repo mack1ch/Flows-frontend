@@ -3,17 +3,17 @@
 import { Button, ConfigProvider, Form, Input, Select } from 'antd';
 import styles from './ui.module.scss';
 import { regFormTheme } from '../theme';
-import { filterOption } from '../model';
+
 import { useEffect, useState } from 'react';
 import { IDepartment, IJob } from '@/shared/interface/user';
 import { getDepartments } from '../api/getDepartments';
 import { getJobs } from '../api/getJobs';
-import { useWindowSize } from '@/shared/hooks/useWindowSize';
+import { prefixSelector } from '../model';
 
 export const RegForm = () => {
     const [departments, setDepartments] = useState<IDepartment[]>();
     const [jobs, setJobs] = useState<IJob[]>();
-    const { width, height } = useWindowSize();
+
     useEffect(() => {
         const fetchData = async () => {
             const fetchDepartments = await getDepartments();
@@ -53,11 +53,12 @@ export const RegForm = () => {
                             </Form.Item>
                             <Form.Item style={{ width: '100%' }} required label="Номер телефона">
                                 <Input
+                                    addonBefore={prefixSelector}
                                     count={{
                                         show: true,
-                                        max: 11,
+                                        max: 10,
                                     }}
-                                    placeholder="Например: 7 (999) 999-99-99"
+                                    placeholder="Например: +7 (999) 999-99-99"
                                     width={360}
                                     size="large"
                                     type="number"
