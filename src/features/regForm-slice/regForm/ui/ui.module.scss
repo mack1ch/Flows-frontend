@@ -4,14 +4,19 @@
     height: auto;
     align-items: center;
     justify-content: center;
-
-    .formLayout {
+    .antForm {
         display: flex;
         width: 100%;
-        height: auto;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 20px;
+        max-width: 720px;
+        .formLayout {
+            display: flex;
+            width: 100%;
+            padding: 24px 16px;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
     }
 }

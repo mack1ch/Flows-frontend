@@ -8,11 +8,12 @@ import { useEffect, useState } from 'react';
 import { IDepartment, IJob } from '@/shared/interface/user';
 import { getDepartments } from '../api/getDepartments';
 import { getJobs } from '../api/getJobs';
+import { useWindowSize } from '@/shared/hooks/useWindowSize';
 
 export const RegForm = () => {
     const [departments, setDepartments] = useState<IDepartment[]>();
     const [jobs, setJobs] = useState<IJob[]>();
-
+    const { width, height } = useWindowSize();
     useEffect(() => {
         const fetchData = async () => {
             const fetchDepartments = await getDepartments();
@@ -27,14 +28,14 @@ export const RegForm = () => {
         };
         fetchData();
     }, []);
-    console.log(departments);
+
     return (
         <>
             <section className={styles.form}>
                 <ConfigProvider theme={regFormTheme}>
-                    <Form style={{ width: '100%' }} layout="vertical">
+                    <Form className={styles.antForm} style={{ width: '100%' }} layout="vertical">
                         <div className={styles.formLayout}>
-                            <Form.Item style={{ width: '50%' }} required label="ФИО">
+                            <Form.Item style={{ width: '100%' }} required label="ФИО">
                                 <Input
                                     placeholder="Например: Степанов Дмитрий Андреевич"
                                     width={360}
@@ -42,7 +43,7 @@ export const RegForm = () => {
                                     name="FIO"
                                 />
                             </Form.Item>
-                            <Form.Item style={{ width: '50%' }} required label="Электронная почта">
+                            <Form.Item style={{ width: '100%' }} required label="Электронная почта">
                                 <Input
                                     placeholder="Например: lifemart@yandex.ru"
                                     width={360}
@@ -50,7 +51,7 @@ export const RegForm = () => {
                                     name="email"
                                 />
                             </Form.Item>
-                            <Form.Item style={{ width: '50%' }} required label="Номер телефона">
+                            <Form.Item style={{ width: '100%' }} required label="Номер телефона">
                                 <Input
                                     count={{
                                         show: true,
@@ -63,10 +64,10 @@ export const RegForm = () => {
                                     name="dateOfBirth"
                                 />
                             </Form.Item>
-                            <Form.Item style={{ width: '50%' }} required label="Дата рождения">
+                            <Form.Item style={{ width: '100%' }} required label="Дата рождения">
                                 <Input width={360} size="large" type="date" name="dateOfBirth" />
                             </Form.Item>
-                            <Form.Item style={{ width: '50%' }} required label="ID в Telegram ">
+                            <Form.Item style={{ width: '100%' }} required label="ID в Telegram ">
                                 <Input
                                     placeholder="В формате @username"
                                     width={360}
@@ -75,7 +76,7 @@ export const RegForm = () => {
                                 />
                             </Form.Item>
                             <Form.Item
-                                style={{ width: '50%' }}
+                                style={{ width: '100%' }}
                                 required
                                 label="Отдел, в котором работаю">
                                 <Select
@@ -88,7 +89,7 @@ export const RegForm = () => {
                                     }))}
                                 />
                             </Form.Item>
-                            <Form.Item style={{ width: '50%' }} required label="Должность">
+                            <Form.Item style={{ width: '100%' }} required label="Должность">
                                 <Select
                                     size="large"
                                     showSearch
