@@ -7,6 +7,7 @@ import { IFormData } from '@/shared/interface/auth';
 import { RequestFields } from '../data';
 import { isNonEmptyArray } from '../model';
 import { useEffect } from 'react';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 export const FormInputs = ({
     label,
@@ -55,6 +56,12 @@ export const FormInputs = ({
                         style={{ width: '100%', textAlign: 'start', alignItems: 'flex-start' }}
                         label={label}>
                         <Input
+                            prefix={
+                                <UserOutlined
+                                    style={{ color: '#cfcfcf' }}
+                                    className="site-form-item-icon"
+                                />
+                            }
                             name={label == 'Почта' ? 'email' : 'phone'}
                             value={label === 'Почта' ? formData.email : formData.phone}
                             onChange={handleInputChange}
@@ -66,6 +73,12 @@ export const FormInputs = ({
                         style={{ width: '100%', textAlign: 'start', alignItems: 'flex-start' }}
                         label="Пароль">
                         <Input
+                            prefix={
+                                <LockOutlined
+                                    style={{ color: '#cfcfcf' }}
+                                    className="site-form-item-icon"
+                                />
+                            }
                             name="password"
                             value={formData.password}
                             onChange={handleInputChange}
