@@ -1,6 +1,5 @@
 import { instance } from '@/shared/api/axios-config';
 import { IFormData, IToken } from '@/shared/interface/auth';
-import { setCookie } from '@/shared/lib/auth/setCookie';
 
 export const postUser = async (authProps: IFormData): Promise<IToken | Error> => {
     try {

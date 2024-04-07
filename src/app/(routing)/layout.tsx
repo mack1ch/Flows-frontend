@@ -1,13 +1,13 @@
 'use client';
 
-import {LayoutDesktop} from '@/screens/layouts/desktop';
-import {LayoutMobile} from '@/screens/layouts/mobile';
-import {useWindowSize} from '@/shared/hooks/useWindowSize';
+import { LayoutDesktop } from '@/screens/layouts/desktop';
+import { LayoutMobile } from '@/screens/layouts/mobile';
+import { useWindowSize } from '@/shared/hooks/useWindowSize';
 import PrivateRoute from '@/shared/lib/auth/private-route';
-import {AntdRegistry} from "@ant-design/nextjs-registry";
-import React from "react";
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+import React from 'react';
 
-export default function LayoutPage({children}: { children: React.ReactNode }) {
+export default function LayoutPage({ children }: { children: React.ReactNode }) {
     const windowSize = useWindowSize();
     return (
         <>

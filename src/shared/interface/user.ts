@@ -11,8 +11,7 @@ export interface IUser {
     job: IJob;
     proposalCount: number;
     telegram: string;
-    vk: string;
-    avatar: string;
+    avatar?: string;
     updatedAt: Date;
     createdAt: Date;
 }

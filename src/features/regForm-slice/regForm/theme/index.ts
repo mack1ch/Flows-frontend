@@ -11,7 +11,8 @@ export const regFormTheme: ThemeConfig = {
         },
         Button: {
             colorPrimaryHover: '#73AE62',
-            colorPrimaryActive: '#73AE62',
+            colorPrimaryActive: '#538A1B',
+            colorPrimary: '#73AE62',
         },
         Checkbox: {
             colorPrimary: '#73AE62',

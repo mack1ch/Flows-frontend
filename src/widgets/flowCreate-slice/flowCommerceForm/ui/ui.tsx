@@ -21,12 +21,12 @@ import { getAuthUser } from '../api/getAuthUser';
 import { IUser } from '@/shared/interface/user';
 import { getUserFIO } from '@/shared/lib/parse/user';
 import { RequestFields, checkboxFlowTargetValues } from '../data';
-import { isNonEmptyArray } from '../model';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
 import { IFlowCategory } from '@/shared/interface/flow';
 import { getFlowCategories } from '../api/getFlowType';
-import { isURL } from '@/shared/lib/parse/link';
+
 import { createFlow } from '../api/createFlow';
+import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
 
 const { TextArea } = Input;
 

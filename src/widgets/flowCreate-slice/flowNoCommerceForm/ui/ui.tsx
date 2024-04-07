@@ -21,9 +21,9 @@ import { getAuthUser } from '../api/getAuthUser';
 import { IUser } from '@/shared/interface/user';
 import { getUserFIO } from '@/shared/lib/parse/user';
 import { RequestFields } from '../data';
-import { isNonEmptyArray } from '../model';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
 import { createFlow } from '../api/createFlow';
+import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
 
 const { TextArea } = Input;
 
