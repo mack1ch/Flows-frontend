@@ -5,9 +5,9 @@ import styles from './ui.module.scss';
 import Input from 'antd/es/input/Input';
 import { IFormData } from '@/shared/interface/auth';
 import { RequestFields } from '../data';
-import { isNonEmptyArray } from '../model';
 import { useEffect } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
 
 export const FormInputs = ({
     label,

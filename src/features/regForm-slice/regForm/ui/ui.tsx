@@ -16,6 +16,7 @@ import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
 import { RequestFields } from '../data';
 import { postUser } from '../api/postUser';
 import { useRouter } from 'next/navigation';
+import { splitFullName } from '@/shared/lib/parse/user';
 
 export const RegForm = ({ id }: { id: number }) => {
     const [departments, setDepartments] = useState<IDepartment[]>();
@@ -108,6 +109,7 @@ export const RegForm = ({ id }: { id: number }) => {
             });
         }
     };
+
     if (!company) return;
     return (
         <>
