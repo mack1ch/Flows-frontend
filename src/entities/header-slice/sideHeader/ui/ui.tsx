@@ -39,7 +39,7 @@ export const SideHeader = ({ style }: { style?: CSSProperties }) => {
                     })}
                 </div>
                 <div className={styles.items}>
-                    <NavItem item={profileData} />
+                    <NavItem key={5} item={profileData} />
                 </div>
             </section>
         </header>
