@@ -2,7 +2,7 @@
 
 import styles from './ui.module.scss';
 import { ConfigProvider, Tabs, ThemeConfig } from 'antd';
-import { ProfileHeader } from '@/features/profile-screen/header';
+import { ProfileHeader } from '@/features/profile-slice/header';
 import { tabItems } from '../date';
 import { useEffect, useState } from 'react';
 import { IUser } from '@/shared/interface/user';

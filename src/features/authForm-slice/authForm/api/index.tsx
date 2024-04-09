@@ -8,6 +8,7 @@ export const postUser = async (authProps: IFormData): Promise<IToken | Error> =>
             password: authProps.password,
         });
         sessionStorage.setItem('accessToken', data.accessToken);
+        
         return data;
     } catch (error) {
         return error as Error;

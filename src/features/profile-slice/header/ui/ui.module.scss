@@ -8,6 +8,14 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
+    @media screen and (max-width: 1048px) {
+        width: 100%;
+        margin: 0;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        border: none;
+    }
     .bG {
         background: linear-gradient(
             253deg,
@@ -22,43 +30,77 @@
         );
         width: 100%;
         height: 55%;
+        @media screen and (max-width: 1048px) {
+            height: 100%;
+        }
     }
 
     .layout {
         padding: 0 40px 0 40px;
-        margin-top: -64px;
+        margin-top: -48px;
         display: flex;
         align-items: flex-end;
         gap: 20px;
         width: 100%;
+        @media screen and (max-width: 1048px) {
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: fit-content;
+            margin-bottom: 24px;
+            display: inline-block;
+            padding: 0 16px 0 16px;
+            margin-top: 0;
+        }
         .profile {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: calc(100vw - 524px);
+            @media screen and (max-width: 1048px) {
+                justify-content: center;
+                flex-direction: column;
+                width: fit-content;
+            }
+
             .user {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 2px;
                 margin-bottom: 16px;
+                @media screen and (max-width: 1048px) {
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
                 .h2 {
                     color: #222;
                     font-size: 24px;
                     font-style: normal;
                     font-weight: 600;
                     line-height: 130%;
+                    @media screen and (max-width: 1048px) {
+                        text-wrap: nowrap;
+                    }
                 }
                 .tags {
                     display: flex;
                     align-items: center;
                     gap: 8px;
+                    @media screen and (max-width: 1048px) {
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                    }
                     .h3 {
                         color: #757575;
                         font-size: 14px;
                         font-style: normal;
                         font-weight: 400;
                         line-height: 150%;
+                        @media screen and (max-width: 1048px) {
+                            text-wrap: nowrap;
+                        }
                     }
                     .h3__link {
                         color: #757575;
@@ -66,6 +108,9 @@
                         font-style: normal;
                         font-weight: 400;
                         line-height: 150%;
+                        @media screen and (max-width: 1048px) {
+                            text-wrap: nowrap;
+                        }
                         &:hover {
                             text-decoration: underline;
                         }

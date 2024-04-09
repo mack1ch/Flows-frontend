@@ -1,6 +1,6 @@
 import { Services } from '@/entities/services-slice/services';
 import { Articles } from '@/features/news-slice/articles';
-import { AchievementList } from '@/features/profile-screen/achievementList';
+import { AchievementList } from '@/features/profile-slice/achievementList';
 import { TabsProps } from 'antd';
 
 export const tabItems: TabsProps['items'] = [

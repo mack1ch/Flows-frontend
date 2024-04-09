@@ -4,7 +4,10 @@
 
     gap: 16px;
     flex-wrap: wrap;
-
+    @media screen and (max-width: 1048px) {
+        justify-content: center;
+        margin-bottom: 24px;
+    }
     .service {
         border-radius: 16px;
         background: #fff;
@@ -16,6 +19,9 @@
         gap: 16px;
         width: 320px;
         height: 170px;
+        @media screen and (max-width: 1048px) {
+            width: 280px;
+        }
         .header {
             display: flex;
             align-items: center;

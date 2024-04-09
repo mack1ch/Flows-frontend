@@ -9,6 +9,7 @@ import React from 'react';
 
 export default function LayoutPage({ children }: { children: React.ReactNode }) {
     const windowSize = useWindowSize();
+
     return (
         <>
             <AntdRegistry>
