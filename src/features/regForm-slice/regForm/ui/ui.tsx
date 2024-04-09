@@ -3,7 +3,6 @@
 import { Button, ConfigProvider, DatePickerProps, Form, Input, message, Select } from 'antd';
 import styles from './ui.module.scss';
 import { regFormTheme } from '../theme';
-
 import { useEffect, useState } from 'react';
 import { IDepartment, IJob, IUser } from '@/shared/interface/user';
 import { getDepartments } from '../api/getDepartments';
@@ -16,7 +15,6 @@ import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
 import { RequestFields } from '../data';
 import { postUser } from '../api/postUser';
 import { useRouter } from 'next/navigation';
-import { splitFullName } from '@/shared/lib/parse/user';
 
 export const RegForm = ({ id }: { id: number }) => {
     const [departments, setDepartments] = useState<IDepartment[]>();
@@ -95,9 +93,8 @@ export const RegForm = ({ id }: { id: number }) => {
             if (res instanceof Error) {
                 message.open({
                     type: 'error',
-                    content: 'Поля введены неверно, проверьте правильность введенных данных',
+                    content: 'Вы уже зарегстрированы',
                 });
-
                 return;
             } else {
                 router.push('/auth');
@@ -105,7 +102,7 @@ export const RegForm = ({ id }: { id: number }) => {
         } catch {
             message.open({
                 type: 'error',
-                content: 'Ошибка на сервере. Наши разработчики уже работают над устранением',
+                content: 'Ошибка. Обратитесь к руководителю',
             });
         }
     };
