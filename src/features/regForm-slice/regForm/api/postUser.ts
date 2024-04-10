@@ -8,8 +8,8 @@ export const postUser = async (authProps: IUserRegister): Promise<IToken | Error
     try {
         const resData = {
             firstname: firstName,
-            lastname: lastName,
-            surname: surName,
+            lastname: surName,
+            surname: lastName,
             email: authProps.email,
             phone: `8${authProps.phone}`,
             department: authProps.department,
