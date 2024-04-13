@@ -56,7 +56,8 @@ export type TFlowStatusType =
     | 'proposalRejected'
     | 'proposalApproved'
     | 'proposalInWork'
-    | 'proposalInApprove';
+    | 'proposalInApprove'
+    | 'proposalInBacklog';
 export type TFlowStatusName =
     | 'Заявка создана'
     | 'Выполнено'
@@ -64,5 +65,6 @@ export type TFlowStatusName =
     | 'Отклонено'
     | 'Заявка согласована'
     | 'В работе'
-    | 'На согласовании';
+    | 'На согласовании'
+    | 'Заявкав в бэклоге';
 export type ICustomQuestion = { question: string; answer: string };

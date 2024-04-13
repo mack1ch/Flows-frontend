@@ -13,6 +13,7 @@ import { ApproveButton } from '@/entities/flowView-slice/buttons/approve';
 import { InWorkButton } from '@/entities/flowView-slice/buttons/inWork';
 import { ToDoneButton } from '@/entities/flowView-slice/buttons/toDone';
 import { RejectedButton } from '@/entities/flowView-slice/buttons/rejected';
+import { BacklogButton } from '@/entities/flowView-slice/buttons/backlog';
 export const FlowManagement = ({
     flowStatus,
     flowID = 0,
@@ -62,9 +63,17 @@ export const FlowManagement = ({
                 ) : statusType === 'proposalInApprove' || statusType === 'proposalNeedRevision' ? (
                     <>
                         {isModerator && <ApproveButton flowID={flowID} />}
+                        {isModerator && <BacklogButton flowID={flowID} />}
                         <CommentButton flowID={flowID} />
                         {isModerator && <RejectedButton flowID={flowID} />}
                         <DownloadButton flowID={flowID} />
+                    </>
+                ) : statusType === 'proposalInBacklog' ? (
+                    <>
+                        {isModerator && <ApproveButton flowID={flowID} />}
+                        <DownloadButton flowID={flowID} />
+                        <CommentButton flowID={flowID} />
+                        {isModerator && <DeleteButton flowID={flowID} />}
                     </>
                 ) : null}
             </section>

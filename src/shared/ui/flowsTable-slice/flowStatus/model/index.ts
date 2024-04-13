@@ -47,7 +47,11 @@ export function getStatusByType(status: TFlowStatusType | 'loading'): Status {
             title = 'Требуется уточнения у автора';
             text = 'На согласовании';
             break;
-
+        case 'proposalInBacklog':
+            color = '#FF8227';
+            title = 'Заявка в беклоге';
+            text = 'В архиве';
+            break;
         case 'loading':
             color = '#3d3d3d';
             title = 'Загрузка';

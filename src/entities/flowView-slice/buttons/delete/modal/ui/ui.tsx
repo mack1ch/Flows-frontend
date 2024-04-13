@@ -20,7 +20,7 @@ export const DeleteButtonModal = ({
     const handleOk = async () => {
         setConfirmLoading(true);
         const res: undefined | Error = await deleteProposal(flowID);
-        if (typeof res === 'undefined') router.push('/flows/my');
+        if (!(typeof res === 'undefined')) router.push('/flows/my');
         setTimeout(() => {
             setModalOpen(false);
             setConfirmLoading(false);
