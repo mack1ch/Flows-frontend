@@ -27,13 +27,13 @@ export const FlowStatus = ({
                                 title={
                                     typeof responsible === 'undefined'
                                         ? 'Загрузка...'
-                                        : responsible.firstname + ' ' + responsible?.lastname
+                                        : responsible.firstname + ' ' + responsible?.surname
                                 }
                                 className={styles.text}>
                                 {statusText}:{' '}
                                 {typeof responsible === 'undefined'
                                     ? 'Загрузка...'
-                                    : responsible.firstname + ' ' + responsible?.lastname}
+                                    : responsible.firstname + ' ' + responsible?.surname}
                             </p>
                         )}
                     {statusText &&
@@ -43,13 +43,13 @@ export const FlowStatus = ({
                                 title={
                                     typeof responsible === 'undefined'
                                         ? 'Загрузка...'
-                                        : responsible.firstname + ' ' + responsible?.lastname
+                                        : responsible.firstname + ' ' + responsible?.surname
                                 }
                                 className={styles.text}>
                                 <span style={{ color: '#73AE62' }}> {statusText}</span>:{' '}
                                 {typeof responsible === 'undefined'
                                     ? 'Загрузка...'
-                                    : responsible.firstname + ' ' + responsible?.lastname}
+                                    : responsible.firstname + ' ' + responsible?.surname}
                             </p>
                         )}
                 </div>
