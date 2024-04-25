@@ -24,9 +24,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         accurateTrackBounce:true,
         webvisor:true
    });
-<noscript><div><img src="https://mc.yandex.ru/watch/96681722" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`}
+`}
                 </Script>
-
+                <noscript>
+                    {`
+                    <div>
+                        <img
+                            src="https://mc.yandex.ru/watch/96681722"
+                            style="position:absolute; left:-9999px;"
+                            alt=""
+                        />
+                    </div>
+                    `}
+                </noscript>
                 {children}
             </body>
         </html>
