@@ -95,14 +95,6 @@ export const FlowNoCommerceForm = () => {
         }));
     };
 
-    // Изменение Checkboxes для целей заявки
-    const onCheckBoxChange = (list: CheckboxValueType[]) => {
-        setInputValues((prevValues) => ({
-            ...prevValues,
-            flowTarget: list,
-        }));
-    };
-
     // Отпрвка формы
     const handleSubmit = async () => {
         try {
