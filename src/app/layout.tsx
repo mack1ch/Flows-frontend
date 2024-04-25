@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.scss';
 import Script from 'next/script';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
     title: 'Inverse.Заявки',
@@ -27,15 +28,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 `}
                 </Script>
                 <noscript>
-                    {`
-                    <div>
-                        <img
-                            src="https://mc.yandex.ru/watch/96681722"
-                            style="position:absolute; left:-9999px;"
-                            alt=""
-                        />
-                    </div>
-                    `}
+                    {
+                        <div>
+                            <Image
+                                src="https://mc.yandex.ru/watch/96681722"
+                                style={{ position: 'absolute', left: '-9999px' }}
+                                alt=""
+                            />
+                        </div>
+                    }
                 </noscript>
                 {children}
             </body>
