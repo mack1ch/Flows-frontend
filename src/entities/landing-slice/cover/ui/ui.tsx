@@ -9,9 +9,16 @@ import Image from 'next/image';
 import { useWindowSize } from '@/shared/hooks/useWindowSize';
 import { DCards } from '../data';
 import Link from 'next/link';
+import { useEffect } from 'react';
 export const Cover = () => {
     const { width, height } = useWindowSize();
-
+    useEffect(
+        () =>
+            console.log(
+                document.cookie.replace(/(?:(?:^|.*;\s*)refreshToken\s*=\s*([^;]*).*$)|^.*$/, '$1'),
+            ),
+        [],
+    );
     return (
         <>
             <div className={styles.layout}>

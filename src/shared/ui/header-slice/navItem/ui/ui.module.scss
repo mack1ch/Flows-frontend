@@ -36,7 +36,7 @@ $elementTitle: #3d3d3d;
 
         transition: transform 0.4s ease;
         .element__arrow__active {
-            transform: rotate(180deg);
+            transform: none;
             position: absolute;
             top: 0;
             left: 0;
@@ -45,7 +45,7 @@ $elementTitle: #3d3d3d;
             transition: transform 0.4s ease;
         }
         .element__arrow__notActive {
-            transform: none;
+            transform: rotate(180deg);
             transition: transform 0.4s ease;
         }
     }

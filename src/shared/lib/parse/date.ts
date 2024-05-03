@@ -16,3 +16,16 @@ export function parseDateToTextFormat(dateString: Date): string {
 }
 
 //  parseDateToTextFormate(inputDateString); === 14 ноября
+
+export function formatDateToDateAndTime(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+        day: 'numeric',
+        month: 'long',
+        hour: 'numeric',
+        minute: 'numeric',
+    };
+    return date.toLocaleString('ru-RU', options);
+}
+
+// Выведет something like: 13 марта 16.45
