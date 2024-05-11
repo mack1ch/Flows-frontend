@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
 
+
 export const FormInputs = ({
     label,
     placeholder,
