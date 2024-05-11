@@ -1,8 +1,7 @@
 'use client';
 
-import { ConfigProvider, Form, ThemeConfig } from 'antd';
+import { ConfigProvider, Form, ThemeConfig, Input } from 'antd';
 import styles from './ui.module.scss';
-import Input from 'antd/es/input/Input';
 import { IFormData } from '@/shared/interface/auth';
 import { RequestFields } from '../data';
 import { useEffect } from 'react';
@@ -72,7 +71,7 @@ export const FormInputs = ({
                     <Form.Item
                         style={{ width: '100%', textAlign: 'start', alignItems: 'flex-start' }}
                         label="Пароль">
-                        <Input
+                        <Input.Password
                             prefix={
                                 <LockOutlined
                                     style={{ color: '#cfcfcf' }}
