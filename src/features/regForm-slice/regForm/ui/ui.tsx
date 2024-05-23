@@ -11,7 +11,7 @@ import { prefixSelector } from '../model';
 import { ICompany } from '@/shared/interface/company';
 import { getCompany } from '../api/getCompany';
 import { IUserRegister } from '../iterface';
-import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
+import { isNonEmptyArray } from '@/shared/lib/check/emptyArray';
 import { RequestFields } from '../data';
 import { postUser } from '../api/postUser';
 import { useRouter } from 'next/navigation';

@@ -44,20 +44,3 @@ export const NewsArticle = ({ item }: { item?: IPost }) => {
         </>
     );
 };
-{
-    /* <article key={item.id} className={styles.article}>
-<section className={styles.article__data}>
-    <span title={item.proposal.name} className={styles.h3}>
-        {item.proposal.name}
-    </span>
-    <PostProcess setPostComplete={setPostComplete} proposal={item.proposal} />
-</section>
-<section className={styles.article__post_info}>
-    <Link className={styles.user_FI} href="/profile">
-        {getUserFI(item.proposal.author)}{' '}
-        {item.proposal.author.job && `/ ${item.proposal.author?.job?.name}`}
-    </Link>
-    <LikesAndViews post={item} isLiked={item.isLiked} />
-</section>
-</article> */
-}

@@ -6,8 +6,7 @@ import { IFormData } from '@/shared/interface/auth';
 import { RequestFields } from '../data';
 import { useEffect } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
-
+import { isNonEmptyArray } from '@/shared/lib/check/emptyArray';
 
 export const FormInputs = ({
     label,

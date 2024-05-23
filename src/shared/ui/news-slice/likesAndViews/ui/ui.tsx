@@ -57,45 +57,27 @@ export const LikesAndViews = ({ post, isLiked = false }: { post: IPost; isLiked:
         <>
             {contextHolder}
             <div className={styles.layout}>
-                <span className={styles.item}>
-                    <Image src={First} width={32} height={32} alt="1" />
-                    <p className={styles.grade}>1</p>
-                </span>
-                <span className={styles.item}>
-                    <Image src={Second} width={32} height={32} alt="1" />
-                    <p className={styles.grade}>2</p>
-                </span>
-                <span onClick={handleLike} className={styles.item}>
-                    <Image src={Third} width={32} height={32} alt="1" />
-                    <p className={styles.grade}>3</p>
-                </span>
-                <span onClick={handleLike} className={styles.item}>
-                    <Image src={Fourth} width={32} height={32} alt="1" />
-                    <p className={styles.grade}>4</p>
-                </span>
-                <span onClick={handleLike} className={styles.item}>
-                    <Image src={Fifth} width={32} height={32} alt="1" />
-                    <p className={styles.grade}>5</p>
-                </span>
+                <button onClick={handleLike} className={styles.like}>
+                    {isLike ? (
+                        <Image src={HeartRed} width={14} height={14} alt="Лайки" />
+                    ) : (
+                        <Image src={HeartGrey} width={14} height={14} alt="Лайки" />
+                    )}
+                    <p style={{ color: isLike ? '#FF5A49' : undefined }} className={styles.text}>
+                        {likeCount}
+                    </p>
+                </button>
+                {/* <button onClick={handleLike} className={styles.like}>
+                    {isLike ? (
+                        <Image src={HeartRed} width={14} height={14} alt="Лайки" />
+                    ) : (
+                        <Image src={HeartGrey} width={14} height={14} alt="Лайки" />
+                    )}
+                    <p style={{ color: isLike ? '#FF5A49' : undefined }} className={styles.text}>
+                        {likeCount}
+                    </p>
+                </button> */}
             </div>
         </>
     );
 };
-
-// {contextHolder}
-// <div className={styles.layout}>
-//     <span className={styles.item}>
-//         <Image src={Eye} width={14} height={14} alt="Количество просмотров" />
-//         <p className={styles.text}>{viewsCount}</p>
-//     </span>
-//     <button onClick={handleLike} className={styles.like}>
-//         {isLike ? (
-//             <Image src={HeartRed} width={14} height={14} alt="Лайки" />
-//         ) : (
-//             <Image src={HeartGrey} width={14} height={14} alt="Лайки" />
-//         )}
-//         <p style={{ color: isLike ? '#FF5A49' : undefined }} className={styles.text}>
-//             {likeCount}
-//         </p>
-//     </button>
-// </div>

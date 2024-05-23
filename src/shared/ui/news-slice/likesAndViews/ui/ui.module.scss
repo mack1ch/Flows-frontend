@@ -1,47 +1,3 @@
-// .layout {
-//     display: flex;
-//     align-items: center;
-//     gap: 12px;
-
-//     .item {
-//         display: flex;
-//         align-items: center;
-//         gap: 4px;
-
-//         .text {
-//             font-size: 14px;
-//             font-style: normal;
-//             font-weight: 400;
-//             line-height: normal;
-//             letter-spacing: 0.16px;
-//             color: #adadad;
-//         }
-//     }
-
-//     .like {
-//         display: flex;
-//         align-items: center;
-//         gap: 4px;
-//         border: none;
-//         background: transparent;
-//         cursor: pointer;
-//         transition: all 0.2s;
-
-//         .text {
-//             font-size: 14px;
-//             font-style: normal;
-//             font-weight: 400;
-//             line-height: normal;
-//             letter-spacing: 0.16px;
-//             color: #adadad;
-//             transition: all 0.2s;
-//             &:hover {
-//                 color: #a1a1a1;
-//             }
-//         }
-//     }
-// }
-
 .layout {
     display: flex;
     align-items: center;
@@ -49,24 +5,40 @@
 
     .item {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
         gap: 4px;
 
-        cursor: pointer;
-        transition: all 0.2s;
-        &:hover {
-            transform: scale(1.2);
-            color: #449429;
-        }
-        .grade {
-            color: #222;
+        .text {
             font-size: 14px;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+            letter-spacing: 0.16px;
+            color: #adadad;
+        }
+    }
+
+    .like {
+        display: flex;
+        padding: 8px 12px;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 4px;
+        border-radius: 16px;
+        background: #f7f7f7;
+        border: none;
+        cursor: pointer;
+        .text {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.16px;
+            color: #adadad;
             transition: all 0.2s;
+            &:hover {
+                color: #a1a1a1;
+            }
         }
     }
 }

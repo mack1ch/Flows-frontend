@@ -23,7 +23,7 @@ import { getUserFIO } from '@/shared/lib/parse/user';
 import { RequestFields } from '../data';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
 import { createFlow } from '../api/createFlow';
-import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
+import { isNonEmptyArray } from '@/shared/lib/check/emptyArray';
 
 const { TextArea } = Input;
 

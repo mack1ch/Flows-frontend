@@ -26,7 +26,7 @@ import { IFlowCategory } from '@/shared/interface/flow';
 import { getFlowCategories } from '../api/getFlowType';
 
 import { createFlow } from '../api/createFlow';
-import { isNonEmptyArray } from '@/shared/lib/check/emptyaArray';
+import { isNonEmptyArray } from '@/shared/lib/check/emptyArray';
 
 const { TextArea } = Input;
 
