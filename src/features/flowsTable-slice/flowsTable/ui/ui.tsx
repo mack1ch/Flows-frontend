@@ -20,22 +20,9 @@ export const FlowsTable = ({
     isApproved?: boolean;
 }) => {
     const [modalStates, setModalStates] = useState<{ [key: string]: boolean }>({});
-    const filteredFlows: IFlow[] | null = isApproved
-        ? flows &&
-          flows.filter((flow) => {
-              const hasStatus = flow.history.some(
-                  (history) =>
-                      history.status.statusType === 'proposalDone' ||
-                      history.status.statusType === 'proposalInWork',
-              );
-              return hasStatus;
-          })
-        : null;
-    const [renderFlows, setRenderFlows] = useState<IFlow[] | null>(
-        isApproved ? filteredFlows : flows,
-    );
+    const [renderFlows, setRenderFlows] = useState<IFlow[] | null>(flows);
     useEffect(() => {
-        setRenderFlows(isApproved ? filteredFlows : flows);
+        setRenderFlows(flows);
     }, [flows]);
 
     const toggleModal = (itemId: string | number) => {
