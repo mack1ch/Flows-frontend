@@ -25,12 +25,12 @@ export const getFlowsByStatusID = async (
         );
         const reqLink: string =
             user.role.name === 'moderator'
-                ? `proposals/${
+                ? `proposals?order=DESC${
                       getStatusTypeByID[0] !== undefined
                           ? `?status=${getStatusTypeByID.map((statusType) => statusType + ',')}`
                           : ''
                   }`
-                : `/proposals/my/${
+                : `/proposals/my?order=DESC${
                       getStatusTypeByID[0] !== undefined
                           ? `?status==${getStatusTypeByID.map((statusType) => statusType + ',')}`
                           : ''
