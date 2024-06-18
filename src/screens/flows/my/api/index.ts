@@ -27,8 +27,8 @@ export const getFlowsByStatusID = async (
             user.role.name === 'moderator'
                 ? `proposals?order=DESC${
                       getStatusTypeByID[0] !== undefined
-                          ? `&status=${getStatusTypeByID.map((statusType) => statusType + ',')}`
-                          : ''
+                          ? `&status=${getStatusTypeByID.join(',')}`
+                          : '&status=proposalsCreated,proposalNeedRevision,proposalApproved,proposalInWork,proposalInApprove'
                   }`
                 : `/proposals/my?order=DESC${
                       getStatusTypeByID[0] !== undefined
