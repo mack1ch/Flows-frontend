@@ -60,7 +60,7 @@ export const FlowsTable = ({
                                     Название
                                 </td>
                                 <td align="left" className={styles.tableHeader}>
-                                    Техническое задание
+                                    Материалы
                                 </td>
                                 <td align="left" className={styles.tableHeader}>
                                     Статус
