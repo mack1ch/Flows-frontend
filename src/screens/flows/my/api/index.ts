@@ -27,12 +27,12 @@ export const getFlowsByStatusID = async (
             user.role.name === 'moderator'
                 ? `proposals?order=DESC${
                       getStatusTypeByID[0] !== undefined
-                          ? `?status=${getStatusTypeByID.map((statusType) => statusType + ',')}`
+                          ? `&status=${getStatusTypeByID.map((statusType) => statusType + ',')}`
                           : ''
                   }`
                 : `/proposals/my?order=DESC${
                       getStatusTypeByID[0] !== undefined
-                          ? `?status==${getStatusTypeByID.map((statusType) => statusType + ',')}`
+                          ? `&status==${getStatusTypeByID.map((statusType) => statusType + ',')}`
                           : ''
                   }`;
 
