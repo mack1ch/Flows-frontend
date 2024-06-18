@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { ApproveModal } from '../approveModal';
 import React from 'react';
 import { isURL } from '@/shared/lib/parse/link';
+import { LikesAndViews } from '@/shared/ui/news-slice/likesAndViews';
 
 export const FlowsTable = ({
     flows,
@@ -65,7 +66,7 @@ export const FlowsTable = ({
                                     Статус
                                 </td>
                                 <td align="left" className={styles.tableHeader}>
-                                    {isApproved ? undefined : 'Дата'}
+                                    {isApproved ? undefined : 'Реакции'}
                                 </td>
                             </tr>
                             {renderFlows?.map((item) => {
@@ -107,13 +108,9 @@ export const FlowsTable = ({
                                                     }
                                                 />
                                             </td>
-                                            {isApproved ? (
+                                            {!isApproved ? (
                                                 <td className={styles.flowDate}>
-                                                    <Button
-                                                        onClick={() => toggleModal(item.id)}
-                                                        type="default">
-                                                        Опубликовать
-                                                    </Button>
+                                                    <LikesAndViews flow={item} />
                                                 </td>
                                             ) : (
                                                 <td className={styles.flowDate}>

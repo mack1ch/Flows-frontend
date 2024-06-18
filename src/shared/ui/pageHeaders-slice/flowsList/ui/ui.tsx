@@ -1,39 +1,40 @@
 'use client ';
 
-import {Filter} from '@/shared/ui/icons/filter';
-import {Plus} from '@/shared/ui/icons/plusWhite';
+import { Filter } from '@/shared/ui/icons/filter';
+import { Plus } from '@/shared/ui/icons/plusWhite';
 import styles from './ui.module.scss';
-import type {MenuProps, ThemeConfig} from 'antd';
-import {AutoComplete, Button, ConfigProvider, Dropdown, Flex, Space} from 'antd';
-import {useEffect, useState} from 'react';
-import {mapFlowTableItemsToMenuArray, sortFlowTableItems} from '../model';
+import type { MenuProps, ThemeConfig } from 'antd';
+import { AutoComplete, Button, ConfigProvider, Dropdown, Flex, Space } from 'antd';
+import { useEffect, useState } from 'react';
+import { mapFlowTableItemsToMenuArray, sortFlowTableItems } from '../model';
 import Link from 'next/link';
-import {useWindowSize} from '@/shared/hooks/useWindowSize';
-import {IFlow, IFlowStatus} from '@/shared/interface/flow';
+import { useWindowSize } from '@/shared/hooks/useWindowSize';
+import { IFlow, IFlowStatus } from '@/shared/interface/flow';
 
 export const FlowsListHeader = ({
-                                    id,
-                                    title,
-                                    filterName,
-                                    searchItemsArray,
-                                    filterItemsArray,
-                                    onSort,
-                                    onSearch,
-                                    setFlowStatusChoise,
-                                }: {
+    id,
+    title,
+    filterName,
+    searchItemsArray,
+    filterItemsArray,
+    onSort,
+    onSearch,
+    setFlowStatusChoise,
+}: {
     id?: number;
     title: string;
     filterName: string;
     searchItemsArray: IFlow[];
     filterItemsArray: IFlowStatus[];
-    setFlowStatusChoise?: (flowStatusChoiseID: string) => void | undefined;
+    setFlowStatusChoise?: (flowStatusChoiseID: string[]) => void | undefined;
     onSort: (sortedArray: IFlow[]) => void;
     onSearch: (searchText: string) => void;
 }) => {
     const [inputValue, setInputValue] = useState('');
     const [options, setOptions] = useState<{ value: string }[]>([]);
-    const {width, height} = useWindowSize();
+    const { width, height } = useWindowSize();
     const [items, setItems] = useState<MenuProps['items']>([]);
+    const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
     useEffect(() => {
         onSearch(inputValue);
@@ -46,8 +47,17 @@ export const FlowsListHeader = ({
         setItems(mapFlowTableItemsToMenuArray(filterItemsArray));
     }, [filterItemsArray]);
     const handleMenuClick: MenuProps['onClick'] = (e) => {
-        setFlowStatusChoise && setFlowStatusChoise(e.key);
+        const key = e.key;
+        let newSelectedKeys;
+        if (selectedKeys.includes(key)) {
+            newSelectedKeys = selectedKeys.filter((selectedKey) => selectedKey !== key);
+        } else {
+            newSelectedKeys = [...selectedKeys, key];
+        }
+        setSelectedKeys(newSelectedKeys);
+        setFlowStatusChoise && setFlowStatusChoise(newSelectedKeys);
     };
+
     return (
         <section className={styles.section} key={id}>
             {width < 768 ? (
@@ -61,9 +71,9 @@ export const FlowsListHeader = ({
                         }}>
                         <h1 className={styles.title}>{title}</h1>
                         <Link href="/flows/choice">
-                            <Button type='primary' size="large">
+                            <Button type="primary" size="large">
                                 <Space>
-                                    <Plus/>
+                                    <Plus />
                                     Создать заявку
                                 </Space>
                             </Button>
@@ -83,12 +93,13 @@ export const FlowsListHeader = ({
                                         items,
                                         selectable: true,
                                         defaultSelectedKeys: undefined,
+                                        selectedKeys: selectedKeys,
                                         onClick: handleMenuClick,
                                     }}
                                     placement="bottomLeft">
-                                    <Button type='primary' size="large">
+                                    <Button type="primary" size="large">
                                         <Space>
-                                            <Filter/>
+                                            <Filter />
                                             {filterName}
                                         </Space>
                                     </Button>
@@ -99,7 +110,7 @@ export const FlowsListHeader = ({
                                 options={options}
                                 onChange={setInputValue}
                                 placeholder="Найти по названию"
-                                style={{width: '242px'}}
+                                style={{ width: '242px' }}
                                 onSearch={(text) => setInputValue(text)}
                                 size="large"
                             />
@@ -110,7 +121,7 @@ export const FlowsListHeader = ({
                             options={options}
                             onChange={setInputValue}
                             placeholder="Найти по названию"
-                            style={{minWidth: '320px'}}
+                            style={{ minWidth: '320px' }}
                             onSearch={(text) => setInputValue(text)}
                             size="large"
                         />
@@ -119,9 +130,9 @@ export const FlowsListHeader = ({
                 <ConfigProvider theme={createFlowButtonTheme}>
                     {width > 768 && (
                         <Link href="/flows/choice">
-                            <Button type='primary' size="large">
+                            <Button type="primary" size="large">
                                 <Space>
-                                    <Plus/>
+                                    <Plus />
                                     Создать заявку
                                 </Space>
                             </Button>

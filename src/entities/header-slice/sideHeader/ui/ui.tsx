@@ -11,12 +11,14 @@ import { NavLogo } from '@/shared/ui/header-slice/navLogo';
 
 export const SideHeader = ({ style }: { style?: CSSProperties }) => {
     const [profileData, setProfileData] = useState<IHeaderItem>(SideBarProfileItem);
+    const [authUser, setAuthUser] = useState<IUser>();
     useEffect(() => {
         const GetUser = async () => {
             const fetchUser: IUser | Error = await GetAuthUserData();
             if (fetchUser instanceof Error) return;
             else {
                 const userName: string = fetchUser.firstname + ' ' + fetchUser.surname;
+                setAuthUser(fetchUser);
                 setProfileData((prevProfileData: IHeaderItem) => ({
                     ...prevProfileData,
                     title: userName || 'Профиль',
@@ -35,7 +37,7 @@ export const SideHeader = ({ style }: { style?: CSSProperties }) => {
             <section className={styles.header__items}>
                 <div className={styles.items}>
                     {SideNavBarItems.map((item: IHeaderItem, idx: number) => {
-                        return <NavItem key={idx} item={item} />;
+                        return <NavItem authUser={authUser} key={idx} item={item} />;
                     })}
                 </div>
                 <div className={styles.items}>

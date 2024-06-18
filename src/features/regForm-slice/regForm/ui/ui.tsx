@@ -1,10 +1,10 @@
 'use client';
 
-import { Button, ConfigProvider, DatePickerProps, Form, Input, message, Select } from 'antd';
+import { Button, ConfigProvider, Form, Input, message, Select } from 'antd';
 import styles from './ui.module.scss';
 import { regFormTheme } from '../theme';
 import { useEffect, useState } from 'react';
-import { IDepartment, IJob, IUser } from '@/shared/interface/user';
+import { IDepartment, IJob } from '@/shared/interface/user';
 import { getDepartments } from '../api/getDepartments';
 import { getJobs } from '../api/getJobs';
 import { prefixSelector } from '../model';

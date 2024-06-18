@@ -9,7 +9,7 @@ import { getFlowsByStatusID, getFlowsStatuses } from '../api';
 export const MyFlowScreen = () => {
     const [flows, setFlows] = useState<IFlow[]>([] as IFlow[]);
     const [flowStatuses, setFlowStatuses] = useState<IFlowStatus[]>([] as IFlowStatus[]);
-    const [flowStatusesChoise, setFlowStatusChoise] = useState<string>('');
+    const [flowStatusesChoose, setFlowStatusChoise] = useState<string[]>([]);
     const [filteredFlows, setFilteredFlows] = useState<IFlow[]>([]);
     useEffect(() => {
         const GetFlowStatuses = async () => {
@@ -22,16 +22,22 @@ export const MyFlowScreen = () => {
 
         GetFlowStatuses();
     }, []);
+
     useEffect(() => {
         const GetFlows = async () => {
-            const fetchFlows: IFlow[] | Error = await getFlowsByStatusID(flowStatusesChoise);
+            const fetchFlows: IFlow[] | Error = await getFlowsByStatusID(
+                flowStatusesChoose,
+                flowStatuses,
+            );
             if (fetchFlows instanceof Error) return;
             else {
                 setFlows(fetchFlows);
             }
         };
-        GetFlows();
-    }, [flowStatusesChoise]);
+        if (flowStatuses) {
+            GetFlows();
+        }
+    }, [flowStatusesChoose]);
     useEffect(() => {
         setFilteredFlows(flows);
     }, [flows]);

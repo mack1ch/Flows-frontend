@@ -8,6 +8,7 @@ export const createFlow = async (flowProps: ICreateNoCommerceForm): Promise<IFlo
         document: flowProps.material,
         isDocumentGenerated: false,
         isCommercial: false,
+        description: flowProps.cause,
         content: {
             customQuestions: [
                 {
@@ -17,10 +18,6 @@ export const createFlow = async (flowProps: ICreateNoCommerceForm): Promise<IFlo
                 {
                     question: 'Адрес, по которому работает отправитель',
                     answer: flowProps.address,
-                },
-                {
-                    question: 'Почему этот продукт так важен?',
-                    answer: flowProps.cause,
                 },
             ],
         },

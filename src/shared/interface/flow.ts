@@ -1,3 +1,4 @@
+import { IPost } from './post';
 import { IUser } from './user';
 
 export interface IFlow {
@@ -13,6 +14,7 @@ export interface IFlow {
     comment: string[] | null;
     documentLink: string;
     description: string;
+    post: IPost;
 }
 
 export interface IDocument {

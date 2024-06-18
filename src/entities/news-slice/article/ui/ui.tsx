@@ -38,7 +38,7 @@ export const NewsArticle = ({ item }: { item?: IPost }) => {
                     <p className={styles.description}>{item.proposal.description}</p>
                 </section>
                 <section className={styles.rating}>
-                    <LikesAndViews post={item} isLiked={item.isLiked} />
+                    <LikesAndViews post={item} />
                 </section>
             </article>
         </>

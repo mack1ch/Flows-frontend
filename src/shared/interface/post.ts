@@ -7,4 +7,13 @@ export interface IPost {
     likes: number;
     views: number;
     isLiked: boolean;
+    isDisliked: boolean;
+    dislikes: number;
+    reactions: IReaction[];
 }
+
+export interface IReaction {
+    id: number;
+    type: number;
+}
+

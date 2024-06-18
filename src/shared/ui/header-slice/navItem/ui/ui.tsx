@@ -5,8 +5,9 @@ import { IHeaderItem } from '@/shared/interface/header';
 import Image from 'next/image';
 import Arrow from '../../../../../../public/icons/arrow-black.svg';
 import styles from './ui.module.scss';
+import { IUser } from '@/shared/interface/user';
 
-export const NavItem = ({ item }: { item: IHeaderItem }) => {
+export const NavItem = ({ item, authUser }: { item: IHeaderItem; authUser?: IUser }) => {
     const pathname = usePathname();
     const [subMenuOpen, setSubMenuOpen] = useState(false);
     const toggleSubMenu = () => {
@@ -51,6 +52,8 @@ export const NavItem = ({ item }: { item: IHeaderItem }) => {
                                 : styles.element__item__list
                         }>
                         {item.subMenuItems?.map((subItem, idx) => {
+                            if (authUser?.role.name === 'member' && subItem.title === 'Архив')
+                                return;
                             return (
                                 <Link
                                     key={idx}

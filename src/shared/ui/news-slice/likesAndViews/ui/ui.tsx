@@ -1,82 +1,81 @@
 import styles from './ui.module.scss';
-import Eye from '../../../../../../public/icons/eye-grey.svg';
+import SmileySadGrey from '../../../../../../public/icons/smileySad.svg';
+import SmileySadGreyRed from '../../../../../../public/icons/smileySad-red.svg';
 import HeartGrey from '../../../../../../public/icons/heart-grey.svg';
 import HeartRed from '../../../../../../public/icons/heart-red.svg';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { IPost } from '@/shared/interface/post';
-import { postLike } from '../api';
-import First from '../../../../../../public/assets/emoji/1.png';
-import Second from '../../../../../../public/assets/emoji/2.png';
-import Third from '../../../../../../public/assets/emoji/3.png';
-import Fourth from '../../../../../../public/assets/emoji/4.png';
-import Fifth from '../../../../../../public/assets/emoji/5.png';
+import { postLikeOrDislike } from '../api';
+
 import { message } from 'antd';
-export const LikesAndViews = ({ post, isLiked = false }: { post: IPost; isLiked: boolean }) => {
-    const [isLike, setLike] = useState(isLiked);
+import { IFlow } from '@/shared/interface/flow';
+export const LikesAndViews = ({
+    post,
+
+    flow,
+}: {
+    post?: IPost;
+    flow?: IFlow;
+}) => {
+    const [isLiked, setIsLiked] = useState(false);
+    const [isDisliked, setIsDisliked] = useState<boolean>(false);
     const [messageApi, contextHolder] = message.useMessage();
-    const [viewsCount, setViewsCount] = useState<number>(post.views || 0);
-    const [likeCount, setLikeCount] = useState<number>(post.likes || 0);
+    const [dislikeCount, setDislikeCount] = useState<number>(0);
+    const [likeCount, setLikeCount] = useState<number>(0);
+
     useEffect(() => {
-        setViewsCount(post.views);
-        setLikeCount(post.likes);
-    }, [post]);
+        setLikeCount(post?.likes || flow?.post?.likes || 0);
+        setDislikeCount(post?.dislikes || flow?.post?.dislikes || 0);
+    }, [post, flow]);
     useEffect(() => {
-        setLike(isLiked);
-    }, [isLiked]);
-    const handleLike = async () => {
-        if (!isLike) {
-            try {
-                const response = await postLike(post.id);
-                if (!(response instanceof Error)) {
-                    setLikeCount((prev) => prev + 1);
-                    setLike(!isLike);
-                } else throw new Error();
-            } catch (error) {
-                messageApi.open({
-                    type: 'error',
-                    content: 'Произошла ошибка на сервере, мы уже работаем над решением проблемы',
-                });
-            }
-        } else {
-            try {
-                const response = await postLike(post.id);
-                if (!(response instanceof Error)) {
-                    setLikeCount((prev) => prev - 1);
-                    setLike(!isLike);
-                } else throw new Error();
-            } catch (error) {
-                messageApi.open({
-                    type: 'error',
-                    content: 'Произошла ошибка на сервере, мы уже работаем над решением проблемы',
-                });
-            }
+        setIsLiked(post?.isLiked || flow?.post?.isLiked || false);
+        setIsDisliked(post?.isDisliked || flow?.post?.isDisliked || false);
+    }, [flow, post]);
+
+    const handleLike = async (type: 1 | 2) => {
+        try {
+            const response = await postLikeOrDislike(post?.id || flow?.post?.id || 0, type);
+            if (!(response instanceof Error)) {
+                setLikeCount(response.likes);
+                setDislikeCount(response.dislikes);
+                setIsLiked(response.isLiked);
+                setIsDisliked(response.isDisliked);
+            } else throw new Error();
+        } catch (error) {
+            messageApi.open({
+                type: 'error',
+                content: 'Произошла ошибка на сервере, мы уже работаем над решением проблемы',
+            });
         }
     };
+
     return (
         <>
             {contextHolder}
             <div className={styles.layout}>
-                <button onClick={handleLike} className={styles.like}>
-                    {isLike ? (
+                <button onClick={() => handleLike(1)} className={styles.like}>
+                    {isLiked ? (
                         <Image src={HeartRed} width={14} height={14} alt="Лайки" />
                     ) : (
                         <Image src={HeartGrey} width={14} height={14} alt="Лайки" />
                     )}
-                    <p style={{ color: isLike ? '#FF5A49' : undefined }} className={styles.text}>
+                    <p style={{ color: isLiked ? '#FF5A49' : undefined }} className={styles.text}>
                         {likeCount}
                     </p>
                 </button>
-                {/* <button onClick={handleLike} className={styles.like}>
-                    {isLike ? (
-                        <Image src={HeartRed} width={14} height={14} alt="Лайки" />
+                <button onClick={() => handleLike(2)} className={styles.like}>
+                    {isDisliked ? (
+                        <Image src={SmileySadGreyRed} width={18} height={18} alt="Дизлвйк" />
                     ) : (
-                        <Image src={HeartGrey} width={14} height={14} alt="Лайки" />
+                        <Image src={SmileySadGrey} width={18} height={18} alt="Дизлайк" />
                     )}
-                    <p style={{ color: isLike ? '#FF5A49' : undefined }} className={styles.text}>
-                        {likeCount}
+                    <p
+                        style={{ color: isDisliked ? '#FF5A49' : undefined }}
+                        className={styles.text}>
+                        {dislikeCount}
                     </p>
-                </button> */}
+                </button>
             </div>
         </>
     );

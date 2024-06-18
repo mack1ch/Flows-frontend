@@ -78,7 +78,7 @@ export const RatingTable = () => {
                                         <td className={styles.postCreater}>{userFIO}</td>
                                         <td className={styles.likesAndviews}>
                                             <span className={styles.td__item}>
-                                                <LikesAndViews isLiked={item.isLiked} post={item} />
+                                                <LikesAndViews post={item} />
                                             </span>
                                         </td>
                                     </tr>
