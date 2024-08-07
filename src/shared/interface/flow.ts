@@ -1,5 +1,5 @@
 import { IPost } from './post';
-import { IUser } from './user';
+import { IDepartment, IUser } from './user';
 
 export interface IFlow {
     id: number;
@@ -15,6 +15,7 @@ export interface IFlow {
     documentLink: string;
     description: string;
     post: IPost;
+    responsibleDepartment?: IDepartment;
 }
 
 export interface IDocument {

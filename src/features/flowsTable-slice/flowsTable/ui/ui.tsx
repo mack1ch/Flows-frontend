@@ -89,6 +89,7 @@ export const FlowsTable = ({
                                             </td>
                                             <td>
                                                 <FlowStatus
+                                                    flow={item}
                                                     responsible={item?.history?.at(-1)?.user}
                                                     status={
                                                         item?.history?.at(-1)?.status || undefined

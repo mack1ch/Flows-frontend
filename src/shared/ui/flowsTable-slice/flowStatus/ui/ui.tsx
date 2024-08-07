@@ -1,14 +1,16 @@
 import styles from './ui.module.scss';
 import { getStatusByType } from '../model';
-import { IFlowStatus, TFlowStatusType } from '@/shared/interface/flow';
+import { IFlow, IFlowStatus, TFlowStatusType } from '@/shared/interface/flow';
 import { IUser } from '@/shared/interface/user';
 
 export const FlowStatus = ({
     status,
     responsible,
+    flow,
 }: {
     status: IFlowStatus | undefined;
     responsible: IUser | undefined;
+    flow?: IFlow;
 }) => {
     const statusTitle = getStatusByType(status?.statusType || 'loading').title || 'Загрузка';
     const statusColor = getStatusByType(status?.statusType || 'loading').color || 'Загрузка';
@@ -31,7 +33,9 @@ export const FlowStatus = ({
                                 }
                                 className={styles.text}>
                                 {statusText}:{' '}
-                                {typeof responsible === 'undefined'
+                                {flow?.responsibleDepartment
+                                    ? flow.responsibleDepartment.name
+                                    : typeof responsible === 'undefined'
                                     ? 'Загрузка...'
                                     : responsible.firstname + ' ' + responsible?.surname}
                             </p>
@@ -47,7 +51,9 @@ export const FlowStatus = ({
                                 }
                                 className={styles.text}>
                                 <span style={{ color: '#73AE62' }}> {statusText}</span>:{' '}
-                                {typeof responsible === 'undefined'
+                                {flow?.responsibleDepartment
+                                    ? flow.responsibleDepartment.name
+                                    : typeof responsible === 'undefined'
                                     ? 'Загрузка...'
                                     : responsible.firstname + ' ' + responsible?.surname}
                             </p>
