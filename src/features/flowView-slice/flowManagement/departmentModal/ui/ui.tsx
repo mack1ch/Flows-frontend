@@ -29,7 +29,7 @@ export const DepartmentModal = ({
         if (value) {
             const res = await changeDepartment(value || 0, flow?.id || 0);
             if (!(res instanceof Error)) {
-                message.success('Заявка успешно согласована');
+                message.success('Ответственный успешно назначен');
                 setIsOpen(false);
                 setValue(undefined);
             } else {
